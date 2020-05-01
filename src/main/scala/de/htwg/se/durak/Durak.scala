@@ -1,8 +1,8 @@
-package de.htwg.se.yourgame
+package de.htwg.se.durak
 
-import de.htwg.se.yourgame.model.Player
+import de.htwg.se.durak.model.Player
 
-object YourGame {
+object Durak {
   def main(args: Array[String]): Unit = {
     val student = Player("Your Name")
     println("Hello, " + student.name)
