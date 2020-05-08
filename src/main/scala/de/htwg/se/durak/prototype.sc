@@ -128,5 +128,3 @@ val gameTable = new GameTable()
 val gameLogic = new GameLogic(gameTable, playerList)
 gameLogic.setStackSize(36)
 gameLogic.start()
-
-
