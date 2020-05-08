@@ -86,45 +86,47 @@ class Player() {
 
 }
 
-val player1 = new Player()
-val player2 = new Player()
-val playerList: List[Player] = List(player1, player2)
-
-class GameTable(players: List[Player], size: Int) {
-  // die Klasse sollte hier nicht sein, aber wegen der einen Datei halt so
-  class Game(gameTable: GameTable) {
-    var trump: Int = -1
-    def start(lastWinner: Int): Unit = {
-      //todo add lastWinner
-      start()
-    }
-    def start(): Unit = {
-      prepareStart()
-    }
-    private def prepareStart(): Unit = {
-      trump = 1 + Random.nextInt(3) // set random trump
-    }
-  }
-
-
-
-  val coveredCards = new CardStack()
-  var playerCards: List[CardStack] = List()
-  def setup(): Unit= {
-    playerCards = createPlayerCardsStack()
-    val game = new Game(this)
-    game.start()
-  }
-
-  private def createPlayerCardsStack(): List[CardStack] = {
+class GameTable() {
+  def createPlayerCardStack(players: List[Player]): List[CardStack] = {
     val stack = new ListBuffer[CardStack]()
     for(player <- players)
       stack += new CardStack(0)
     stack.toList
   }
+  def handOutCards(players: List[Player], cardStack:CardStack): Unit = {
+
+  }
 }
 
-val gameTable = new GameTable(playerList, 36)
-gameTable.setup()
+class GameLogic(gameTable: GameTable, playerList: List[Player]) {
+  var trump: Int = -1
+  var stackSize: Int = 0
+  def start(lastWinner: Int): Unit = {
+    //todo lastWinner==-1 need to check cards
+    trump = 1 + Random.nextInt(3)
+    val playerCards = gameTable.createPlayerCardStack(playerList)
+    val hiddenCards = new CardStack(stackSize)
+    hiddenCards.generateStack()
+    val showedCards = new CardStack()
+
+  }
+  def start(): Unit = {
+    start(-1)
+  }
+
+  def setStackSize(size: Int): Unit = {
+    stackSize = size
+  }
+
+}
+
+val player1 = new Player()
+val player2 = new Player()
+val playerList: List[Player] = List(player1, player2)
+
+val gameTable = new GameTable()
+val gameLogic = new GameLogic(gameTable, playerList)
+gameLogic.setStackSize(36)
+gameLogic.start()
 
 
