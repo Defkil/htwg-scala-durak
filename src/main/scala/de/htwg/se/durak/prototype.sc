@@ -43,13 +43,13 @@ class CardStack {
     cards
   }
 
-  def removeCard(): Unit = {
+  def removeCard(position: Int): Unit = {
   }
 
   def addCard(): Unit = {
   }
 
-  def changeCardPosition(): Unit = {
+  def changeCardPosition(from: Int, to: Int): Unit = {
   }
 
   def getAllCards(): ListBuffer[Card] = {
@@ -59,7 +59,7 @@ class CardStack {
   def popCard(): Unit = {
   }
 
-  def popCards(): Unit = {
+  def popCards(numberOfCards: Int): Unit = {
   }
 
   def debugLog() : Unit = {
@@ -68,6 +68,7 @@ class CardStack {
     }
   }
 
+  // delete all cards in cards
   def clear() : Unit = {
 
   }
