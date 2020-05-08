@@ -6,14 +6,7 @@ class Card(rank: Int, cardType: Int) {
   }
 
   override def toString: String = {
-    var s = "Typ: "
-    cardType match {
-      case 0 => s += "Pik"
-      case 1 => s += "Karo"
-      case 2 => s += "Kreuz"
-      case 3 => s += "Herz"
-    }
-    s += ", Rang: "
+    var s = "Rang: "
     rank match {
       case 0 => s+= "2"
       case 1 => s+= "3"
@@ -28,6 +21,13 @@ class Card(rank: Int, cardType: Int) {
       case 10 => s += "Dame"
       case 11 => s += "König"
       case 12 => s += "Ass"
+    }
+    s += ", Typ: "
+    cardType match {
+      case 0 => s += "Pik"
+      case 1 => s += "Karo"
+      case 2 => s += "Kreuz"
+      case 3 => s += "Herz"
     }
     s
   }
