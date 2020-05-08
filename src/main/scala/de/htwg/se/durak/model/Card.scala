@@ -15,15 +15,19 @@ class Card(rank: Int, cardType: Int) {
     }
     s += ", Rang: "
     rank match {
-      case 0 => s+= "6"
-      case 1 => s += "7"
-      case 2 => s += "8"
-      case 3 => s += "9"
-      case 4 => s += "10"
-      case 5 => s += "Bube"
-      case 6 => s += "Dame"
-      case 7 => s += "König"
-      case 8 => s += "Ass"
+      case 0 => s+= "2"
+      case 1 => s+= "3"
+      case 2 => s+= "4"
+      case 3 => s+= "5"
+      case 4 => s+= "6"
+      case 5 => s += "7"
+      case 6 => s += "8"
+      case 7 => s += "9"
+      case 8 => s += "10"
+      case 9 => s += "Bube"
+      case 10 => s += "Dame"
+      case 11 => s += "König"
+      case 12 => s += "Ass"
     }
     s
   }
