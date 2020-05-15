@@ -99,7 +99,7 @@ class GameTable() {
 
   }
 }
-
+12
 class GameLogic(gameTable: GameTable, playerList: List[Player]) {
   var trump: Int = -1
   var stackSize: Int = 0

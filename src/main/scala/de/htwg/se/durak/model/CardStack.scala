@@ -41,6 +41,7 @@ class CardStack {
   }
 
   def changeCardPosition(from: Int, to: Int): Unit = {
+    if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
   }
 
   def getAllCards(): ListBuffer[Card] = {
