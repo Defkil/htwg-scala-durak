@@ -46,7 +46,8 @@ class CardStack {
   def removeCard(position: Int): Unit = {
   }
 
-  def addCard(): Unit = {
+  def addCard(c : Card): Unit = {
+    cards += c
   }
 
   def changeCardPosition(from: Int, to: Int): Unit = {

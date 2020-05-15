@@ -1,6 +1,6 @@
 package de.htwg.se.durak
 
-import de.htwg.se.durak.model.{Card, Player}
+import de.htwg.se.durak.model.{Card, CardStack, Player}
 
 object Durak {
   def main(args: Array[String]): Unit = {

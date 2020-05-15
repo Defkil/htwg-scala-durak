@@ -3,8 +3,8 @@ package de.htwg.se.durak.model
 import scala.collection.mutable.ListBuffer
 
 class CardStack {
-  var cards = new ListBuffer[Card]()
-  var size: Int = 0
+  private var cards = new ListBuffer[Card]()
+  private var size: Int = 48
   def this(getSize: Int, getCards: ListBuffer[Card]){
     this()
     cards = getCards
@@ -32,9 +32,12 @@ class CardStack {
   }
 
   def removeCard(position: Int): Unit = {
+    if(position >= cards.size) throw new IndexOutOfBoundsException
+    cards.remove(position)
   }
 
-  def addCard(): Unit = {
+  def addCard(c:Card): Unit = {
+    cards += c
   }
 
   def changeCardPosition(from: Int, to: Int): Unit = {
@@ -44,10 +47,14 @@ class CardStack {
     cards
   }
 
-  def popCard(): Unit = {
+  def popCard(): Card = {
+    cards.remove(cards.size - 1)
   }
 
   def popCards(numberOfCards: Int): Unit = {
+    val a = Array.ofDim[Card](numberOfCards)
+    for(i <- 0 until numberOfCards) a(i) = popCard()
+    a.toList
   }
 
   def debugLog() : Unit = {
@@ -58,6 +65,6 @@ class CardStack {
 
   // delete all cards in cards
   def clear() : Unit = {
-
+    cards.clear()
   }
 }
