@@ -19,7 +19,7 @@ class CardStack {
     val y = 0
     val x = 0
     if(size == 48){
-      for( x <- 2 to 14)
+      for( x <- 2 until 14)
         for( y <- 1 to 4)
           cards += (new Card(x, y))
     }else if(size == 36){
@@ -68,4 +68,6 @@ class CardStack {
   def clear() : Unit = {
     cards.clear()
   }
+
+  def getSize:Int = cards.size
 }

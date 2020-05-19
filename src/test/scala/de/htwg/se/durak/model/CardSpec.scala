@@ -7,5 +7,5 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class CardSpec extends WordSpec with Matchers {
   val c = new Card(9,2)
-  c.toString should be("Rang: Bube, Typ: Kreuz")
+  c.toString should be("Rang: 9, Typ: Karo")
 }
