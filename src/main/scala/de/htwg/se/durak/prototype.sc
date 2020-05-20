@@ -1,7 +1,7 @@
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
-class Card(rank: Int, cardType: Int) {
+case class Card(rank: Int, cardType: Int) {
   def get():(Int, Int) = {
     (rank, cardType)
   }
@@ -14,7 +14,7 @@ val testCard = new Card(10, 1)
 val (testCardRank, testCardType) = testCard.get()
 
 
-class CardStack {
+case class CardStack() {
   var cards = new ListBuffer[Card]()
   var size: Int = 0
   def this(getSize: Int, getCards: ListBuffer[Card]){
@@ -83,23 +83,23 @@ stack.debugLog()
 
 
 
-class Player() {
+case class Player() {
 
 }
 
-class GameTable() {
-  def createPlayerCardStack(players: List[Player]): List[CardStack] = {
+case class GameTable() {
+  def createPlayerCardStack(playerCards: List[Player]): List[CardStack] = {
     val stack = new ListBuffer[CardStack]()
-    for(player <- players)
+    for(player <- playerCards)
       stack += new CardStack(0)
     stack.toList
   }
-  def handOutCards(players: List[Player], cardStack:CardStack): Unit = {
+  def handOutCards(playerCards: List[Player], cardStack: CardStack): Unit = {
 
   }
 }
 
-class GameLogic(gameTable: GameTable, playerList: List[Player]) {
+case class GameLogic(gameTable: GameTable, playerList: List[Player]) {
   var trump: Int = -1
   var stackSize: Int = 0
   def start(lastWinner: Int): Unit = {
@@ -109,6 +109,7 @@ class GameLogic(gameTable: GameTable, playerList: List[Player]) {
     val hiddenCards = new CardStack(stackSize)
     hiddenCards.generateStack()
     val showedCards = new CardStack()
+
 
   }
   def start(): Unit = {
