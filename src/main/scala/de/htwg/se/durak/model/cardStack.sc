@@ -1,5 +1,4 @@
-import de.htwg.se.durak.model.CardStack
-import de.htwg.se.durak.model.Card
+import de.htwg.se.durak.model.{Card, CardStack}
 
 val s = new CardStack()
 s.addCard(new Card(2,4))

@@ -23,7 +23,7 @@ class CardStack {
         for( y <- 1 to 4)
           cards += (new Card(x, y))
     }else if(size == 36){
-      for( x <- 6 to 14)
+      for( x <- 5 until 14)
         for( y <- 1 to 4)
           cards += (new Card(x, y))
     }
