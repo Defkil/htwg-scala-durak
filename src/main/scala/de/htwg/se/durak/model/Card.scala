@@ -5,6 +5,10 @@ class Card(rank: Int, cardType: Int) {
     (rank, cardType)
   }
 
+  def getWeigth(): Int = {
+    1
+  }
+
   override def toString: String = {
     var s = "Rang: "
     rank match {
@@ -31,4 +35,6 @@ class Card(rank: Int, cardType: Int) {
     }
     s
   }
+
+
 }
