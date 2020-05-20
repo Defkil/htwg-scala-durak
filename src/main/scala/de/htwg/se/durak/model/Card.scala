@@ -8,26 +8,26 @@ class Card(rank: Int, cardType: Int) {
   override def toString: String = {
     var s = "Rang: "
     rank match {
-      case 0 => s+= "2"
-      case 1 => s+= "3"
-      case 2 => s+= "4"
-      case 3 => s+= "5"
-      case 4 => s+= "6"
-      case 5 => s += "7"
-      case 6 => s += "8"
-      case 7 => s += "9"
-      case 8 => s += "10"
-      case 9 => s += "Bube"
-      case 10 => s += "Dame"
-      case 11 => s += "König"
-      case 12 => s += "Ass"
+      case 2 => s+= "2"
+      case 3 => s+= "3"
+      case 4 => s+= "4"
+      case 5 => s+= "5"
+      case 6 => s+= "6"
+      case 7 => s += "7"
+      case 8 => s += "8"
+      case 9 => s += "9"
+      case 10 => s += "10"
+      case 11 => s += "Bube"
+      case 12 => s += "Dame"
+      case 13 => s += "König"
+      case 14 => s += "Ass"
     }
     s += ", Typ: "
     cardType match {
-      case 0 => s += "Pik"
-      case 1 => s += "Karo"
-      case 2 => s += "Kreuz"
-      case 3 => s += "Herz"
+      case 1 => s += "Pik"
+      case 2 => s += "Karo"
+      case 3 => s += "Kreuz"
+      case 4 => s += "Herz"
     }
     s
   }
