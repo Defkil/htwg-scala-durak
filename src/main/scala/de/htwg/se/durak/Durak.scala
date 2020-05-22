@@ -31,6 +31,8 @@ object Durak {
     table.handOutCards(players, stackList, stack)
     val cards = stack.popCards(2)
     println(cards)
+    val c = cards(0)
+    println(c.toString + ", values: " + c.get() + ", weight: " + c.getWeight())
     stack.removeCard(3)
     println(stack)
     stack.clear()
