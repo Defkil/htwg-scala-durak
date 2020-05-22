@@ -1,12 +1,21 @@
 package de.htwg.se.durak.model
 
-class Card(rank: Int, cardType: Int) {
+case class Card(rank: Int, cardType: Int) {
   def get(): (Int, Int) = {
-    (rank, cardType)
+    (getRank, getType)
   }
 
-  def getWeigth(): Int = {
-    1
+  def getRank: Int = rank
+
+  def getType: Int = cardType
+
+  def getWeight(): Int = {
+    cardType match {
+      case 1 => rank
+      case 2 => rank + 14
+      case 3 => rank + 14 * 2
+      case 4 => rank + 14 * 3
+    }
   }
 
   override def toString: String = {
