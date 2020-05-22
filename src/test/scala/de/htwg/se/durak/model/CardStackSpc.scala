@@ -55,5 +55,12 @@ class CardStackSpc extends WordSpec with Matchers {
         stack.getSize should be(0)
       }
     }
+    "add and remove card" in {
+      val stack = new CardStack(6)
+      stack.addCard(new Card(1,1))
+      stack.getSize should be(1)
+      stack.removeCard(0)
+      stack.getSize should be(0)
+    }
   }
 }
