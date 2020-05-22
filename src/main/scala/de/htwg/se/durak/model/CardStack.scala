@@ -2,17 +2,13 @@ package de.htwg.se.durak.model
 
 import scala.collection.mutable.ListBuffer
 
-class CardStack {
-  private var cards = new ListBuffer[Card]()
-  private var size: Int = 48
-  def this(getSize: Int, getCards: ListBuffer[Card]){
-    this()
-    cards = getCards
-    size = getSize
+case class CardStack(size: Int = 0, var cards: ListBuffer[Card]) {
+  def this(getSize: Int) {
+    this(getSize, ListBuffer())
   }
-  def this(getSize: Int = 0){
-    this()
-    size = getSize
+
+  def this() {
+    this(0)
   }
 
   def generateStack(): ListBuffer[Card] = {
@@ -31,18 +27,20 @@ class CardStack {
     cards
   }
 
-  def removeCard(position: Int): Unit = {
+  def removeCard(position: Int): Card = {
     if(position >= cards.size) throw new IndexOutOfBoundsException
     cards.remove(position)
   }
 
-  def addCard(c:Card): Unit = {
+  def addCard(c:Card): ListBuffer[Card] = {
     cards += c
+    cards
   }
 
-  //def changeCardPosition(from: Int, to: Int): Unit = {
-  //  if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
-  //}
+  def changeCardPosition(from: Int, to: Int): Unit = {
+    if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
+    //todo: implement function and test
+  }
 
   def getAllCards(): ListBuffer[Card] = {
     cards
@@ -52,7 +50,7 @@ class CardStack {
     cards.remove(cards.size - 1)
   }
 
-  def popCards(numberOfCards: Int): Unit = {
+  def popCards(numberOfCards: Int): List[Card] = {
     val a = Array.ofDim[Card](numberOfCards)
     for(i <- 0 until numberOfCards) a(i) = popCard()
     a.toList
