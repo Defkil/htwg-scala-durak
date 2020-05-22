@@ -25,8 +25,17 @@ object Durak {
     stack.generateStack()
     val table = new GameTable()
     val players = makePlayers()
+    println(players)
     val logic = new GameLogic(table, players)
     val stackList = table.createPlayerCardStack(players)
     table.handOutCards(players, stackList, stack)
+    val cards = stack.popCards(2)
+    println(cards)
+    stack.removeCard(3)
+    stack.clear()
+    println(stack.getSize)
+    println(stack.getAllCards())
+
+    val stack2 = new CardStack(32)
   }
 }

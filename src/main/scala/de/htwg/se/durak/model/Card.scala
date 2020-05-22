@@ -35,6 +35,4 @@ class Card(rank: Int, cardType: Int) {
     }
     s
   }
-
-
 }

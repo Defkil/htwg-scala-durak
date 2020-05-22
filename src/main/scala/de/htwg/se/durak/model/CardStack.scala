@@ -40,9 +40,9 @@ class CardStack {
     cards += c
   }
 
-  def changeCardPosition(from: Int, to: Int): Unit = {
-    if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
-  }
+  //def changeCardPosition(from: Int, to: Int): Unit = {
+  //  if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
+  //}
 
   def getAllCards(): ListBuffer[Card] = {
     cards
@@ -56,12 +56,6 @@ class CardStack {
     val a = Array.ofDim[Card](numberOfCards)
     for(i <- 0 until numberOfCards) a(i) = popCard()
     a.toList
-  }
-
-  def debugLog() : Unit = {
-    for (card <- cards) {
-      println(card.get())
-    }
   }
 
   // delete all cards in cards
