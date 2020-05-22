@@ -3,7 +3,7 @@ import de.htwg.se.durak.model.{CardStack, Player}
 
 val table = new GameTable()
 val players = List(new Player("Toni"), new Player("Tim"))
-val logic = new GameLogic(table, players)
+//val logic = new GameLogic(table, players)
 val cardStack = new CardStack()
 cardStack.generateStack()
 
