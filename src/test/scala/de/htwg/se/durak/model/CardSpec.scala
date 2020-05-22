@@ -14,5 +14,8 @@ class CardSpec extends WordSpec with Matchers {
     "have toString with words"  in {
       card.toString should be("Rang: 2, Typ: Pik")
     }
+    "have weight 1" in {
+      card.getWeigth() should be(1)
+    }
   }}
 }

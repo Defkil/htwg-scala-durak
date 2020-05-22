@@ -41,5 +41,19 @@ class CardStackSpc extends WordSpec with Matchers {
         stack.getSize should be(0)
       }
     }
+    "check get all cards and clear" should {
+      val stack = new CardStack()
+      stack.addCard(new Card(11,2))
+      stack.addCard(new Card(12,1))
+      "return al cards as list" in {
+        val cards = stack.getAllCards()
+        cards(0).toString should be("Rang: Bube, Typ: Karo")
+        cards(1).toString should be("Rang: Dame, Typ: Pik")
+      }
+      "method clear() makes CardStack empty" in {
+        stack.clear()
+        stack.getSize should be(0)
+      }
+    }
   }
 }
