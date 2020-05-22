@@ -21,7 +21,7 @@ object Durak {
 //    val c = new Card(7,3)
 //    println(c)
 
-    val stack = new CardStack()
+    val stack = new CardStack(48)
     stack.generateStack()
     val table = new GameTable()
     val players = makePlayers()
