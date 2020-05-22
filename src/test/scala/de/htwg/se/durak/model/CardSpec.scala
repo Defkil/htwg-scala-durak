@@ -71,15 +71,4 @@ class CardSpec extends WordSpec with Matchers {
       card.toString should be("Rang: Ass, Typ: Herz")
     }
   }}
-  "Compare Cards to be equal" should {
-    val c1 = new Card(11,3)
-    val c2 = new Card(11,3)
-    val c3 = new Card(9,3)
-    "compare equal cards" in {
-      c1.equals(c2) should be(true)
-    }
-    "compare unequal cards" in {
-      c2.equals(c3) should be(false)
-    }
-  }
 }
