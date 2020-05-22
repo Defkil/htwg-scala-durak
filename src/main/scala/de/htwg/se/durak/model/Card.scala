@@ -35,4 +35,11 @@ class Card(rank: Int, cardType: Int) {
     }
     s
   }
+
+  override def equals(obj : Any): Boolean = {
+    if(!obj.isInstanceOf[Card]) return false
+
+    val tuple = obj.asInstanceOf[Card].get()
+    rank == tuple._1 && cardType == tuple._2
+  }
 }

@@ -32,10 +32,17 @@ object Durak {
     val cards = stack.popCards(2)
     println(cards)
     stack.removeCard(3)
+    println(stack)
     stack.clear()
     println(stack.getSize)
     println(stack.getAllCards())
 
     val stack2 = new CardStack(32)
+
+    val c1 = new Card(11,3)
+    val c2 = new Card(11,3)
+    val c3 = new Card(9,3)
+    println(c1.equals(c2))
+    println(c2.equals(c3))
   }
 }
