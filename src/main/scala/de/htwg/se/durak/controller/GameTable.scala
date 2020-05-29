@@ -11,12 +11,10 @@ case class GameTable() {
       stack += new CardStack(0)
     stack.toList
   }
-  def handOutCards(players: List[Player], cardStackList: List[CardStack], cardStack: CardStack): Unit = {
-    if(players.size != cardStackList.size) throw new Exception("Amout of players not like cardstacks per player")
-    for(i <- 0 until players.size) {
-      val stack = cardStackList(i)
+  def handOutCards(cardStackList: List[CardStack], cardStack: CardStack): Unit = {
+    for(i <- cardStackList) {
       for(j <- 0 until CARDS_PER_PLAYER) {
-        stack.addCard(cardStack.popCard())
+        i.addCard(cardStack.popCard())
       }
     }
   }

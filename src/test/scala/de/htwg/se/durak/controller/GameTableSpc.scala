@@ -31,7 +31,7 @@ class GameTableSpc extends WordSpec with Matchers {
     val playerList = List(player1, player2)
     val playerCards = table.createPlayerCardStack(playerList)
     "handout 12 cards to 2 player" in {
-      table.handOutCards(playerList, playerCards, cardStack)
+      table.handOutCards(playerCards, cardStack)
       playerCards(0).popCard().toString should be("Rang: 2, Typ: Karo")
       playerCards(0).popCard().toString should be("Rang: 3, Typ: Karo")
       playerCards(0).popCard().toString should be("Rang: 4, Typ: Karo")

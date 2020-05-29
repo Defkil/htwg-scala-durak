@@ -2,10 +2,17 @@ package de.htwg.se.durak
 
 import java.util.Scanner
 
-import de.htwg.se.durak.controller.{GameLogic, GameTable}
+import de.htwg.se.durak.controller.{GameLogic, GameTable, CmdRuntime}
 import de.htwg.se.durak.model.{Card, CardStack, Player}
 
 object Durak {
+  def main(args: Array[String]): Unit = {
+    val runtime = new CmdRuntime()
+    runtime.start()
+  }
+}
+
+/*
   val s = new Scanner(System.in)
   def makePlayers(): List[Player] = {
     val array = Array.ofDim[Player](2)
@@ -41,4 +48,4 @@ object Durak {
 
     val stack2 = new CardStack(32)
   }
-}
+ */
