@@ -2,7 +2,9 @@ package de.htwg.se.durak.utilities
 
 import java.util.Scanner
 
-import de.htwg.se.durak.model.{CardStack, Field, Player, Card}
+import de.htwg.se.durak.model.{Card, CardStack, Field, Player}
+
+import scala.collection.mutable.ListBuffer
 
 case class Tui(s:Scanner) {
   final val defaultSize = 10
@@ -52,7 +54,7 @@ case class Tui(s:Scanner) {
   def attackScreen(players: List[Player], playerStacks: List[CardStack], id: Int, field: Field, msg: String): Int = {
     printPlayers(players, playerStacks)
     if(msg != "") println(msg) else spacer()
-    if(field.size == 0) spacer(3) else printField(field)
+    if(field.size == 0) spacer(3) // else printField(field)
     spacer(cmdSize - 7)
     printHand(playerStacks(id))
     val inputCard = getInputCard(playerStacks(id).getAllCards().length)
@@ -80,13 +82,9 @@ case class Tui(s:Scanner) {
   def printPlayers(players: List[Player], playerStacks: List[CardStack]): Unit = {
     print("Spieler: ")
     for(i <- players.indices) {
-      print(players(i).toString + " " + playerStacks(i).getAllCards().length + " Karten; ")
+      print(players(i).toString + " " + playerStacks(i).getAllCards().length + " Karten ")
     }
     println()
-  }
-
-  def printField(field: Field): Unit = {
-
   }
 
   def printHand(cardStack: CardStack): Unit = {
@@ -104,5 +102,37 @@ case class Tui(s:Scanner) {
     } else {
       -1
     }
+  }
+
+  def getGameInfo(): (List[Player], Int) = {
+    write(Array(
+      "Spielernamen getrennt mit einem Leerzeichen eingeben",
+      "2-6 Spieler"
+    ))
+    val playerStrings = s.next.split(" ")
+    playerStrings.length match {
+      case 1 => write("Mindestens 2 Spieler"); getGameInfo()
+      case l if l > 6 => write("Maximal 6 Spieler"); getGameInfo()
+      case l if l > 1 && l < 5 => {
+        write(Array(
+          "Anzahl der Spielerkarten auswaehlen",
+          "36     6-Ass",
+          "48     2-Ass"
+        ))
+        var stackSize = s.nextInt();
+        while(stackSize!=36&&stackSize!=48) {
+          println("Mit 0 die Kalibrierung starten")
+          stackSize = s.nextInt();
+        }
+        (playerNamesToPlayer(playerStrings), stackSize)
+      }
+      case l if l == 5 || l == 6 => (playerNamesToPlayer(playerStrings), 48)
+    }
+  }
+
+  def playerNamesToPlayer(array: Array[String]): List[Player] = {
+    val playerList = new ListBuffer[Player]()
+    for(player <- array) playerList += new Player(player)
+    playerList.toList
   }
 }

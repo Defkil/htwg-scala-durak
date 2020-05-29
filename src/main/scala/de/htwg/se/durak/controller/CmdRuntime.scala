@@ -2,11 +2,8 @@ package de.htwg.se.durak.controller
 
 import java.util.Scanner
 
-import de.htwg.se.durak.model.{Card, CardStack, Field, Player}
-import de.htwg.se.durak.controller.{GameLogic, GameTable}
+import de.htwg.se.durak.model.{CardStack, Field, Player}
 import de.htwg.se.durak.utilities.Tui
-
-import scala.collection.mutable.ListBuffer
 
 case class CmdRuntime() {
   val s = new Scanner(System.in).useDelimiter("\n")
@@ -18,11 +15,12 @@ case class CmdRuntime() {
     openMenu() match {
       case 0 => startGame()
       case 1 => t.calibrate(); start()
+      case default => startGame()
     }
   }
 
   def startGame(): Unit = {
-    val (players, stackSize) = getGameInfo()
+    val (players, stackSize) = t.getGameInfo()
     val gameTable = new GameTable()
     val gameCardStack = new CardStack(stackSize)
     val playerStacks = gameTable.createPlayerCardStack(players)
@@ -32,7 +30,7 @@ case class CmdRuntime() {
     gameTable.handOutCards(playerStacks, gameCardStack)
 
     // example data vor testing tui
-    val field = new Field(ListBuffer[Card](Card(6, 1), Card(7, 1)))
+    val field = new Field()
 
 
     var gameStatus: Boolean = true
@@ -85,37 +83,9 @@ case class CmdRuntime() {
     s.nextInt()
   }
 
-  def playerNamesToPlayer(array: Array[String]): List[Player] = {
-    val playerList = new ListBuffer[Player]()
-    for(player <- array) playerList += new Player(player)
-    playerList.toList
-  }
 
-  def getGameInfo(): (List[Player], Int) = {
-    t.write(Array(
-      "Spielernamen getrennt mit einem Leerzeichen eingeben",
-      "2-6 Spieler"
-    ))
-    val playerStrings = s.next.split(" ")
-    playerStrings.length match {
-      case 1 => t.write("Mindestens 2 Spieler"); getGameInfo()
-      case l if l > 6 => t.write("Maximal 6 Spieler"); getGameInfo()
-      case l if l > 1 && l < 5 => {
-        t.write(Array(
-          "Anzahl der Spielerkarten auswaehlen",
-          "36     6-Ass",
-          "48     2-Ass"
-        ))
-        var stackSize = s.nextInt();
-        while(stackSize!=36&&stackSize!=48) {
-          println("Mit 0 die Kalibrierung starten")
-          stackSize = s.nextInt();
-        }
-        (playerNamesToPlayer(playerStrings), stackSize)
-      }
-      case l if l == 5 || l == 6 => (playerNamesToPlayer(playerStrings), 48)
-    }
-  }
+
+
 
 
 }
