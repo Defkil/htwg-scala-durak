@@ -8,6 +8,12 @@ import scala.util.Random
 
 case class GameLogic() {
   def canAttack(card: Card, field: Field): Boolean = {
-    true
+    if(field.size == 0) true
+    else {
+      for(c <- field.stack.cards) {
+        if (c.rank == card.rank) true
+      }
+      false
+    }
   }
 }

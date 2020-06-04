@@ -2,7 +2,7 @@ package de.htwg.se.durak.controller
 
 import java.util.Scanner
 
-import de.htwg.se.durak.model.{CardStack, Field, Player}
+import de.htwg.se.durak.model.{Card, CardStack, Field, Player}
 import de.htwg.se.durak.utilities.Tui
 
 case class CmdRuntime() {
