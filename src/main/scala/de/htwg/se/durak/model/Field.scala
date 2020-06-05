@@ -1,6 +1,5 @@
 package de.htwg.se.durak.model
 
-import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 
 case class Field(var stack: CardStack) {

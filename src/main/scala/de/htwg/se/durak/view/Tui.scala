@@ -1,16 +1,15 @@
 package de.htwg.se.durak.view
 
-import de.htwg.se.durak.controller.{GameRuntime, Observer, ObserverIn}
-import de.htwg.se.durak.model.RoundData
+import de.htwg.se.durak.controller.{Observer, ObserverData}
 
-case class Tui(gameRuntime: ObserverIn) extends Observer{
+case class Tui(gameRuntime: ObserverData) extends Observer{
   var output: Array[String] = _
   var screenSize: Int = 10
 
   val MIN_SIZE = 6
 
   def update(): Unit = {
-    output = route(gameRuntime.data)
+    output = route(gameRuntime.data.siteID, gameRuntime.data.param)
   }
 
   def spacer(size: Int): Array[String] = {
@@ -31,16 +30,16 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
    * 12 = defender
    * 13 = finished
    */
-  def route(roundData: RoundData): Array[String] = {
-    roundData.siteID match {
-      case 0 => menuScreen(nullToString(roundData.param, 0))
+  def route(siteID: Int, param: Array[String]): Array[String] = {
+    siteID match {
+      case 0 => menuScreen(nullToString(param, 0))
       case 1 => calibrationInfoScreen()
       case 2 => calibrationListScreen()
-      case 3 => playerScreen(nullToString(roundData.param, 0))
-      case 10 => nextTurnScreen(nullToString(roundData.param, 0))
-      case 11 => attackerScreen(nullToString(roundData.param, 0))
-      case 12 => defenderScreen(nullToString(roundData.param, 0))
-      case 13 => finishedScreen(nullToString(roundData.param, 0))
+      case 3 => playerScreen(nullToString(param, 0))
+      case 10 => nextTurnScreen(nullToString(param, 0))
+      case 11 => attackerScreen(nullToString(param, 0))
+      case 12 => defenderScreen(nullToString(param, 0))
+      case 13 => finishedScreen(nullToString(param, 0))
       case default => null
     }
   }
@@ -53,7 +52,7 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
       "",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 6))
+    Array.concat(temp, spacer(screenSize - temp.length))
   }
 
   def calibrationInfoScreen(): Array[String] = {
@@ -62,7 +61,7 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
      "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
      "mit der neuen Kalibrierung"
    )
-    Array.concat(temp, spacer(screenSize - 3))
+    Array.concat(temp, spacer(screenSize - temp.length))
   }
 
   def calibrationListScreen(): Array[String] = {
@@ -100,34 +99,34 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
       "2-6 Spieler",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 3))
+    Array.concat(temp, spacer(screenSize - temp.length))
   }
 
   def nextTurnScreen(msg:String): Array[String] = {
     val temp = Array("Naechster Spieler ist:",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+    Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
   }
 
   def attackerScreen(msg:String): Array[String] = {
     val temp = Array("todo attackerScreen",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+    Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
   }
 
   def defenderScreen(msg:String): Array[String] = {
     val temp = Array("todo defenderScreen",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+    Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
   }
 
   def finishedScreen(msg:String): Array[String] = {
     val temp = Array("todo finishedScreen",
       msg
     )
-    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+    Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
   }
 }
