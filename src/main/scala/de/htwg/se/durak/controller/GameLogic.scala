@@ -14,13 +14,14 @@ case class GameLogic() {
         if (c.rank == card.rank) true
       }
       false
+    }
   }
-  def canDefend(defeat: Card, field: Field, trumpValue: Int): Boolean = {
-    if (field.size % 2 != 1) throw new RuntimeException("No attacking card")
-    val attack = field.stack.peek()
+    def canDefend(defeat: Card, field: Field, trumpValue: Int): Boolean = {
+      if (field.size % 2 != 1) throw new RuntimeException("No attacking card")
+      val attack = field.stack.peek()
 
-    def isTrump(c: Card): Boolean = c.cardType == trumpValue
+      def isTrump(c: Card): Boolean = c.cardType == trumpValue
 
-    attack.rank > defeat.rank || !isTrump(attack) && isTrump(defeat)
-  }
+      attack.rank > defeat.rank || !isTrump(attack) && isTrump(defeat)
+    }
 }
