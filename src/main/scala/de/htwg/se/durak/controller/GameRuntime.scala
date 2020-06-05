@@ -15,24 +15,46 @@ case class GameRuntime() {
     RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
   }
 
-
-
+  var exampleOnly = true
   def getNextRound(param: String = "", paramInt: Int = -1, paramArray: Array[String] = Array(""), lastRound: RoundData): RoundData = {
     lastRound.siteID match {
-      case 0 => {
+      case 0 => { // menu
         if(paramInt == 0) {
-          // todo
+          return RoundData(siteID = 3, nextInput = 2, inputMinLineSpacers = 2, inputMaxLineSpacers = 6)
         } else if(paramInt == 1) {
           return RoundData(siteID = 1, nextInput = 0, inputMaxInt = 0)
         }
         RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
       }
-      case 1 => {
+      case 1 => { // calibration info
         RoundData(siteID = 2, nextInput = 0, inputMaxInt = 20) // todo chage
       }
-      case 2 => {
+      case 2 => { // calibration list 1 - 20
         setSpacer(paramInt)
         start()
+      }
+      case 3 => { // player name select
+        //todo add player
+        //todo start game
+        RoundData(siteID = 10, nextInput = 0, inputMaxInt = 20, param = Array("Static Name"))
+      }
+      case 10 => { // next turn
+        if(exampleOnly) {
+          exampleOnly = false
+          RoundData(siteID = 11, nextInput = 0, inputMaxInt = 0)
+        } else {
+          exampleOnly = true
+          RoundData(siteID = 12, nextInput = 0, inputMaxInt = 0)
+        }
+      }
+      case 11 => { // attacker
+        RoundData(siteID = 10, nextInput = 0, inputMaxInt = 6, param = Array("Static Name"))
+      }
+      case 12 => { // defender
+        RoundData(siteID = 13, nextInput = 0, inputMaxInt = 6)
+      }
+      case 13 => { // finished
+        RoundData(siteID = 0, nextInput = 0, inputMaxInt = 0)
       }
     }
 

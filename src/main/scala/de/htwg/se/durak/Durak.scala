@@ -50,7 +50,6 @@ object Durak {
       }
 
       if(inputValid) {
-        println("valid: " + inputValid)
         roundManager.data = runtime.getNextRound(
           param = param,
           paramInt = paramInt,

@@ -10,8 +10,7 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
   val MIN_SIZE = 6
 
   def update(): Unit = {
-    println("ahh:: " + screenSize)
-    output = getSite(gameRuntime.data)
+    output = route(gameRuntime.data)
   }
 
   def spacer(size: Int): Array[String] = {
@@ -20,25 +19,28 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
     res
   }
 
-  /**
+  /*
    *
    * Sites:
    * 0 = menu
    * 1 = calibration info
    * 2 = calibration list 1 - 20
+   * 3 = player name select
    * 10 = next turn
    * 11 = attacker
    * 12 = defender
    * 13 = finished
-   *
-   * @param roundData
-   * @return
    */
-  def getSite(roundData: RoundData): Array[String] = {
+  def route(roundData: RoundData): Array[String] = {
     roundData.siteID match {
       case 0 => menuScreen(nullToString(roundData.param, 0))
       case 1 => calibrationInfoScreen()
       case 2 => calibrationListScreen()
+      case 3 => playerScreen(nullToString(roundData.param, 0))
+      case 10 => nextTurnScreen(nullToString(roundData.param, 0))
+      case 11 => attackerScreen(nullToString(roundData.param, 0))
+      case 12 => defenderScreen(nullToString(roundData.param, 0))
+      case 13 => finishedScreen(nullToString(roundData.param, 0))
       case default => null
     }
   }
@@ -89,6 +91,43 @@ case class Tui(gameRuntime: ObserverIn) extends Observer{
   }
 
   def nullToString(param: Array[String], id: Int): String ={
+    println(param)
     if(param != null && param(id) != null) param(id) else ""
+  }
+
+  def playerScreen(msg:String): Array[String] = {
+    val temp = Array("Spielernamen getrennt mit einem Leerzeichen eingeben",
+      "2-6 Spieler",
+      msg
+    )
+    Array.concat(temp, spacer(screenSize - 3))
+  }
+
+  def nextTurnScreen(msg:String): Array[String] = {
+    val temp = Array("Naechster Spieler ist:",
+      msg
+    )
+    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+  }
+
+  def attackerScreen(msg:String): Array[String] = {
+    val temp = Array("todo attackerScreen",
+      msg
+    )
+    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+  }
+
+  def defenderScreen(msg:String): Array[String] = {
+    val temp = Array("todo defenderScreen",
+      msg
+    )
+    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
+  }
+
+  def finishedScreen(msg:String): Array[String] = {
+    val temp = Array("todo finishedScreen",
+      msg
+    )
+    Array.concat(temp, spacer(screenSize - 3), Array("Mit 0 fortfahren"))
   }
 }
