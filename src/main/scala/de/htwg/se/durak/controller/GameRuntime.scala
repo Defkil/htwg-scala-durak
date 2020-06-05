@@ -3,31 +3,39 @@ package de.htwg.se.durak.controller
 import java.util.Scanner
 
 import de.htwg.se.durak.model.{CardStack, Field, Player, RoundData, TurnData}
-import de.htwg.se.durak.utilities.TuiOld
-import de.htwg.se.durak.view.Tui
 
 case class GameRuntime() {
   val logic = new GameLogic()
   var playerSize: Int = 0
   var test = 1
-  val roundManager: Router = new Router
+  val roundManager: ObserverIn = new ObserverIn
+  var setSpacer: (Int) => Unit = null
 
   def start(): RoundData = {
     RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
   }
 
 
-  //todo overloading
-  def getNextRound(param: Int, lastRound: RoundData): RoundData = {
+
+  def getNextRound(param: String = "", paramInt: Int = -1, paramArray: Array[String] = Array(""), lastRound: RoundData): RoundData = {
     lastRound.siteID match {
       case 0 => {
-
+        if(paramInt == 0) {
+          // todo
+        } else if(paramInt == 1) {
+          return RoundData(siteID = 1, nextInput = 0, inputMaxInt = 0)
+        }
+        RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
+      }
+      case 1 => {
+        RoundData(siteID = 2, nextInput = 0, inputMaxInt = 20) // todo chage
+      }
+      case 2 => {
+        setSpacer(paramInt)
+        start()
       }
     }
 
-
-
-    RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
   }
 
 

@@ -1,16 +1,23 @@
 package de.htwg.se.durak.view
 
-import de.htwg.se.durak.controller.{GameRuntime, Observer, Router}
+import de.htwg.se.durak.controller.{GameRuntime, Observer, ObserverIn}
 import de.htwg.se.durak.model.RoundData
 
-case class Tui(gameRuntime: Router) extends Observer{
+case class Tui(gameRuntime: ObserverIn) extends Observer{
   var output: Array[String] = _
+  var screenSize: Int = 10
 
   val MIN_SIZE = 6
-  val MAX_SIZE = 20
 
   def update(): Unit = {
+    println("ahh:: " + screenSize)
     output = getSite(gameRuntime.data)
+  }
+
+  def spacer(size: Int): Array[String] = {
+    var res: Array[String] = Array()
+    for(i <- 1 to size) res = res ++ Array("")
+    res
   }
 
   /**
@@ -37,28 +44,47 @@ case class Tui(gameRuntime: Router) extends Observer{
   }
 
   def menuScreen(msg:String): Array[String] = {
-    Array("Willkommen im Spiel Durak",
+    val temp = Array("Willkommen im Spiel Durak",
       "Folgende Befehle stehen zur Auswahl",
       "0     Spiel starten",
       "1     Konsole kalibrieren",
       "",
       msg
     )
+    Array.concat(temp, spacer(screenSize - 6))
   }
 
   def calibrationInfoScreen(): Array[String] = {
-    Array(
-      "Im naechsten Fenster die hoechste sichtbare Zahl angeben",
-      "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
-      "mit der neuen Kalibrierung"
-    )
+   val temp = Array(
+     "Im naechsten Fenster die hoechste sichtbare Zahl angeben",
+     "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
+     "mit der neuen Kalibrierung"
+   )
+    Array.concat(temp, spacer(screenSize - 3))
   }
 
   def calibrationListScreen(): Array[String] = {
     Array(
-      "Im naechsten Fenster die hoechste sichtbare Zahl angeben",
-      "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
-      "mit der neuen Kalibrierung"
+      "20",
+      "19",
+      "18",
+      "17",
+      "16",
+      "15",
+      "14",
+      "13",
+      "12",
+      "11",
+      "10",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
     )
   }
 

@@ -2,19 +2,20 @@ package de.htwg.se.durak
 
 import java.util.Scanner
 
-import de.htwg.se.durak.controller.{GameLogic, GameObservable, GameTable, GameRuntime, Router}
+import de.htwg.se.durak.controller.{GameLogic, GameObservable, GameTable, GameRuntime, ObserverIn}
 import de.htwg.se.durak.model.{Card, CardStack, Player, RoundData}
 import de.htwg.se.durak.view.Tui
 
 object Durak {
   def main(args: Array[String]): Unit = {
     val runtime = new GameRuntime
-    val roundManager = new Router
+    val roundManager = new ObserverIn
     val tui = new Tui(roundManager)
 
     // setup round manager with observers
     roundManager.addObservable(tui)
     roundManager.data = runtime.start()
+    runtime.setSpacer = (spacerSize: Int) => { tui.screenSize = spacerSize }
 
     // game loop
     var gameActive = true
@@ -24,10 +25,40 @@ object Durak {
 
       // todo confirm input
       val s = new Scanner(System.in).useDelimiter("\n")
-      val test = s.nextInt()
 
-      roundManager.data = runtime.getNextRound(0, roundManager.data)
-      if(roundManager.data == null) gameActive = false
+
+      var inputValid = false
+      var param = ""
+      var paramInt = -1
+      var paramArray:Array[String] = Array()
+      roundManager.data.nextInput match {
+        case 0 => {
+          paramInt = s.nextInt()
+          if(paramInt <= roundManager.data.inputMaxInt) inputValid = true
+        }
+        case 1 => {
+          param = s.next()
+          if(param.length <= roundManager.data.inputMaxStringSize) inputValid = true
+        }
+        case 2 => {
+          paramArray = s.next.split(" ")
+          if(
+            paramArray.length <= roundManager.data.inputMaxLineSpacers &&
+            paramArray.length >= roundManager.data.inputMinLineSpacers
+          ) inputValid = true
+        }
+      }
+
+      if(inputValid) {
+        println("valid: " + inputValid)
+        roundManager.data = runtime.getNextRound(
+          param = param,
+          paramInt = paramInt,
+          paramArray = paramArray,
+          lastRound = roundManager.data
+        )
+        if(roundManager.data == null) gameActive = false
+      }
     }
   }
 }

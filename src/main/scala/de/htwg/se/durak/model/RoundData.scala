@@ -6,6 +6,7 @@ case class RoundData(
       param: Array[String] = null,
       inputMaxInt: Int = -1, // from 0 to inputMaxInt
       inputMaxStringSize: Int = -1,
-      inputMaxWord: Int = -1,
+      inputMinLineSpacers: Int = -1,
+      inputMaxLineSpacers: Int = -1,
       allowedInput: Array[Int] = null,
 )
