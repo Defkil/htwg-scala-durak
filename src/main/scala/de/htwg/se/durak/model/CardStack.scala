@@ -11,6 +11,8 @@ case class CardStack(size: Int = 0, var cards: ListBuffer[Card]) {
     this(0)
   }
 
+  def peek():Card = cards(cards.size - 1)
+
   def generateStack(): ListBuffer[Card] = {
     val y = 0
     val x = 0

@@ -17,6 +17,8 @@ val (testCardRank, testCardType) = testCard.get()
 
 
 case class CardStack() {
+  def peek():Card = cards(cards.size - 1)
+
   var cards = new ListBuffer[Card]()
   var size: Int = 0
 class CardStack {
@@ -53,9 +55,6 @@ class CardStack {
     cards.remove(position)
   }
 
-  def addCard(c:Card): Unit = {
-    cards += c
-  }
 
   def changeCardPosition(from: Int, to: Int): Unit = {
     if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
@@ -87,6 +86,8 @@ class CardStack {
   }
 
   def getSize:Int = cards.size
+
+  def addCard(c:Card): Unit = cards += c
 }
 
 val stack = new CardStack(36)
