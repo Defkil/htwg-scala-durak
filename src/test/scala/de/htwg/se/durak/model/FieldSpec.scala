@@ -5,7 +5,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 class FieldSpec extends WordSpec with Matchers {
-  "A field when" {
+  "A field" when {
     "new" should {
     val stack = new CardStack()
     val field = new Field(stack)

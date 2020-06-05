@@ -2,13 +2,33 @@ package de.htwg.se.durak
 
 import java.util.Scanner
 
-import de.htwg.se.durak.controller.{GameLogic, GameTable, CmdRuntime}
-import de.htwg.se.durak.model.{Card, CardStack, Player}
+import de.htwg.se.durak.controller.{GameLogic, GameObservable, GameTable, GameRuntime, Router}
+import de.htwg.se.durak.model.{Card, CardStack, Player, RoundData}
+import de.htwg.se.durak.view.Tui
 
 object Durak {
   def main(args: Array[String]): Unit = {
-    val runtime = new CmdRuntime()
-    runtime.start()
+    val runtime = new GameRuntime
+    val roundManager = new Router
+    val tui = new Tui(roundManager)
+
+    // setup round manager with observers
+    roundManager.addObservable(tui)
+    roundManager.data = runtime.start()
+
+    // game loop
+    var gameActive = true
+    while(gameActive) {
+      roundManager.gm.notifyObservers()
+      tui.output.foreach(println)
+
+      // todo confirm input
+      val s = new Scanner(System.in).useDelimiter("\n")
+      val test = s.nextInt()
+
+      roundManager.data = runtime.getNextRound(0, roundManager.data)
+      if(roundManager.data == null) gameActive = false
+    }
   }
 }
 

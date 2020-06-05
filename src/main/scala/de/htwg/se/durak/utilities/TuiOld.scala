@@ -6,7 +6,7 @@ import de.htwg.se.durak.model.{Card, CardStack, Field, Player}
 
 import scala.collection.mutable.ListBuffer
 
-case class Tui(s:Scanner) {
+case class TuiOld(s:Scanner) {
   final val defaultSize = 10
   final val defaultTopSpace = 0
   var cmdSize: Int = defaultSize
@@ -27,22 +27,7 @@ case class Tui(s:Scanner) {
 
   def spacer(): Unit = spacer(1)
 
-  def calibrate(): Unit = {
-    //todo min height
-    write(Array(
-      "Im naechsten Fenster die hoechste sichtbare Zahl angeben",
-      "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
-      "mit der neuen Kalibrierung"
-    ))
-    while(s.nextInt()!=0)
-      println("Mit 0 die Kalibrierung starten")
-    var testSize = 30
-    while(testSize != 0) {
-      println(testSize)
-      testSize -= 1
-    }
-    cmdSize = s.nextInt()
-  }
+
 
   def nextPlayerScreen(player:String): Unit = {
     println("Naechster Spieler ist: " + player)
@@ -134,5 +119,34 @@ case class Tui(s:Scanner) {
     val playerList = new ListBuffer[Player]()
     for(player <- array) playerList += new Player(player)
     playerList.toList
+  }
+
+  // done
+  def menuScreen(msg:String): Array[String] = {
+    Array("Willkommen im Spiel Durak",
+      "Folgende Befehle stehen zur Auswahl",
+      "0     Spiel starten",
+      "1     Konsole kalibrieren",
+      "",
+      msg
+    )
+  }
+
+  // done
+  def calibrate(): Unit = {
+    //todo min height
+    write(Array(
+      "Im naechsten Fenster die hoechste sichtbare Zahl angeben",
+      "Mit 0 die Kalibrierung starten, danach startet sich das Spiel neu",
+      "mit der neuen Kalibrierung"
+    ))
+    while(s.nextInt()!=0)
+      println("Mit 0 die Kalibrierung starten")
+    var testSize = 30
+    while(testSize != 0) {
+      println(testSize)
+      testSize -= 1
+    }
+    cmdSize = s.nextInt()
   }
 }

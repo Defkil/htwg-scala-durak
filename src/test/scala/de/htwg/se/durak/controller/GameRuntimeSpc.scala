@@ -5,6 +5,6 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class RuntimeSpc extends WordSpec with Matchers {
+class GameRuntimeSpc extends WordSpec with Matchers {
 
 }
