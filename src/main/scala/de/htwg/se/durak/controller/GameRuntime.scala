@@ -1,62 +1,59 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.RoundData
+import de.htwg.se.durak.model.{RoundData, TurnData}
+import de.htwg.se.durak.utilities.Observable
 
-case class GameRuntime() {
-  val logic = new GameLogic()
-  var playerSize: Int = 0
-  var test = 1
-  val roundManager: ObserverData = new ObserverData
-  var setSpacer: (Int) => Unit = null
+case class GameRuntime() extends Observable {
+  //val logic = new GameLogic
+  val roundTemplate = new RoundTemplate
 
-  def start(): RoundData = {
-    RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
-  }
+  var roundData: RoundData = roundTemplate.get(0, None)
+  var turnData: Option[TurnData] = _
+  var screenSize: Int = 10
 
   var exampleOnly = true
-  def getNextRound(param: String = "", paramInt: Int = -1, paramArray: Array[String] = Array(""), lastRound: RoundData): RoundData = {
-    lastRound.siteID match {
-      case 0 => // menu
-        //todo add multiplayer
-        //todo close game
-        if(paramInt == 0) {
-          return RoundData(siteID = 3, nextInput = 2, inputMinLineSpacers = 2, inputMaxLineSpacers = 6)
-        } else if(paramInt == 1) {
-          return RoundData(siteID = 1, nextInput = 0, inputMaxInt = 0)
-        }
-        RoundData(siteID = 0, nextInput = 0, inputMaxInt = 1)
-      case 1 => // calibration info
-        RoundData(siteID = 2, nextInput = 0, inputMaxInt = 20)
-      case 2 => // calibration list 1 - 20
-        setSpacer(paramInt)
-        start()
+  def runRound(param: String): Unit = {
+    println(param)
+    roundData = roundData.siteID match {
+      case 0 => param match {
+        case "0" => roundTemplate.get(3, None)
+        case "1" => roundTemplate.get(1, None)
+      }
+      case 1 => roundTemplate.get(2, None)
+      case 2 =>
+        screenSize = param.toInt
+        roundTemplate.get(0, None)
       case 3 => // player name select
         //todo add player
         //todo start game
-        RoundData(siteID = 10, nextInput = 0, inputMaxInt = 20, param = Array("Static Name"))
+        roundTemplate.get(10, Some(List("Static Name")))
       case 10 => // next turn
         //todo implementation
         if(exampleOnly) {
           exampleOnly = false
-          RoundData(siteID = 11, nextInput = 0, inputMaxInt = 0)
+          roundTemplate.get(11, None)
         } else {
           exampleOnly = true
-          RoundData(siteID = 12, nextInput = 0, inputMaxInt = 0)
+          roundTemplate.get(12, None)
         }
       case 11 => // attacker
         //todo implementation
-        RoundData(siteID = 10, nextInput = 0, inputMaxInt = 6, param = Array("Static Name"))
+        roundTemplate.get(10, Some(List("Static Name")))
       case 12 => // defender
         //todo implementation
-        RoundData(siteID = 13, nextInput = 0, inputMaxInt = 6)
+        roundTemplate.get(13, None)
       case 13 => // finished
         //todo implementation
-        start()
+        roundTemplate.get(0, None)
     }
+    notifyObservers
+  }
+
+  def inputError(): Unit = {
+    //todo add error msg to roundData
+    notifyObservers
   }
 }
-
-
 
 
 
