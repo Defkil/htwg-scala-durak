@@ -13,7 +13,6 @@ case class GameRuntime() extends Observable {
 
   var exampleOnly = true
   def runRound(param: String): Unit = {
-    println(param)
     roundData = roundData.siteID match {
       case 0 => param match {
         case "0" => roundTemplate.get(3, None)
