@@ -1,10 +1,11 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.RoundData
+import de.htwg.se.durak.model.{Player, RoundData}
 
 case class GameRuntime() {
   val logic = new GameLogic()
   var playerSize: Int = 0
+  var players = List[Player]()
   var test = 1
   val roundManager: ObserverData = new ObserverData
   var setSpacer: (Int) => Unit = null
@@ -31,8 +32,7 @@ case class GameRuntime() {
         setSpacer(paramInt)
         start()
       case 3 => // player name select
-        //todo add player
-        //todo start game
+        val turnData = logic.initiateGame(paramArray,"")
         RoundData(siteID = 10, nextInput = 0, inputMaxInt = 20, param = Array("Static Name"))
       case 10 => // next turn
         //todo implementation
@@ -45,6 +45,7 @@ case class GameRuntime() {
         }
       case 11 => // attacker
         //todo implementation
+
         RoundData(siteID = 10, nextInput = 0, inputMaxInt = 6, param = Array("Static Name"))
       case 12 => // defender
         //todo implementation

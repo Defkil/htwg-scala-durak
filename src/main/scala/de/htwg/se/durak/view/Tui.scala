@@ -110,14 +110,14 @@ case class Tui(gameRuntime: ObserverData) extends Observer{
   }
 
   def attackerScreen(msg:String): Array[String] = {
-    val temp = Array("todo attackerScreen",
+    val temp = Array("Angriff, bitte Karte auswählen",
       msg
     )
     Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
   }
 
   def defenderScreen(msg:String): Array[String] = {
-    val temp = Array("todo defenderScreen",
+    val temp = Array("Defender",
       msg
     )
     Array.concat(temp, spacer(screenSize - temp.length - 1), Array("Mit 0 fortfahren"))
