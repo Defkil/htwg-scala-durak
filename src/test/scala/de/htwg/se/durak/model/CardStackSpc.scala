@@ -34,9 +34,9 @@ class CardStackSpc extends WordSpec with Matchers {
         stack.addCard(new Card(2, 3))
         stack.addCard(new Card(11, 1))
       }
-      "popping two cards in one method call" in {
+      /*"popping two cards in one method call" in {
         val cards = stack.popCards(2)
-      }
+      }*/
       "the stack should be empty" in {
         stack.getSize should be(0)
       }
