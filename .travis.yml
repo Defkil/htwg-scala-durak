@@ -9,9 +9,4 @@ after_success:
   - sbt coverageReport coveralls
 
 jdk:
-  - oraclejdk8
-
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
+  - oraclejdk9
