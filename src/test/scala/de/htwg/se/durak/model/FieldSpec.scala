@@ -1,8 +1,8 @@
 import de.htwg.se.durak.model.{CardStack,Field, Card}
 
 import org.scalatest._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.junit.runner.{Runner, RunWith}
+import org.scalatest.matchers.should.Matchers
 
 class FieldSpec extends WordSpec with Matchers {
   /*

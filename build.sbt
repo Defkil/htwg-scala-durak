@@ -3,9 +3,8 @@ organization  := "de.htwg.se"
 version       := "0.0.1"
 scalaVersion  := "2.12.4"
 
-libraryDependencies += "org.scala-lang" % "scala-library" % "2.12.4" // test for travis
-
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.1.2"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % "test"
 
 libraryDependencies += "junit" % "junit" % "4.8" % "test"
 
