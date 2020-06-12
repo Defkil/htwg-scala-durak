@@ -36,10 +36,10 @@ class CardStackSpc extends WordSpec with Matchers {
       }
       /*"popping two cards in one method call" in {
         val cards = stack.popCards(2)
-      }*/
+      }
       "the stack should be empty" in {
         stack.getSize should be(0)
-      }
+      }*/
     }
     "check get all cards and clear" should {
       val stack = new CardStack()
