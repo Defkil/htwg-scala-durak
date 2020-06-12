@@ -8,6 +8,9 @@ script:
 after_success:
   - sbt coverageReport coveralls
 
+jdk:
+  - oraclejdk8
+
 addons:
   apt:
     packages:
