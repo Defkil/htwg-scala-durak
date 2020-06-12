@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Defkil/htwg-scala-durak.svg?branch=master)](https://travis-ci.org/Defkil/htwg-scala-durak)
+[![Coverage Status](https://coveralls.io/repos/github/Defkil/htwg-scala-durak/badge.svg?branch=master)](https://coveralls.io/github/Defkil/htwg-scala-durak?branch=master)
 # Durak Scala Spiel
 Ein Projekt für das Modul Software Engineering
 
