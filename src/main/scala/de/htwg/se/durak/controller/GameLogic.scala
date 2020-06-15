@@ -55,4 +55,8 @@ case class GameLogic() {
 
       attack.rank > defeat.rank || !isTrump(attack) && isTrump(defeat)
     }
+
+  //def addCardToField() : TurnData = {
+
+  //}
 }
