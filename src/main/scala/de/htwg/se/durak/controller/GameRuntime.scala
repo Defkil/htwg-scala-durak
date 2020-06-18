@@ -19,6 +19,7 @@ case class GameRuntime() extends Observable {
       case 0 => param match {
         case "0" => roundTemplate.get(3, None)
         case "1" => roundTemplate.get(1, None)
+        case "3" => roundTemplate.get(-1, None)
       }
       case 1 => roundTemplate.get(2, None)
       case 2 =>

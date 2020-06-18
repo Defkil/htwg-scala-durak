@@ -11,11 +11,9 @@ object Durak {
 
   def main(args: Array[String]): Unit = {
     var input: String = ""
-    if (args.length > 0) input = args(0)
-    if (!input.isEmpty) tui.processInputLine(input)
-    else do {
+    do {
       input = readLine()
       tui.processInputLine(input)
-    } while (!runtime.roundData.siteID.equals(100))
+    } while (!runtime.roundData.siteID.equals(-1))
   }
 }

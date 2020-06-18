@@ -12,6 +12,7 @@ case class Tui(runtime: GameRuntime) extends Observer{
   val spaceVector = Vector("")
 
   def processInputLine(param: String): Unit = {
+    println("param " + param)
     if(runtime.roundData.validateInput(param)) {
       runtime.runRound(param)
     } else {
@@ -33,6 +34,7 @@ case class Tui(runtime: GameRuntime) extends Observer{
 
   def route(siteID: Int, param: Option[List[String]]): List[String] = {
     siteID match {
+      case -1 => closeScreen()
       case 0 => menuScreen(param.getOrElse(List("")).head)
       case 1 => calibrationInfoScreen()
       case 2 => calibrationListScreen()
@@ -46,12 +48,17 @@ case class Tui(runtime: GameRuntime) extends Observer{
   }
 
 
+  def closeScreen(): List[String] = {
+    List("Auf wiedersehen!")
+  }
+
   def menuScreen(param: String): List[String] = {
     List("Willkommen im Spiel Durak",
       "Folgende Befehle stehen zur Auswahl",
       "0     Spiel starten",
       "1     Konsole kalibrieren",
-      "",
+      "2     Multiplayer",
+      "3     Spiel schließen",
       param
     )
   }
