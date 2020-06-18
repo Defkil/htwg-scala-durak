@@ -20,7 +20,7 @@ import scala.util.matching.Regex
 case class RoundTemplate() {
   def get(id: Int, params: Option[List[String]]): RoundData = {
     id match {
-      case 0 => new RoundData(0, (param:String) => param matches("[0-2]"), params)
+      case 0 => new RoundData(0, _ matches("[0-2]"), params)
       case 1 => new RoundData(1, (param:String) => param matches("0"), params)
       case 2 => new RoundData(2, (param:String) => param matches("([0-1]?[0-9]|20)"), params)
       case 3 => new RoundData(3, (param:String) => param matches("0"), params)

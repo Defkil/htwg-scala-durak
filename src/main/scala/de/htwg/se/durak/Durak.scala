@@ -11,11 +11,11 @@ object Durak {
 
   def main(args: Array[String]): Unit = {
     var input: String = ""
-    do {
+    if (args.length > 0) input = args(0)
+    if (!input.isEmpty) tui.processInputLine(input)
+    else do {
       input = readLine()
       tui.processInputLine(input)
     } while (!runtime.roundData.siteID.equals(100))
   }
 }
-
-// param.getOrElse(List("")).head

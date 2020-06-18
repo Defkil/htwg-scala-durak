@@ -1,13 +1,10 @@
 package de.htwg.se.durak.controller
 
 import org.scalatest._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.junit.runner.{RunWith, Runner}
+import de.htwg.se.durak.model.{Card, Field}
 
-import de.htwg.se.durak.controller.GameLogic
-import de.htwg.se.durak.model.{CardStack, Card, Field}
-
-@RunWith(classOf[JUnitRunner])
+@RunWith(classOf[Runner])
 class Attack_Defend_Spec extends WordSpec with Matchers {
   val logic = new GameLogic
   val field = Field(new de.htwg.se.durak.model.CardStack())
@@ -19,6 +16,6 @@ class Attack_Defend_Spec extends WordSpec with Matchers {
   val c4 = new Card(11,3)
 
   field.addAttack(c1)
-  logic.canAttack(field, c2)
+  //logic.canAttack(field, c2)
 }
 
