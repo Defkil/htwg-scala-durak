@@ -119,4 +119,8 @@ case class Tui(runtime: GameRuntime) extends Observer{
       param.getOrElse(List("")).head
     )
   }
+
+//  def fieldScreen(param: Option[List[String]]): List[String] = {
+//
+//  }
 }

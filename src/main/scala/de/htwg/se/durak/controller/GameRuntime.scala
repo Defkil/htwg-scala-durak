@@ -3,8 +3,10 @@ package de.htwg.se.durak.controller
 import de.htwg.se.durak.model.{RoundData, TurnData}
 import de.htwg.se.durak.utilities.Observable
 
+import scala.util.matching.Regex
+
 case class GameRuntime() extends Observable {
-  //val logic = new GameLogic
+  val logic = new GameLogic
   val roundTemplate = new RoundTemplate
 
   var roundData: RoundData = roundTemplate.get(0, None)
@@ -25,6 +27,8 @@ case class GameRuntime() extends Observable {
       case 3 => // player name select
         //todo add player
         //todo start game
+        println(param)
+        //turnData = logic.initiateGame(regex.findAllIn(roundData.param).toList)
         roundTemplate.get(10, Some(List("Static Name")))
       case 10 => // next turn
         //todo implementation
