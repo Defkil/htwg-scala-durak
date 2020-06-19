@@ -18,7 +18,6 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
       case 3 => // player name select
         //todo add player
         //todo start game
-        println(input)
         //turnData = logic.initiateGame(regex.findAllIn(roundData.param).toList)
         runtime.roundFactory.getInstance(10, Some(List("Static Name")))
       case 10 => // next turn
