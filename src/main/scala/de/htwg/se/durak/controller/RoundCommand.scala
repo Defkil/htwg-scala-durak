@@ -4,7 +4,6 @@ import de.htwg.se.durak.model.GameData
 import de.htwg.se.durak.utilities.Command
 
 case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
-  var exampleOnly = true
   override def doStep: Unit = {
     val roundData = runtime.roundData.siteID match {
       case 0 => input match {
@@ -24,13 +23,7 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
         runtime.roundFactory.getInstance(10, Some(List("Static Name")))
       case 10 => // next turn
         //todo implementation
-        if(exampleOnly) {
-          exampleOnly = false
-          runtime.roundFactory.getInstance(11, None)
-        } else {
-          exampleOnly = true
-          runtime.roundFactory.getInstance(12, None)
-        }
+        runtime.roundFactory.getInstance(11, None)
       case 11 => // attacker
         //todo implementation
         runtime.roundFactory.getInstance(10, Some(List("Static Name")))
