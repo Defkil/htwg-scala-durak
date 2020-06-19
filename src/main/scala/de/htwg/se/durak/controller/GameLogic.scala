@@ -5,6 +5,7 @@ import de.htwg.se.durak.model.{Card, CardStack, Field, Player, TurnData}
 import scala.collection.mutable.ListBuffer
 
 case class GameLogic() {
+  /*für die abgabe auskommentiert
   val CARDS_PER_PLAYER = 6
 
   def createPlayerCardStack(numberOfplayers:Int): List[CardStack] = {
@@ -65,5 +66,5 @@ case class GameLogic() {
     newField.addAttack(card)
     def nextPlayer:Int = if (activePlayer == oldTurnData.players.size - 1)  0 else activePlayer + 1
     TurnData(oldTurnData.players, playerStacks.toList, nextPlayer, newField, oldTurnData.msg, mainStack)
-  }
+  }*/
 }
