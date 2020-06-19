@@ -8,7 +8,7 @@ import org.scalatest.matchers.should.Matchers
 import scala.collection.mutable.ListBuffer
 
 @RunWith(classOf[Runner])
-class GameTableSpc extends WordSpec with Matchers {
+class GameTableSpec extends WordSpec with Matchers {
   "A GameTable" when { "new" should {
     val table = new GameTable()
     val player1 = new Player("Alex")

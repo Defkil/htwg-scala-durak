@@ -5,7 +5,7 @@ import org.junit.runner.{Runner, RunWith}
 import org.scalatest.matchers.should.Matchers
 
 @RunWith(classOf[Runner])
-class CardStackFactorySpc extends WordSpec with Matchers {
+class CardStackFactorySpec extends WordSpec with Matchers {
   "CardStackFactory" should {
     val cardStackFactory = new CardStackFactory
     "generate player stack" in {

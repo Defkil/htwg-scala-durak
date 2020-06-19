@@ -5,7 +5,7 @@ import org.junit.runner.{RunWith, Runner}
 import de.htwg.se.durak.model.{Card, Field}
 
 @RunWith(classOf[Runner])
-class Attack_Defend_Spec extends WordSpec with Matchers {
+class AttackDefendSpec extends WordSpec with Matchers {
   val logic = new GameLogic
   val field = Field(new de.htwg.se.durak.model.CardStack())
   val trumpValue = 3

@@ -5,7 +5,7 @@ import org.junit.runner.{Runner, RunWith}
 import org.scalatest.matchers.should.Matchers
 
 @RunWith(classOf[Runner])
-class CardStackSpc extends WordSpec with Matchers {
+class CardStackSpec extends WordSpec with Matchers {
   "A CardStack" when {
     "check adding and removing 3 cards to a stack" should {
       val stack = new CardStack(6)
