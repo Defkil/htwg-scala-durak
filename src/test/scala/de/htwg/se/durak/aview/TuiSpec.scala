@@ -3,6 +3,7 @@ package de.htwg.se.durak.aview
 import java.io.ByteArrayInputStream
 
 import de.htwg.se.durak.controller.GameRuntime
+import org.junit.Assert
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
 import org.scalatest.matchers.should.Matchers
@@ -18,7 +19,7 @@ class TuiSpec extends WordSpec with Matchers {
   "Tui" should  {
     val gameRuntime = new GameRuntime
     val mockTui = new MockTui(gameRuntime)
-    val tui = new Tui(gameRuntime)
+    val tui = Tui(gameRuntime)
     "update" in {
       mockTui.update()
       mockTui.messages should be(List("Willkommen im Spiel Durak", "Folgende Befehle stehen zur Auswahl", "0     Spiel starten", "1     Konsole kalibrieren", "2     Multiplayer", "3     Spiel schließen", "", "", "", "")
@@ -26,11 +27,11 @@ class TuiSpec extends WordSpec with Matchers {
     }
     "print" in {
       val stream = new java.io.ByteArrayOutputStream()
-      val testString = "Lorem Ipsum"
+      val testInt = "5"
       Console.withOut(stream) {
-        tui.print(testString)
-        new String(stream.toByteArray).dropRight(2) should be(testString)
+        tui.print(testInt)
       }
+      new String(stream.toByteArray).take(1) should be("5")
     }
 
     "spacer" in {
