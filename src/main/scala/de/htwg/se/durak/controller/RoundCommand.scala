@@ -1,10 +1,11 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.GameData
+import de.htwg.se.durak.model.{GameData, TurnData}
 import de.htwg.se.durak.utilities.Command
 
 case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
   override def doStep: Unit = {
+    var turnData: Option[TurnData] = None
     val roundData = runtime.roundData.siteID match {
       case 0 => input match {
         case "0" => runtime.roundFactory.getInstance(3, None)
@@ -33,7 +34,7 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
         //todo implementation
         runtime.roundFactory.getInstance(0, None)
     }
-    runtime.roundStack = runtime.roundStack :+ new GameData(roundData, None)
+    runtime.roundStack = runtime.roundStack :+ new GameData(roundData, turnData)
     runtime.notifyObservers
   }
 
