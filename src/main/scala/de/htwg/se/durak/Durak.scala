@@ -6,7 +6,7 @@ import de.htwg.se.durak.aview.Tui
 
 object Durak {
   val runtime = new GameRuntime
-  val tui = new Tui(runtime)
+  val tui = Tui(runtime)
   runtime.notifyObservers
 
   def main(args: Array[String]): Unit = {

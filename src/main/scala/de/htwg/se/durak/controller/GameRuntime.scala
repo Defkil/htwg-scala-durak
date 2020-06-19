@@ -5,10 +5,10 @@ import de.htwg.se.durak.utilities.{Observable, UndoManager}
 
 case class GameRuntime() extends Observable {
   private val undoManager = new UndoManager
-  val roundTemplate = new RoundTemplate
+  val roundFactory = new RoundFactory
 
   var screenSize: Int = 10
-  var roundStack: List[GameData] = List(GameData(roundTemplate.get(0, None), None))
+  var roundStack: List[GameData] = List(GameData(roundFactory.getInstance(0, None), None))
   def roundData: RoundData = roundStack.last.roundData
   def turnData: Option[TurnData] = roundStack.last.turnData
 

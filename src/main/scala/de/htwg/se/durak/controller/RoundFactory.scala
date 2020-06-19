@@ -17,17 +17,14 @@ import scala.util.matching.Regex
    * 100 = close game id
    */
 
-case class RoundTemplate() {
-  def get(id: Int, params: Option[List[String]]): RoundData = {
-    println("id "+ id)
+case class RoundFactory() {
+  def getInstance(id: Int, params: Option[List[String]]): RoundData = {
     id match {
       case -1 => new RoundData(-1, (param:String) => true, params)
       case 0 => new RoundData(0, (param:String) => {
-        println(param)
         param.matches("[0,1,3]")
       }, params)
       case 1 => new RoundData(1, (param:String) => {
-        println(param)
         param.matches("0")
       }, params)
       case 2 => new RoundData(2, (param:String) => param matches("([0-1]?[0-9]|20)"), params)
@@ -38,7 +35,6 @@ case class RoundTemplate() {
       case 12 => new RoundData(12, (param:String) => param matches("0"), params)
       case 13 => new RoundData(13, (param:String) => param matches("0"), params)
       case default => new RoundData(0, _ matches("[0-2]"), params)
-
     }
   }
 }
