@@ -23,10 +23,11 @@ case class Tui(runtime: GameRuntime) extends Observer{
     }
   }
 
+  def print(string: String): Unit = println(string)
   def update(): Unit = {
     val site = route(runtime.roundData.siteID, runtime.roundData.param)
     val output = site ++ spacer(runtime.screenSize - site.length)
-    output.foreach(println)
+    output.foreach(print)
   }
 
   def spacer(size: Int): List[String] = {
