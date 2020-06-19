@@ -13,7 +13,6 @@ case class GameRuntime() extends Observable {
   def turnData: Option[TurnData] = roundStack.last.turnData
 
   def runRound(param: String): Unit = {
-    println(roundStack)
     undoManager.doStep(RoundCommand(param, this))
   }
 
