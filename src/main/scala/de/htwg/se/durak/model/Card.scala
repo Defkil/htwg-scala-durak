@@ -76,31 +76,4 @@ case class Card(rank: Int, cardType: Int) {
     }
     "Rang: " + getRank() +", Typ: " + getCardType()
   }
-
-  def tuiString: String = {
-    def getCardType():String = cardType match {
-      case 1 => "Pik"
-      case 2 => "Karo"
-      case 3 => "Kreuz"
-      case 4 => "Herz"
-    }
-
-    def getRank():String = rank match {
-      case 2 => "2"
-      case 3 => "3"
-      case 4 => "4"
-      case 5 => "5"
-      case 6 => "6"
-      case 7 => "7"
-      case 8 => "8"
-      case 9 => "9"
-      case 10 => "10"
-      case 11 => "Bube"
-      case 12 => "Dame"
-      case 13 => "König"
-      case 14 => "Ass"
-    }
-
-    getCardType() +", " + getRank()
-  }
 }
