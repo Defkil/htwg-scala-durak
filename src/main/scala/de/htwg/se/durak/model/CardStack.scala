@@ -11,7 +11,7 @@ case class CardStack(size: Int = 0, var cards: ListBuffer[Card]) {
     this(0)
   }
 
-  def peek():Card = cards(cards.size - 1)
+  //def peek():Card = cards(cards.size - 1)
 
   def generateStack(): ListBuffer[Card] = {
     val y = 0
@@ -39,12 +39,13 @@ case class CardStack(size: Int = 0, var cards: ListBuffer[Card]) {
     cards
   }
 
+  /*
   def addCards(cardList: List[Card]) : Unit = for (c <- cardList) cards += c
 
   def changeCardPosition(from: Int, to: Int): Unit = {
     if(from >= cards.size || to >= cards.size || from < 0 || to < 0) throw new IndexOutOfBoundsException
     //todo: implement function and test
-  }
+  }*/
 
   def getAllCards(): ListBuffer[Card] = {
     cards
