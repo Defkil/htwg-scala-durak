@@ -31,5 +31,14 @@ class UndoManagerSpec extends WordSpec with Matchers {
       undoManager.undoStep
       command.state should be(0)
     }
+
+    "test two undo undo" in {
+      val undoManager = new UndoManager
+      undoManager.undoStep
+      undoManager.undoStep
+      val command = new incrCommand
+      command.state should be(0)
+      undoManager.doStep(command)
+    }
   }
 }
