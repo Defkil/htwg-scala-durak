@@ -2,7 +2,6 @@ package de.htwg.se.durak.utilities
 
 class UndoManager {
   private var undoStack : List[Command] = Nil
-  private var redoStack : List[Command] = Nil
 
   def doStep(command : Command): Unit = {
     undoStack = command :: undoStack
@@ -13,7 +12,6 @@ class UndoManager {
     case head::stack => {
       head.undoStep
       undoStack = stack
-      redoStack = head::redoStack
     }
   }
 }

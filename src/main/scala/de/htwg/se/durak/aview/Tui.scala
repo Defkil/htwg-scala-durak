@@ -12,7 +12,10 @@ case class Tui(runtime: GameRuntime) extends Observer{
   val spaceVector = Vector("")
 
   def processInputLine(param: String): Unit = {
-    println("param " + param)
+    if(param == "undo") {
+      runtime.undo
+      return
+    }
     if(runtime.roundData.validateInput(param)) {
       runtime.runRound(param)
     } else {

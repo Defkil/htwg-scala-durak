@@ -1,20 +1,41 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.{RoundData, TurnData}
-import de.htwg.se.durak.utilities.Observable
-
-import scala.util.matching.Regex
+import de.htwg.se.durak.model.{GameData, RoundData, TurnData}
+import de.htwg.se.durak.utilities.{Observable, UndoManager}
 
 case class GameRuntime() extends Observable {
-  val logic = new GameLogic
+  private val undoManager = new UndoManager
   val roundTemplate = new RoundTemplate
 
-  var roundData: RoundData = roundTemplate.get(0, None)
-  var turnData: Option[TurnData] = _
   var screenSize: Int = 10
+  var roundStack: List[GameData] = List(GameData(roundTemplate.get(0, None), None))
+  def roundData: RoundData = roundStack.last.roundData
+  def turnData: Option[TurnData] = roundStack.last.turnData
 
-  var exampleOnly = true
   def runRound(param: String): Unit = {
+    println(roundStack)
+    undoManager.doStep(RoundCommand(param, this))
+  }
+
+  def undo: Unit = {
+    undoManager.undoStep
+    notifyObservers
+  }
+
+  def inputError(): Unit = {
+    //todo add error msg to roundData
+    println("INPUT ERROR")
+    notifyObservers
+  }
+}
+
+
+
+
+
+
+/*
+
     roundData = roundData.siteID match {
       case 0 => param match {
         case "0" => roundTemplate.get(3, None)
@@ -51,20 +72,7 @@ case class GameRuntime() extends Observable {
         roundTemplate.get(0, None)
     }
     notifyObservers
-  }
-
-  def inputError(): Unit = {
-    //todo add error msg to roundData
-    notifyObservers
-  }
-}
-
-
-
-
-
-
-
+ */
 
 
 /*def startGame(): Unit = {

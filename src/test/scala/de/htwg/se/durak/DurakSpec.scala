@@ -6,8 +6,6 @@ import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
 import org.scalatest.matchers.should.Matchers
 
-import scala.io.StdIn
-
 @RunWith(classOf[Runner])
 class DurakSpec extends WordSpec with Matchers {
   "Durak" should  {
