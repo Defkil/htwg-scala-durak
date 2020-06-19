@@ -5,6 +5,12 @@ import org.junit.runner.{Runner, RunWith}
 import org.scalatest.matchers.should.Matchers
 
 class FieldSpec extends WordSpec with Matchers {
+  "A field" when {
+    val field = new Field()
+    "size" in{
+      field.size should be(0)
+    }
+  }
   /*
   missing implementation
   "A field" when {
