@@ -21,6 +21,9 @@ class RoundFactorySpec  extends WordSpec with Matchers {
       roundFactory.getInstance(12, None).siteID should be(12)
       roundFactory.getInstance(13, None).siteID should be(13)
       roundFactory.getInstance(404, None).siteID should be(0)
+
+      roundFactory.getInstance(3, None).param should be(None)
+      roundFactory.getInstance(12, None).param should be(None)
     }
   }
 }
