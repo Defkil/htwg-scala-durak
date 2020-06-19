@@ -47,7 +47,6 @@ case class Tui(runtime: GameRuntime) extends Observer{
       case 11 => attackerScreen(param)
       case 12 => defenderScreen(param)
       case 13 => finishedScreen(param)
-      case default => null
     }
   }
 

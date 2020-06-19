@@ -107,5 +107,27 @@ class TuiSpec extends WordSpec with Matchers {
       screen.size should be(2)
       screen should be(List("todo finishedScreen", ""))
     }
+    "route" in {
+      tui.route(-1, None).size should be(1)
+      tui.route(0, None).size should be(7)
+      tui.route(1, None).size should be(3)
+      tui.route(2, None).size should be(20)
+      tui.route(3, None).size should be(3)
+      tui.route(10, None).size should be(2)
+      tui.route(11, None).size should be(2)
+      tui.route(12, None).size should be(2)
+      tui.route(13, None).size should be(2)
+    }
+    "processInputLine" in {
+      val gameRuntime = new GameRuntime
+      val tui = Tui(gameRuntime)
+      gameRuntime.roundData.siteID should be(0)
+      tui.processInputLine("1")
+      gameRuntime.roundData.siteID should be(1)
+      tui.processInputLine("undo")
+      gameRuntime.roundData.siteID should be(0)
+      tui.processInputLine("invalid input")
+      gameRuntime.roundData.siteID should be(0)
+    }
   }
 }
