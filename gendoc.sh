@@ -11,7 +11,7 @@ mkdir -p "$DOCS_DIR"
 # "Build" the documentation
 sbt doc
 
-cp "target/scala-2.12/api" "$DOCS_DIR"
+cp -R "target/scala-2.12/api" "$DOCS_DIR"
 
 echo "Documentation successfully built"
 
