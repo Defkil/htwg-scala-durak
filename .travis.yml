@@ -25,6 +25,7 @@ cache: # caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt
     - /usr/bin/pandoc
     - /usr/share/pandoc
     - /usr/share/man/man1/pandoc.1.gz
+    - /home/travis/build/Defkil/htwg-scala-durak/pandoc.css
 
 before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
