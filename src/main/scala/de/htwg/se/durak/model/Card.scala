@@ -19,7 +19,7 @@ case class Card(rank: Int, symbol: Int) {
    * @return String
    */
   override def toString: String = {
-    def getRank():String = rank match {
+    def getRank(): String = rank match {
       case 2 => "2"
       case 3 => "3"
       case 4 => "4"
@@ -34,7 +34,7 @@ case class Card(rank: Int, symbol: Int) {
       case 13 => "König"
       case 14 => "Ass"
     }
-    def getCardType():String = symbol match {
+    def getCardType(): String = symbol match {
       case 1 => "Pik"
       case 2 => "Karo"
       case 3 => "Kreuz"
