@@ -19,7 +19,7 @@ import scala.util.matching.Regex
 
 case class RoundFactory() {
   def getInstance(id: Int, params: Option[List[String]]): RoundData = {
-    id match {
+    val res = id match {
       case -1 => new RoundData(-1, (param:String) => true, params)
       case 0 => new RoundData(0, (param:String) => param.matches("[0,1,3]"), params)
       case 1 => new RoundData(1, (param:String) => param.matches("0"), params)
@@ -32,5 +32,6 @@ case class RoundFactory() {
       case 13 => new RoundData(13, (param:String) => param matches("0"), params)
       case default => new RoundData(0, _ matches("[0-2]"), params)
     }
+    res
   }
 }
