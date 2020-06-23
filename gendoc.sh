@@ -14,7 +14,7 @@ sbt doc
 
 
 cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
-
+whereami
 wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
 cp pandoc.css gh-pages/pandoc.css
 pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css
