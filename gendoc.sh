@@ -15,9 +15,12 @@ sbt doc
 
 cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
 
-wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
-cp pandoc.css gh-pages/pandoc.css
-pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css
+
+
+mkdir "$HOME/.pandoc/templates/"
+wget https://raw.githubusercontent.com/tajmone/pandoc-goodies/master/templates/html5/github/GitHub.html5
+cp GitHub.html5 "$HOME/.pandoc/templates/GitHub.html5"
+pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --template=GitHub.html5
 
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
