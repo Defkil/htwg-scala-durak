@@ -12,7 +12,7 @@ mkdir -p "$DOCS_DIR"
 sbt doc
 
 
-cp -R "target/scala-2.12/api" "$DOCS_DIR"
+cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
 pandoc "README.md" -o "$DOCS_DIR/index.html"
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
