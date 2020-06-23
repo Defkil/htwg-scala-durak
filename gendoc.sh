@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# based on https://github.com/dryewo/travis-docs-gen
 set -euo pipefail
 IFS=$'\t\n'
 

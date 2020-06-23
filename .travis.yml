@@ -11,13 +11,12 @@ script:
 
 after_success:
   - sbt coverageReport coveralls
-  - ./gendoc.sh
+  - ./gendoc.sh # based on https://github.com/dryewo/travis-docs-gen
 
 jdk:
   - openjdk8
 
-# caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt/
-cache:
+cache: # caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt/
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot
@@ -25,6 +24,10 @@ cache:
 before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
   - find $HOME/.sbt -name "*.lock" -delete
+
+install:
+  - stack setup
+  - stack install pandoc
 
 env:
   global:
