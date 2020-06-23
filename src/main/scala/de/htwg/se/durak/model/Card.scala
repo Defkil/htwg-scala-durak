@@ -10,47 +10,13 @@ package de.htwg.se.durak.model
  * cardTypes are 1=Pik, 2=Karo, 3=Kreuz, 4=Herz
  *
  * @param rank card rank (2-14)
- * @param cardType card type (1-4)
+ * @param symbol card symbol (1-4)
  */
-case class Card(rank: Int, cardType: Int) {
-
-  /** returns a tupel with rank and type from the card
-   *
-   * @return (rank, type)
-   */
-  def get(): (Int, Int) = {
-    (getRank, getType)
-  }
-
-  /** returns card rank
-   *
-   * @return rank
-   */
-  def getRank: Int = rank
-
-  /** returns card type
-   *
-   * @return cardType
-   */
-  def getType: Int = cardType
-
-  /** return card weight
-   *
-   * @return
-   */
-  def getWeight(): Int = {
-    cardType match {
-      case 1 => rank
-      case 2 => rank + 14
-      case 3 => rank + 14 * 2
-      case 4 => rank + 14 * 3
-    }
-  }
-
+case class Card(rank: Int, symbol: Int) {
   /** custom toString
    * example "Rang: X, Typ: Y"
    *
-   * @return
+   * @return String
    */
   override def toString: String = {
     def getRank():String = rank match {
@@ -68,7 +34,7 @@ case class Card(rank: Int, cardType: Int) {
       case 13 => "König"
       case 14 => "Ass"
     }
-    def getCardType():String = cardType match {
+    def getCardType():String = symbol match {
       case 1 => "Pik"
       case 2 => "Karo"
       case 3 => "Kreuz"
