@@ -11,7 +11,8 @@ mkdir -p "$DOCS_DIR"
 # "Build" the documentation
 sbt doc
 
-cp -R "target/scala-2.12/api" "$DOCS_DIR"
+cp -R "target/scala-2.12/api/master/api/docs" "$DOCS_DIR"
+pandoc README.md -o "$DOCS_DIR/index.html"
 
 echo "Documentation successfully built"
 
