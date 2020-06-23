@@ -1,9 +1,7 @@
 package de.htwg.se.durak.aview
 
-import java.io.ByteArrayInputStream
-
 import de.htwg.se.durak.controller.GameRuntime
-import org.junit.Assert
+
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
 import org.scalatest.matchers.should.Matchers
@@ -102,11 +100,13 @@ class TuiSpec extends WordSpec with Matchers {
       screen.size should be(2)
       screen should be(List("todo defenderScreen", ""))
     }
+
     "finishedScreen" in {
       val screen = tui.finishedScreen(None)
       screen.size should be(2)
       screen should be(List("todo finishedScreen", ""))
     }
+
     "route" in {
       tui.route(-1, None).size should be(1)
       tui.route(0, None).size should be(7)
@@ -118,6 +118,7 @@ class TuiSpec extends WordSpec with Matchers {
       tui.route(12, None).size should be(2)
       tui.route(13, None).size should be(2)
     }
+
     "processInputLine" in {
       val gameRuntime = new GameRuntime
       val tui = Tui(gameRuntime)

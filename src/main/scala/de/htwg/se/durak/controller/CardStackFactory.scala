@@ -1,6 +1,6 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.CardStack
+import de.htwg.se.durak.model.CardDeck
 
 /*
  * Stack types=
@@ -9,11 +9,12 @@ import de.htwg.se.durak.model.CardStack
  * 2 = outside stack
  */
 case class CardStackFactory() {
-  def getInstance(cardStackType: Int): CardStack = {
+  //todo scala style apply (Object)
+  def getInstance(cardStackType: Int): CardDeck = {
     cardStackType match {
-      case 0 => new CardStack()
-      case 1 => new CardStack() // todo shake cards
-      case 2 => new CardStack()
+      case 0 => new CardDeck()
+      case 1 => new CardDeck() // todo shake cards
+      case 2 => new CardDeck()
     }
   }
 }

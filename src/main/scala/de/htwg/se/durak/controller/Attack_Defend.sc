@@ -1,5 +1,5 @@
 import de.htwg.se.durak.controller.GameLogic
-import de.htwg.se.durak.model.{Card, CardStack, Field, Player, TurnData}
+import de.htwg.se.durak.model.{Card, CardDeck, Field, Player, TurnData}
 
 
 def moveCardToField(oldTurnData: TurnData, c: Int):TurnData = {
@@ -24,13 +24,13 @@ println(a.field.stack.cards)
 
 val b = moveCardToField(a, 0)
 
-for(p <- b.playerStacks) println(p.getSize + " : " + p.cards)
+for(p <- b.playerStacks) println(p.getSize + " : " + p.deck)
 
-println(b.field.stack.cards)
+println(b.field.stack.deck)
 
 val c = moveCardToField(b, 0)
 
-for(p <- c.playerStacks) println(p.getSize + " : " + p.cards)
+for(p <- c.playerStacks) println(p.getSize + " : " + p.deck)
 
-println(c.field.stack.cards)
+println(c.field.stack.deck)
 

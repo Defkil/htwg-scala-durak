@@ -7,7 +7,7 @@ import de.htwg.se.durak.model.{Card, Field}
 @RunWith(classOf[Runner])
 class AttackDefendSpec extends WordSpec with Matchers {
   val logic = new GameLogic
-  val field = Field(new de.htwg.se.durak.model.CardStack())
+  val field = Field(new de.htwg.se.durak.model.CardDeck())
   val trumpValue = 3
 
   val c1 = new Card(11,3)
@@ -15,7 +15,7 @@ class AttackDefendSpec extends WordSpec with Matchers {
   val c3 = new Card(11,3)
   val c4 = new Card(11,3)
 
-  field.addAttack(c1)
+  //field.addAttack(c1)
   //logic.canAttack(field, c2)
 }
 

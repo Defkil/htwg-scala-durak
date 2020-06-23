@@ -1,4 +1,4 @@
-import de.htwg.se.durak.model.{CardStack,Field, Card}
+import de.htwg.se.durak.model.{CardDeck,Field, Card}
 
 import org.scalatest._
 import org.junit.runner.{Runner, RunWith}
