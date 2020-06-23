@@ -4,7 +4,7 @@ IFS=$'\t\n'
 
 git clone -b gh-pages "https://github.com/${TRAVIS_REPO_SLUG}.git" gh-pages
 
-DOCS_DIR=gh-pages/$TRAVIS_BRANCH
+DOCS_DIR=gh-pages
 rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
 
