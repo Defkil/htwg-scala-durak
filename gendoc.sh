@@ -14,7 +14,7 @@ sbt doc
 
 
 cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
-pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css pandoc.css
+pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
     # We are building a pull request, nothing to do here
