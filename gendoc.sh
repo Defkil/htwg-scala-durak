@@ -4,7 +4,7 @@ IFS=$'\t\n'
 
 git clone -b gh-pages "https://github.com/${TRAVIS_REPO_SLUG}.git" gh-pages
 
-wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
+
 DOCS_DIR=gh-pages/$TRAVIS_BRANCH
 rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
@@ -14,7 +14,11 @@ sbt doc
 
 
 cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
+
+wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
+cp pandoc.css gh-pages/pandoc.css
 pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css
+
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
     # We are building a pull request, nothing to do here
