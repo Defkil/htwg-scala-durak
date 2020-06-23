@@ -30,6 +30,7 @@ case class RoundFactory() {
       case 11 => RoundData(11, (param:String) => param matches("0"), params)
       case 12 => RoundData(12, (param:String) => param matches("0"), params)
       case 13 => RoundData(13, (param:String) => param matches("0"), params)
+      case default => RoundData(0, _ matches("[0-2]"), params)
     }
     res
   }
