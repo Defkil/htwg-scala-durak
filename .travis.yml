@@ -1,4 +1,5 @@
 language: scala
+
 scala:
   - 2.12.4
 
@@ -25,9 +26,10 @@ before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
   - find $HOME/.sbt -name "*.lock" -delete
 
-before_install:
-  wget https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
-  sudo dpkg -i pandoc-2.9.2.1-1-amd64.deb
+addons:
+  apt:
+    packages:
+      - pandoc
 
 env:
   global:
