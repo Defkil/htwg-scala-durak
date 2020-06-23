@@ -11,7 +11,7 @@ mkdir -p "$DOCS_DIR"
 # "Build" the documentation
 sbt doc
 
-pandoc "README.md" -o "target/scala-2.12/api/index.html"
+pandoc "README.md" -o "target/scala-2.12/index.html"
 cp -R "target/scala-2.12/api" "$DOCS_DIR"
 
 
