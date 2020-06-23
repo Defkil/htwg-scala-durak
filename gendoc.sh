@@ -11,12 +11,12 @@ mkdir -p "$DOCS_DIR"
 # "Build" the documentation
 sbt doc
 
-pandoc README.md -o "target/scala-2.12/api"
+pandoc "README.md" -o "target/scala-2.12/api"
 cp -R "target/scala-2.12/api" "$DOCS_DIR"
-whereis pandoc
+
 
 echo "Documentation successfully built"
-
+whereis pandoc
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
     # We are building a pull request, nothing to do here
     echo "Building a PR with ID=$TRAVIS_PULL_REQUEST, skipping the deployment."
