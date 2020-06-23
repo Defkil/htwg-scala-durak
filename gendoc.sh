@@ -20,7 +20,7 @@ cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
 #mkdir "$HOME/.pandoc/templates/"
 wget https://raw.githubusercontent.com/tajmone/pandoc-goodies/master/templates/html5/github/GitHub.html5
 #cp GitHub.html5 "$HOME/.pandoc/templates/GitHub.html5"
-pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --template=GitHub.html5
+pandoc --template=GitHub.html5 "README.md" -f markdown -t html -s -o "gh-pages/index.html"
 
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
