@@ -1,8 +1,9 @@
 name          := "htwg-scala-durak"
 organization  := "de.htwg.se"
 version       := "0.0.1"
-scalaVersion  := "2.12.4"
+scalaVersion  := "2.13.2"
 
+libraryDependencies += "org.scala-lang" % "scala-library" % "2.13.2"
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.0"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
 
