@@ -22,9 +22,6 @@ cache: # caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot
-    - /usr/bin/pandoc
-    - /usr/share/pandoc
-    - /usr/share/man/man1/pandoc.1.gz
 
 before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
