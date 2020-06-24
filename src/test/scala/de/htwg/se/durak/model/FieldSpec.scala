@@ -2,7 +2,6 @@ import de.htwg.se.durak.model.{CardDeck,Field, Card}
 
 import org.scalatest._
 import org.junit.runner.{Runner, RunWith}
-import org.scalatest.matchers.should.Matchers
 
 class FieldSpec extends WordSpec with Matchers {
   "A field" when {

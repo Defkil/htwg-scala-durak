@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream
 
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
-import org.scalatest.matchers.should.Matchers
 
 @RunWith(classOf[Runner])
 class DurakSpec extends WordSpec with Matchers {

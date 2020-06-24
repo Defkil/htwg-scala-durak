@@ -3,7 +3,6 @@ package de.htwg.se.durak.controller
 import de.htwg.se.durak.model.{Card, CardDeck, Player}
 import org.scalatest._
 import org.junit.runner.{Runner, RunWith}
-import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable.ListBuffer
 

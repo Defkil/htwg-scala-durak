@@ -3,7 +3,6 @@ package de.htwg.se.durak.model
 import de.htwg.se.durak.controller.{GameLogic, GameTableSpec}
 import org.scalatest._
 import org.junit.runner.{Runner, RunWith}
-import org.scalatest.matchers.should.Matchers
 
 @RunWith(classOf[Runner])
 class InitSpec extends WordSpec with Matchers {

@@ -3,7 +3,6 @@ package de.htwg.se.durak.controller
 import de.htwg.se.durak.model.{CardDeck, Field, GameData, Player, RoundData, TurnData}
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
-import org.scalatest.matchers.should.Matchers
 
 @RunWith(classOf[Runner])
 class GameRuntimeSpec extends WordSpec with Matchers {

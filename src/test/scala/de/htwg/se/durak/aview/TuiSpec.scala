@@ -4,7 +4,6 @@ import de.htwg.se.durak.controller.GameRuntime
 
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
-import org.scalatest.matchers.should.Matchers
 
 class MockTui(runtime: GameRuntime) extends Tui(runtime: GameRuntime) {
   var messages: Seq[String] = Seq()

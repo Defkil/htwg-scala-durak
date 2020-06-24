@@ -2,7 +2,6 @@ package de.htwg.se.durak.utilities
 
 import org.scalatest._
 import org.junit.runner.{RunWith, Runner}
-import org.scalatest.matchers.should.Matchers
 
 
 class incrCommand extends Command {
