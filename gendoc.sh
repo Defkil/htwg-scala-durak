@@ -17,7 +17,7 @@ cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
 wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
 echo -e "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');\n$(cat pandoc.css)" > pandoc.css
 echo "\n* {font-family: 'Roboto', sans-serif;};" >> pandoc.css
-cp pandoc.css gh-pages/style.css
+cp pandoc.css.1 gh-pages/style.css
 pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=style.css --metadata title="HTWG Durak Documentation"
 
 echo "Documentation successfully built"
