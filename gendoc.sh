@@ -14,10 +14,11 @@ sbt doc
 
 
 cp -a "target/scala-2.12/api/." "$DOCS_DIR/docs/"
-pwd
+echo "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); * {font-family: 'Roboto', sans-serif;};" > font.css
 wget https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css
 cp pandoc.css gh-pages/pandoc.css
-pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css --metadata title="HTWG Durak Documentation"
+cp font.css gh-pages/font.css
+pandoc "README.md" -f markdown -t html -s -o "gh-pages/index.html" --css=pandoc.css --css=font.css --metadata title="HTWG Durak Documentation"
 
 echo "Documentation successfully built"
 if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
