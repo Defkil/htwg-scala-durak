@@ -1,9 +1,7 @@
 package de.htwg.se.durak.controller
 
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
-@RunWith(classOf[Runner])
 class CardStackFactorySpec extends WordSpec with Matchers {
   "CardStackFactory" should {
     val cardStackFactory = new CardStackFactory

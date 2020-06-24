@@ -3,7 +3,6 @@ package de.htwg.se.durak.aview
 import de.htwg.se.durak.controller.GameRuntime
 
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
 class MockTui(runtime: GameRuntime) extends Tui(runtime: GameRuntime) {
   var messages: Seq[String] = Seq()
@@ -11,7 +10,6 @@ class MockTui(runtime: GameRuntime) extends Tui(runtime: GameRuntime) {
   override def print(s: String): Unit = messages = messages :+ s
 }
 
-@RunWith(classOf[Runner])
 class TuiSpec extends WordSpec with Matchers {
   "Tui" should  {
     val gameRuntime = new GameRuntime

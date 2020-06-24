@@ -2,9 +2,7 @@ package de.htwg.se.durak.model
 
 import de.htwg.se.durak.controller.{GameLogic, GameTableSpec}
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
-@RunWith(classOf[Runner])
 class InitSpec extends WordSpec with Matchers {
   /*val table = new GameTable()
   val players = List(new Player("Toni"), new Player("Tim"))

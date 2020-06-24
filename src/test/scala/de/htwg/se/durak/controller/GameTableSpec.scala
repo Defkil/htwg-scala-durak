@@ -2,11 +2,9 @@ package de.htwg.se.durak.controller
 
 import de.htwg.se.durak.model.{Card, CardDeck, Player}
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
 import scala.collection.mutable.ListBuffer
 
-@RunWith(classOf[Runner])
 class GameTableSpec extends WordSpec with Matchers {
   "A GameTable" when { "new" should {
     /*val table = new GameTable()

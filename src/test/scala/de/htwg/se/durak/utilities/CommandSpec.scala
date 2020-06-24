@@ -1,7 +1,6 @@
 package de.htwg.se.durak.utilities
 
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
 
 class incrCommand extends Command {
@@ -10,7 +9,6 @@ class incrCommand extends Command {
   override def undoStep: Unit = state-=1
 }
 
-@RunWith(classOf[Runner])
 class CommandSpec extends WordSpec with Matchers {
   "A Command" should {
     "have a do step" in {

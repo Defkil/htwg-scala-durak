@@ -2,9 +2,7 @@ package de.htwg.se.durak.controller
 
 import de.htwg.se.durak.model.{GameData, RoundData}
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
-@RunWith(classOf[Runner])
 class RoundCommandSpec extends WordSpec with Matchers {
   "A RoundCommand" when {
     "open site 0" in {

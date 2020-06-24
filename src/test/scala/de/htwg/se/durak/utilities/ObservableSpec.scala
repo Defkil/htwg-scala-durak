@@ -1,9 +1,7 @@
 package de.htwg.se.durak.utilities
 
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
-@RunWith(classOf[Runner])
 class ObservableSpec extends WordSpec with Matchers {
   "An Observable" should {
     val observable = new Observable

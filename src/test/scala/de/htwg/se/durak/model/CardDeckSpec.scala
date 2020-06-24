@@ -1,9 +1,7 @@
 package de.htwg.se.durak.model
 
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
-@RunWith(classOf[Runner])
 class CardDeckSpec extends WordSpec with Matchers {
   "A CardDeck" when {
     "add a new card to a deck" in {

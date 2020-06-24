@@ -1,10 +1,7 @@
 package de.htwg.se.durak.controller
 
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
-
-@RunWith(classOf[Runner])
 class RoundFactorySpec  extends WordSpec with Matchers {
   "An RoundFactorySpec" should {
     "default routes -1" in {

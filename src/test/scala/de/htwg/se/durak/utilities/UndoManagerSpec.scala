@@ -1,10 +1,7 @@
 package de.htwg.se.durak.utilities
 
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
-
-@RunWith(classOf[Runner])
 class UndoManagerSpec extends WordSpec with Matchers {
   "An UndoManager" should {
     val undoManager = new UndoManager

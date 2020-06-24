@@ -2,9 +2,7 @@ package de.htwg.se.durak.controller
 
 import de.htwg.se.durak.model.{CardDeck, Field, GameData, Player, RoundData, TurnData}
 import org.scalatest._
-import org.junit.runner.{RunWith, Runner}
 
-@RunWith(classOf[Runner])
 class GameRuntimeSpec extends WordSpec with Matchers {
   "A GameRuntime" when {
     val runtime = new GameRuntime()

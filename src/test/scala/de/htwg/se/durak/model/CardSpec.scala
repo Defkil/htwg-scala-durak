@@ -1,9 +1,7 @@
 package de.htwg.se.durak.model
 
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
-@RunWith(classOf[Runner])
 class CardSpec extends WordSpec with Matchers {
   "A Card" should {
     "check all possibilities by rank" in {

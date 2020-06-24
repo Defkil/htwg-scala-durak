@@ -1,9 +1,7 @@
 package de.htwg.se.durak.model
 
 import org.scalatest._
-import org.junit.runner.{Runner, RunWith}
 
-@RunWith(classOf[Runner])
 class PlayerSpec extends WordSpec with Matchers {
   "A Player" when { "new" should {
     val player = Player("Your Name")
