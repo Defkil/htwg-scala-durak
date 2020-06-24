@@ -15,7 +15,7 @@ after_success:
   - ./gendoc.sh # based on https://github.com/dryewo/travis-docs-gen
 
 jdk:
-  - oraclejdk11
+  - openjdk9
 
 cache: # caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt/
   apt: true
