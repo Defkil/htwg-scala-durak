@@ -3,9 +3,10 @@ organization  := "de.htwg.se"
 version       := "0.0.1"
 scalaVersion  := "2.12.4"
 
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.1.2"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % "test"
-libraryDependencies += "com.novocode" % "junit-interface" % "0.8" % "test->default"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.0"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
+
+libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test->default"
 
 //*******************************************************************************//
 //Libraries that we will use in later lectures compatible with this scala version
