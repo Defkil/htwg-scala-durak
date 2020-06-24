@@ -1,7 +1,6 @@
 package de.htwg.se.durak.controller
 
 import de.htwg.se.durak.model.RoundData
-import scala.util.matching.Regex
 
 /*
    *
