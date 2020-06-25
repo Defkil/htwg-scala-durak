@@ -155,6 +155,10 @@
                         <a href="CardStackFactory.html" title="">CardStackFactory</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="class" href="GameDataChanged.html" title=""></a>
+                        <a href="GameDataChanged.html" title="">GameDataChanged</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="class" href="GameLogic.html" title=""></a>
                         <a href="GameLogic.html" title="">GameLogic</a>
                       </li><li class="current-entities indented5">
@@ -167,8 +171,8 @@
                         <a href="GameStrategyLocalhost.html" title="">GameStrategyLocalhost</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="class" href="GameStrategyMultiplayer.html" title=""></a>
-                        <a href="GameStrategyMultiplayer.html" title="">GameStrategyMultiplayer</a>
+                        <a class="class" href="GameStrategyMenu.html" title=""></a>
+                        <a href="GameStrategyMenu.html" title="">GameStrategyMenu</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="class" href="GameTable.html" title=""></a>
@@ -204,7 +208,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">GameRuntime</span><span class="params">()</span><span class="result"> extends <a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">GameRuntime</span><span class="params">()</span><span class="result"> extends <span class="extype" name="scala.swing.Publisher">Publisher</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -213,7 +217,7 @@
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.swing.Publisher">Publisher</span>, <span class="extype" name="scala.swing.Reactor">Reactor</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -239,7 +243,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="de.htwg.se.durak.controller.GameRuntime"><span>GameRuntime</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="de.htwg.se.durak.utilities.Observable"><span>Observable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="de.htwg.se.durak.controller.GameRuntime"><span>GameRuntime</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.swing.Publisher"><span>Publisher</span></li><li class="in" name="scala.swing.Reactor"><span>Reactor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -333,22 +337,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="de.htwg.se.durak.utilities.Observable#add" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="add(s:de.htwg.se.durak.utilities.Observer):Unit"></a><a id="add(Observer):Unit"></a>
-      <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#add(s:de.htwg.se.durak.utilities.Observer):Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">add</span><span class="params">(<span name="s">s: <a href="../utilities/Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -389,6 +377,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="scala.swing.Reactor#deafTo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deafTo(ps:scala.swing.Publisher*):Unit"></a><a id="deafTo(Publisher*):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#deafTo(ps:scala.swing.Publisher*):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deafTo</span><span class="params">(<span name="ps">ps: <span class="extype" name="scala.swing.Publisher">Publisher</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Reactor</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -427,6 +431,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="de.htwg.se.durak.controller.GameRuntime#gameData" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="gameData:de.htwg.se.durak.model.GameData"></a><a id="gameData:GameData"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#gameData:de.htwg.se.durak.model.GameData" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gameData</span><span class="result">: <a href="../model/GameData.html" class="extype" name="de.htwg.se.durak.model.GameData">GameData</a></span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -478,6 +498,38 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.swing.Reactor#listenTo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="listenTo(ps:scala.swing.Publisher*):Unit"></a><a id="listenTo(Publisher*):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#listenTo(ps:scala.swing.Publisher*):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listenTo</span><span class="params">(<span name="ps">ps: <span class="extype" name="scala.swing.Publisher">Publisher</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Reactor</dd></dl></div>
+    </li><li name="scala.swing.Publisher#listeners" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="listeners:scala.swing.RefSet[scala.swing.Reactions.Reaction]{valunderlying:scala.collection.mutable.HashSet[scala.ref.Reference[scala.swing.Reactions.Reaction]]}"></a><a id="listeners:RefSet[Reaction]{valunderlying:scala.collection.mutable.HashSet[scala.ref.Reference[scala.swing.Reactions.Reaction]]}"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#listeners:scala.swing.RefSet[scala.swing.Reactions.Reaction]{valunderlying:scala.collection.mutable.HashSet[scala.ref.Reference[scala.swing.Reactions.Reaction]]}" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listeners</span><span class="result">: <span class="extype" name="scala.swing.RefSet">RefSet</span>[<span class="extype" name="scala.swing.Reactions.Reaction">Reaction</span>] { val underlying: scala.collection.mutable.HashSet[scala.ref.Reference[scala.swing.Reactions.Reaction]] }</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Publisher</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -532,10 +584,10 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="de.htwg.se.durak.utilities.Observable#notifyObservers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notifyObservers:Unit"></a>
+    </li><li name="scala.swing.Publisher#publish" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="publish(e:scala.swing.event.Event):Unit"></a><a id="publish(Event):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#notifyObservers:Unit" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#publish(e:scala.swing.event.Event):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -544,26 +596,26 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notifyObservers</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">publish</span><span class="params">(<span name="e">e: <span class="extype" name="scala.swing.event.Event">Event</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a></dd></dl></div>
-    </li><li name="de.htwg.se.durak.utilities.Observable#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="remove(s:de.htwg.se.durak.utilities.Observer):Unit"></a><a id="remove(Observer):Unit"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Publisher</dd></dl></div>
+    </li><li name="scala.swing.Reactor#reactions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reactions:scala.swing.Reactions"></a><a id="reactions:Reactions"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#remove(s:de.htwg.se.durak.utilities.Observer):Unit" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#reactions:scala.swing.Reactions" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">remove</span><span class="params">(<span name="s">s: <a href="../utilities/Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">reactions</span><span class="result">: <span class="extype" name="scala.swing.Reactions">Reactions</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Reactor</dd></dl></div>
     </li><li name="de.htwg.se.durak.controller.GameRuntime#roundData" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="roundData:de.htwg.se.durak.model.RoundData"></a><a id="roundData:RoundData"></a>
       <span class="permalink">
@@ -577,22 +629,6 @@
       </span>
       <span class="symbol">
         <span class="name">roundData</span><span class="result">: <a href="../model/RoundData.html" class="extype" name="de.htwg.se.durak.model.RoundData">RoundData</a></span>
-      </span>
-      
-      
-    </li><li name="de.htwg.se.durak.controller.GameRuntime#roundFactory" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="roundFactory:de.htwg.se.durak.controller.RoundFactory"></a><a id="roundFactory:RoundFactory"></a>
-      <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#roundFactory:de.htwg.se.durak.controller.RoundFactory" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">roundFactory</span><span class="result">: <a href="RoundFactory.html" class="extype" name="de.htwg.se.durak.controller.RoundFactory">RoundFactory</a></span>
       </span>
       
       
@@ -644,22 +680,6 @@
       </span>
       
       
-    </li><li name="de.htwg.se.durak.utilities.Observable#subscribers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="subscribers:Vector[de.htwg.se.durak.utilities.Observer]"></a><a id="subscribers:Vector[Observer]"></a>
-      <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#subscribers:Vector[de.htwg.se.durak.utilities.Observer]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">subscribers</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<a href="../utilities/Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -705,6 +725,22 @@
       </span>
       <span class="symbol">
         <span class="name">undo</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="de.htwg.se.durak.controller.GameRuntime#undoManager" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="undoManager:de.htwg.se.durak.utilities.UndoManager"></a><a id="undoManager:UndoManager"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/controller/GameRuntime.html#undoManager:de.htwg.se.durak.utilities.UndoManager" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">undoManager</span><span class="result">: <a href="../utilities/UndoManager.html" class="extype" name="de.htwg.se.durak.utilities.UndoManager">UndoManager</a></span>
       </span>
       
       
@@ -794,8 +830,10 @@
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="de.htwg.se.durak.utilities.Observable">
-              <h3>Inherited from <a href="../utilities/Observable.html" class="extype" name="de.htwg.se.durak.utilities.Observable">Observable</a></h3>
+            </div><div class="parent" name="scala.swing.Publisher">
+              <h3>Inherited from <span class="extype" name="scala.swing.Publisher">Publisher</span></h3>
+            </div><div class="parent" name="scala.swing.Reactor">
+              <h3>Inherited from <span class="extype" name="scala.swing.Reactor">Reactor</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
