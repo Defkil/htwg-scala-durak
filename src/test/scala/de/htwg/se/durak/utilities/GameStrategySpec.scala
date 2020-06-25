@@ -7,10 +7,10 @@ class GameStrategySpec extends WordSpec with Matchers {
     "default should be localhost" in {
       GameStrategy.get should be(GameStrategy.localhost)
     }
-    "set strategy to multiplayer" in {
+    /*"set strategy to multiplayer" in {
       GameStrategy.setMultiplayer()
       GameStrategy.get should be(GameStrategy.multiplayer)
-    }
+    }*/
     "set strategy to localhost" in {
       GameStrategy.setLocalhost()
       GameStrategy.get should be(GameStrategy.localhost)

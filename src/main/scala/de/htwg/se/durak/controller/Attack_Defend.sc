@@ -4,10 +4,10 @@ import de.htwg.se.durak.model.{Card, CardDeck, Field, Player, TurnData}
 
 def moveCardToField(oldTurnData: TurnData, c: Int):TurnData = {
   val activePlayer = oldTurnData.playerId
-  val playerStacks = oldTurnData.playerStacks.toArray
+  val playerStacks = oldTurnData.playerDecks.toArray
   val card = playerStacks(activePlayer).removeCard(c)
   val newField = oldTurnData.field.copy()
-  val mainStack = oldTurnData.mainStack.copy()
+  val mainStack = oldTurnData.mainDeck.copy()
   newField.addAttack(card)
 
   println(activePlayer == oldTurnData.players.size - 1)
@@ -24,13 +24,13 @@ println(a.field.stack.cards)
 
 val b = moveCardToField(a, 0)
 
-for(p <- b.playerStacks) println(p.getSize + " : " + p.deck)
+for(p <- b.playerDecks) println(p.getSize + " : " + p.deck)
 
 println(b.field.stack.deck)
 
 val c = moveCardToField(b, 0)
 
-for(p <- c.playerStacks) println(p.getSize + " : " + p.deck)
+for(p <- c.playerDecks) println(p.getSize + " : " + p.deck)
 
 println(c.field.stack.deck)
 

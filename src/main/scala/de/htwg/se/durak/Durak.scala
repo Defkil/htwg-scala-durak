@@ -1,13 +1,13 @@
 package de.htwg.se.durak
 
 import scala.io.StdIn.readLine
-import de.htwg.se.durak.controller.GameRuntime
+import de.htwg.se.durak.controller.{GameDataChanged, GameRuntime}
 import de.htwg.se.durak.aview.Tui
 
 object Durak {
   val runtime = new GameRuntime
-  val tui = Tui(runtime)
-  runtime.notifyObservers
+  val tui: Tui = Tui(runtime)
+  runtime.publish(new GameDataChanged)
 
   def main(args: Array[String]): Unit = {
     var input: String = ""

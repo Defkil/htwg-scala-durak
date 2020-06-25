@@ -3,28 +3,30 @@ package de.htwg.se.durak.controller
 import de.htwg.se.durak.model.{GameData, RoundData, TurnData}
 import de.htwg.se.durak.utilities.{Observable, UndoManager}
 
-case class GameRuntime() extends Observable {
-  private val undoManager = new UndoManager
-  val roundFactory = new RoundFactory
-
+import scala.swing.Publisher
+case class GameRuntime() extends Publisher  {
+  val undoManager = new UndoManager
   var screenSize: Int = 10
-  var roundStack: List[GameData] = List(GameData(roundFactory.getInstance(0, None), None))
-  def roundData: RoundData = roundStack.last.roundData
-  def turnData: Option[TurnData] = roundStack.last.turnData
+
+  var roundStack: List[GameData] = List(GameData(RoundFactory().getInstance(0, None), None))
+  def gameData: GameData = roundStack.last
+  def roundData: RoundData = gameData.roundData
+  def turnData: Option[TurnData] = gameData.turnData
 
   def runRound(param: String): Unit = {
     undoManager.doStep(RoundCommand(param, this))
+    publish(new GameDataChanged)
   }
 
   def undo: Unit = {
     undoManager.undoStep
-    notifyObservers
+    publish(new GameDataChanged)
   }
 
   def inputError(): Unit = {
     //todo add error msg to roundData
     println("INPUT ERROR")
-    notifyObservers
+    publish(new GameDataChanged)
   }
 }
 

@@ -1,15 +1,14 @@
 package de.htwg.se.durak.aview
 
-import de.htwg.se.durak.controller.GameRuntime
-import de.htwg.se.durak.utilities.Observer
+import de.htwg.se.durak.controller.{GameDataChanged, GameRuntime}
 
 import scala.collection.mutable.ListBuffer
+import scala.swing.Reactor
 
-case class Tui(runtime: GameRuntime) extends Observer{
-  runtime.add(this)
-
+case class Tui(runtime: GameRuntime) extends Reactor {
   val MIN_SIZE = 6
-  val spaceVector = Vector("")
+
+  listenTo(runtime)
 
   def processInputLine(param: String): Unit = {
     if(param == "undo") {
@@ -24,7 +23,12 @@ case class Tui(runtime: GameRuntime) extends Observer{
   }
 
   def print(string: String): Unit = println(string)
-  def update(): Unit = {
+
+  reactions += {
+    case event: GameDataChanged => printTui()
+  }
+
+  def printTui(): Unit = {
     val site = route(runtime.roundData.siteID, runtime.roundData.param)
     val output = site ++ spacer(runtime.screenSize - site.length)
     output.foreach(print)
