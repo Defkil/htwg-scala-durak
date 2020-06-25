@@ -45,6 +45,8 @@ class RoundCommandSpec extends WordSpec with Matchers {
       runtime.screenSize should be(11)
     }
 
+    /*
+    dissabled sites
     "open site 3" in {
       val runtime = new GameRuntime
       runtime.roundStack = List(new GameData(new RoundData(3, (s: String) => true, None), None))
@@ -88,6 +90,6 @@ class RoundCommandSpec extends WordSpec with Matchers {
       runtime.roundData.siteID should be(13)
       roundCommand1.doStep
       runtime.roundData.siteID should be(0)
-    }
+    }*/
   }
 }
