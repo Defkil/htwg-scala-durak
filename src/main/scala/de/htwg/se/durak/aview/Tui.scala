@@ -49,8 +49,10 @@ case class Tui(runtime: GameRuntime) extends Reactor {
       case 3 => playerScreen(param.getOrElse(List("")).head)
       case 10 => nextTurnScreen(param.getOrElse(List("")).head)
       case 11 => attackerScreen(param)
-      case 12 => defenderScreen(param)
-      case 13 => finishedScreen(param)
+      case 12 => playerScreen(param.getOrElse(List("")).head)
+      case 13 => defenderScreen(param)
+      case 14 => playerScreen(param.getOrElse(List("")).head)
+      case 15 => finishedScreen(param)
     }
   }
 
@@ -117,6 +119,7 @@ case class Tui(runtime: GameRuntime) extends Reactor {
   }
 
   def attackerScreen(param: Option[List[String]]): List[String] = {
+    print(param.get.head)
     List("todo attackerScreen",
       param.getOrElse(List("")).head
     )

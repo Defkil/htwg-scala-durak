@@ -10,6 +10,11 @@ import de.htwg.se.durak.model.RoundData
    * 2 = calibration list 1 - 20
    * 3 = player name select
    * 10 = start game
+   * 11 = attack Turn
+   * 12 = parse attack Turn
+   * 13 = defend Turn
+   * 14 = defend parse Turn
+   * 15 = finished
    * old 10 = next turn
    * old 11 = attacker
    * old 12 = defender
@@ -28,7 +33,7 @@ case class RoundFactory() {
       case 3 => RoundData(3, (param:String) => (1 < param.split(" ").length && param.split(" ").length < 7), params)
 
       case 10 => RoundData(10, (param:String) => true, params)
-      case 11 => RoundData(11, (param:String) => true, params)
+      case 11 => RoundData(11, (param:String) => param.matches("[0-6]"), params)
       case 12 => RoundData(12, (param:String) => true, params)
       case 13 => RoundData(13, (param:String) => true, params)
       case default => RoundData(0, _ matches("[0-2]"), params)

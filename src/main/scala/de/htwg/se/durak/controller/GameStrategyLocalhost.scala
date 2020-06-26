@@ -30,7 +30,16 @@ case class GameStrategyLocalhost() extends TraitGameStrategy {
    * @return
    */
   def startGame(gameData: GameData, input: String): GameData = {
-    GameData(roundFactory.getInstance(10, None), None)
+    GameData(roundFactory.getInstance(11, Some(List("looasd"))), None)
+  }
+
+  def attackTurn(gameData: GameData, input: String): GameData = {
+    if(gameData.turnData.get.field.size == 0) println()
+    GameData(roundFactory.getInstance(12, None), None)
+  }
+
+  def parseAttackTurn(gameData: GameData, input: String): GameData = {
+    GameData(roundFactory.getInstance(13, None), None)
   }
 }
 

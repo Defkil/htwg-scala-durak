@@ -6,6 +6,8 @@ import de.htwg.se.durak.model.GameData
 trait TraitGameStrategy {
   def playerSelect(gameData: GameData, input: String): GameData
   def startGame(gameData: GameData, input: String): GameData
+  def attackTurn(gameData: GameData, input: String): GameData
+  def parseAttackTurn(gameData: GameData, input: String): GameData
 }
 
 object GameStrategy {

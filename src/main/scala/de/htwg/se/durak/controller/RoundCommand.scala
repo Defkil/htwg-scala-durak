@@ -16,6 +16,8 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
       }
       case 3 => GameStrategy.get.playerSelect(runtime.gameData, input)
       case 10 => GameStrategy.get.startGame(runtime.gameData, input)
+      case 11 => GameStrategy.get.attackTurn(runtime.gameData, input)
+      case 12 => GameStrategy.get.parseAttackTurn(runtime.gameData, input)
     })
   }
 
