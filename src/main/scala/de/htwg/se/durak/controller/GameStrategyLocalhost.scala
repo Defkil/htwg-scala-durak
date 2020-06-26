@@ -1,6 +1,6 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.{CardDeck, GameData}
+import de.htwg.se.durak.model.{CardDeck, Field, GameData, TurnData}
 import de.htwg.se.durak.utilities.TraitGameStrategy
 
 //noinspection ScalaStyle
@@ -8,15 +8,28 @@ case class GameStrategyLocalhost() extends TraitGameStrategy {
   val roundFactory = new RoundFactory
   val gameTable = new GameTable
   def playerSelect(gameData: GameData, input: String): GameData = {
-    GameData(roundFactory.getInstance(3, None), None)
-  }
-
-  def startGame(gameData: GameData, input: String): GameData = {
     val players = gameTable.createPlayers(input.split(" "))
     val (mainDeck, playerDecks) = gameTable.handOutCardsStart(
       CardDeck(gameTable generateDeck 36),
-      gameTable.createPlayerDecks(players.length))
-    println(mainDeck.deck.length +" --"+playerDecks.head.deck.length)
+      gameTable.createPlayerDecks(players.length)
+    )
+    val trump: Int = mainDeck.deck.head.symbol
+    val field = new Field
+    val playerId: Int = gameTable.getFirstPlayer(playerDecks, trump)
+
+    GameData(
+      roundFactory.getInstance(10, Some(List(players(playerId).toString))),
+      Some(TurnData (players, playerDecks, playerId, field, mainDeck, trump))
+    )
+  }
+
+  /**
+   * unterste Karte ist (0) und oberste (.size)
+   * @param gameData
+   * @param input
+   * @return
+   */
+  def startGame(gameData: GameData, input: String): GameData = {
     GameData(roundFactory.getInstance(10, None), None)
   }
 }
