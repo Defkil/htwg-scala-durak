@@ -59,6 +59,14 @@ case class GameTable() {
     })
     playerID.getOrElse(0)
   }
+
+  def countTo(size: Int): String = {
+    var res = "0"
+    for(i <- Range(1, size, 1)) res += ", " + i
+    res
+  }
+
+  def getNextPlayer(currentPlayer: Int, maxPlayer: Int): Int = if(currentPlayer + 1 == maxPlayer) 0 else currentPlayer + 1
 /*val CARDS_PER_PLAYER = 6
 def createPlayerCardStack(players: List[Player]): List[CardStack] = {
   val stack = new ListBuffer[CardStack]()

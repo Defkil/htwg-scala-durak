@@ -2,11 +2,12 @@ package de.htwg.se.durak.model
 
 import scala.collection.mutable.ListBuffer
 
-case class Field(var stack: CardDeck) {
+case class Field(var cardDeck: CardDeck) {
   def this() {
     this(new CardDeck());
   }
-  val size = 0
+  val size: Int = cardDeck.size
+  val deck: List[Card] = cardDeck.deck
 
   //def addAttack(card: Card): ListBuffer[Card] = stack.addCard(card)
 

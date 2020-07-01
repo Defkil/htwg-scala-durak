@@ -7,19 +7,19 @@ class RoundCommandSpec extends WordSpec with Matchers {
   "A RoundCommand" when {
     "open site 0" in {
       val runtime = new GameRuntime
-      runtime.roundStack = List(new GameData(new RoundData(0, (s: String) => true, None), None))
+      runtime.roundStack = List(new GameData(new RoundData(0, Some((s: String) => true), None, None), None))
       val roundCommand1 = new RoundCommand("0", runtime)
       runtime.roundData.siteID should be(0)
       roundCommand1.doStep
       runtime.roundData.siteID should be(3)
 
-      runtime.roundStack = List(new GameData(new RoundData(0, (s: String) => true, None), None))
+      runtime.roundStack = List(new GameData(new RoundData(0, Some((s: String) => true), None, None), None))
       val roundCommand2 = new RoundCommand("1", runtime)
       runtime.roundData.siteID should be(0)
       roundCommand2.doStep
       runtime.roundData.siteID should be(1)
 
-      runtime.roundStack = List(new GameData(new RoundData(0, (s: String) => true, None), None))
+      runtime.roundStack = List(new GameData(new RoundData(0, Some((s: String) => true), None, None), None))
       val roundCommand3 = new RoundCommand("3", runtime)
       runtime.roundData.siteID should be(0)
       roundCommand3.doStep
@@ -28,7 +28,7 @@ class RoundCommandSpec extends WordSpec with Matchers {
 
     "open site 1" in {
       val runtime = new GameRuntime
-      runtime.roundStack = List(new GameData(new RoundData(1, (s: String) => true, None), None))
+      runtime.roundStack = List(new GameData(new RoundData(1, Some((s: String) => true), None, None), None))
       val roundCommand1 = new RoundCommand("0", runtime)
       runtime.roundData.siteID should be(1)
       roundCommand1.doStep
@@ -37,7 +37,7 @@ class RoundCommandSpec extends WordSpec with Matchers {
 
     "open site 2" in {
       val runtime = new GameRuntime
-      runtime.roundStack = List(new GameData(new RoundData(2, (s: String) => true, None), None))
+      runtime.roundStack = List(new GameData(new RoundData(2, Some((s: String) => true), None, None), None))
       val roundCommand1 = new RoundCommand("11", runtime)
       runtime.roundData.siteID should be(2)
       roundCommand1.doStep

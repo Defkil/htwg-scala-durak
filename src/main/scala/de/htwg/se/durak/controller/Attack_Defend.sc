@@ -3,7 +3,7 @@ import de.htwg.se.durak.model.{Card, CardDeck, Field, Player, TurnData}
 
 
 def moveCardToField(oldTurnData: TurnData, c: Int):TurnData = {
-  val activePlayer = oldTurnData.playerId
+  val activePlayer = oldTurnData.currentPlayer
   val playerStacks = oldTurnData.playerDecks.toArray
   val card = playerStacks(activePlayer).removeCard(c)
   val newField = oldTurnData.field.copy()

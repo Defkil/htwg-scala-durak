@@ -1,12 +1,19 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.{CardDeck, Field, GameData, TurnData}
+import de.htwg.se.durak.model.{CardDeck, Field, GameData, RoundData, TurnData}
 import de.htwg.se.durak.utilities.TraitGameStrategy
 
 //noinspection ScalaStyle
 case class GameStrategyLocalhost() extends TraitGameStrategy {
   val roundFactory = new RoundFactory
   val gameTable = new GameTable
+
+  /**
+   * unterste Karte ist (0) und oberste (.size)
+   * @param gameData
+   * @param input
+   * @return
+   */
   def playerSelect(gameData: GameData, input: String): GameData = {
     val players = gameTable.createPlayers(input.split(" "))
     val (mainDeck, playerDecks) = gameTable.handOutCardsStart(
@@ -15,33 +22,47 @@ case class GameStrategyLocalhost() extends TraitGameStrategy {
     )
     val trump: Int = mainDeck.deck.head.symbol
     val field = new Field
-    val playerId: Int = gameTable.getFirstPlayer(playerDecks, trump)
-
+    val currentPlayer: Int = gameTable.getFirstPlayer(playerDecks, trump)
+    val defendPlayer: Int = gameTable.getNextPlayer(currentPlayer, players.length)
     GameData(
-      roundFactory.getInstance(10, Some(List(players(playerId).toString))),
-      Some(TurnData (players, playerDecks, playerId, field, mainDeck, trump))
+      roundFactory.getInstance(10, Some(List(players(currentPlayer).toString))),
+      Some(TurnData (players, playerDecks, currentPlayer, defendPlayer, field, mainDeck, trump))
     )
   }
 
   /**
-   * unterste Karte ist (0) und oberste (.size)
+   *
    * @param gameData
    * @param input
    * @return
    */
-  def startGame(gameData: GameData, input: String): GameData = {
-    GameData(roundFactory.getInstance(11, Some(List("looasd"))), None)
+  def nextTurn(gameData: GameData, input: String): GameData = {
+    val turnData = gameData.turnData.get
+    var res = gameData
+
+    // falls das Spielfeld leer ist
+    if(turnData.field.size == 0) {
+      val maxPossible = turnData.playerDecks(turnData.defendPlayer).deck.length - 1
+      res = GameData(
+        RoundData(11, Some((param:String) => param.matches("[0-" + maxPossible + "]"))
+          , Some(List(", " + gameTable.countTo(maxPossible))), None),
+        gameData.turnData
+      )
+    }
+    res
+    //GameData(roundFactory.getInstance(11, Some(List("looasd"))), None)
   }
 
   def attackTurn(gameData: GameData, input: String): GameData = {
-    if(gameData.turnData.get.field.size == 0) println()
-    GameData(roundFactory.getInstance(12, None), None)
+    //todo: get name from next user
+    GameData(roundFactory.getInstance(10, Some(List("lol"))), gameData.turnData)
   }
 
   def parseAttackTurn(gameData: GameData, input: String): GameData = {
     GameData(roundFactory.getInstance(13, None), None)
   }
 }
+
 
 
 

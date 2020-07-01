@@ -13,33 +13,58 @@ package de.htwg.se.durak.model
  * @param symbol card symbol (1-4)
  */
 case class Card(rank: Int, symbol: Int) {
+  def rankString: String = rank match {
+    case 2 => "2"
+    case 3 => "3"
+    case 4 => "4"
+    case 5 => "5"
+    case 6 => "6"
+    case 7 => "7"
+    case 8 => "8"
+    case 9 => "9"
+    case 10 => "10"
+    case 11 => "Bube"
+    case 12 => "Dame"
+    case 13 => "König"
+    case 14 => "Ass"
+  }
+
+  def symbolString: String = symbol match {
+    case 1 => "Pik"
+    case 2 => "Karo"
+    case 3 => "Kreuz"
+    case 4 => "Herz"
+  }
+
+  def symbolUnicode: String = symbol match {
+    case 1 => "\u2660"
+    case 2 => "\u2666"
+    case 3 => "\u2663"
+    case 4 => "\u2665"
+  }
+
+  def rankUnicode: String = rank match {
+    case 2 => "2"
+    case 3 => "3"
+    case 4 => "4"
+    case 5 => "5"
+    case 6 => "6"
+    case 7 => "7"
+    case 8 => "8"
+    case 9 => "9"
+    case 10 => "10"
+    case 11 => "\u265F"
+    case 12 => "\u265B"
+    case 13 => "\u265A"
+    case 14 => "A"
+  }
   /** custom toString
    * example "Rang: X, Typ: Y"
    *
    * @return String
    */
   override def toString: String = {
-    def getRank(): String = rank match {
-      case 2 => "2"
-      case 3 => "3"
-      case 4 => "4"
-      case 5 => "5"
-      case 6 => "6"
-      case 7 => "7"
-      case 8 => "8"
-      case 9 => "9"
-      case 10 => "10"
-      case 11 => "Bube"
-      case 12 => "Dame"
-      case 13 => "König"
-      case 14 => "Ass"
-    }
-    def getCardType(): String = symbol match {
-      case 1 => "Pik"
-      case 2 => "Karo"
-      case 3 => "Kreuz"
-      case 4 => "Herz"
-    }
-    "Rang: " + getRank() +", Typ: " + getCardType()
+
+    "Rang: " + symbolString +", Typ: " + rankString
   }
 }

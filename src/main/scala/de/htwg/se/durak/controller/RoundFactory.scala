@@ -9,12 +9,10 @@ import de.htwg.se.durak.model.RoundData
    * 1 = calibration info
    * 2 = calibration list 1 - 20
    * 3 = player name select
-   * 10 = start game
-   * 11 = attack Turn
-   * 12 = parse attack Turn
-   * 13 = defend Turn
-   * 14 = defend parse Turn
-   * 15 = finished
+   * 10 = next turn screen
+   * 11 = attack Turn (default validateInput is only for first round)
+   * 12 = defend Turn
+   * 13 = finished
    * old 10 = next turn
    * old 11 = attacker
    * old 12 = defender
@@ -26,17 +24,17 @@ import de.htwg.se.durak.model.RoundData
 case class RoundFactory() {
   def getInstance(id: Int, params: Option[List[String]]): RoundData = {
     val res = id match {
-      case -1 => RoundData(-1, (param:String) => true, params)
-      case 0 => RoundData(0, (param:String) => param.matches("[0,1,3]"), params)
-      case 1 => RoundData(1, (param:String) => param.toInt == 0, params)
-      case 2 => RoundData(2, (param:String) => param matches("([0-1]?[0-9]|20)"), params)
-      case 3 => RoundData(3, (param:String) => (1 < param.split(" ").length && param.split(" ").length < 7), params)
+      case -1 => RoundData(-1, Some((param:String) => true), null, params)
+      case 0 => RoundData(0, Some((param:String) => param.matches("[0,1,3]")), null, params)
+      case 1 => RoundData(1, Some((param:String) => param.toInt == 0), null, params)
+      case 2 => RoundData(2, Some((param:String) => param matches("([0-1]?[0-9]|20)")), null, params)
+      case 3 => RoundData(3, Some((param:String) => (1 < param.split(" ").length && param.split(" ").length < 7)), null, params)
 
-      case 10 => RoundData(10, (param:String) => true, params)
-      case 11 => RoundData(11, (param:String) => param.matches("[0-6]"), params)
-      case 12 => RoundData(12, (param:String) => true, params)
-      case 13 => RoundData(13, (param:String) => true, params)
-      case default => RoundData(0, _ matches("[0-2]"), params)
+      case 10 => RoundData(10, Some((param:String) => param.matches("[0-5]|s")), null, params)
+      case 11 => RoundData(11, Some((param:String) => param.matches("[0-5]")), null, params)
+      case 12 => RoundData(12, Some((param:String) => true), null, params)
+      case 13 => RoundData(13, Some((param:String) => true), null, params)
+      case default => RoundData(0, Some(_ matches("[0-2]")), null, params)
     }
     res
   }

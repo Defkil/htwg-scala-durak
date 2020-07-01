@@ -1,7 +1,7 @@
 package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.GameRuntime
-
+import de.htwg.se.durak.model.{Card, CardDeck, Field}
 import org.scalatest._
 
 class MockTui(runtime: GameRuntime) extends Tui(runtime: GameRuntime) {
@@ -80,10 +80,14 @@ class TuiSpec extends WordSpec with Matchers {
     }
 
     "nextTurnScreen" in {
-      val screen = tui.nextTurnScreen("")
-      screen.size should be(2)
-      screen should be(List("Naechster Spieler ist:",
-        ""
+      val screen = tui.nextTurnScreen("a")
+      screen.size should be(6)
+      screen should be(List("Nächster Spieler ist: a",
+        "Im nächsten Fenster kann man je nach Situation mit s den Angriff beenden",
+        "oder die Karten aufnehmen (als Verteidiger)",
+        "Karten Legende:",
+        "Karten Rang: 2 - 10 gleich, Bube: ♟, Dame: ♛, König: ♚, Ass: A",
+        "Karten Symbol: Pik: ♠, Karo: ♦, Kreuz: ♣, Herz: ♥"
       ))
     }
 
@@ -127,6 +131,33 @@ class TuiSpec extends WordSpec with Matchers {
       gameRuntime.roundData.siteID should be(0)
       tui.processInputLine("invalid input")
       gameRuntime.roundData.siteID should be(0)
+    }
+
+    "helperFormatCard" in {
+      val gameRuntime = new GameRuntime
+      val tui = Tui(gameRuntime)
+      val stringToTest = tui.helperFormatCard(Card(2, 1))
+      stringToTest.length should be(11)
+    }
+
+    "helperPrintField with one card and one option" in {
+      val gameRuntime = new GameRuntime
+      val tui = Tui(gameRuntime)
+
+      val deffer = "Spieler 1"
+      val field = new Field(CardDeck(List(Card(2,1))))
+      val playerDeck = new CardDeck(List(Card(3,1), Card(4,2)))
+      val res = tui.helperPrintField(deffer, field, playerDeck, "0, 1")
+      res.length should be(7)
+      res should be(List(
+        "Verteildiger: Spieler 1",
+        "              --------------",
+        "Angriff:      | ♠ 2        |",
+        "Verteidigung: |            |",
+        "              --------------",
+        "Karten in der Hand: 0: (♠ 3), 1: (♦ 4)",
+        "Mögliche Eingaben: s, 0",
+      ))
     }
   }
 }

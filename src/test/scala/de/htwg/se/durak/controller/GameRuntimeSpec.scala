@@ -8,8 +8,8 @@ class GameRuntimeSpec extends WordSpec with Matchers {
     val runtime = new GameRuntime()
     "size" in {
       runtime.roundStack = runtime.roundStack :+ new GameData(
-        new RoundData(0, (s: String) => true, None),
-        Some(new TurnData(List(new Player("name")), List(new CardDeck()), 0,
+        new RoundData(0, Some((s: String) => true), None, None),
+        Some(new TurnData(List(new Player("name")), List(new CardDeck()), 0, 1,
           new Field(), new CardDeck(), trump = -1))
       )
       // runtime.turnData.get should exist()

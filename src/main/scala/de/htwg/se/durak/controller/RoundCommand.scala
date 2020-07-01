@@ -11,11 +11,12 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
       case 0 => gameStrategyMenu.handleMenu(runtime.gameData, input)
       case 1 => gameStrategyMenu.handleCalibrationInfo(runtime.gameData, input)
       case 2 => {
+        //todo min. size 7
         runtime.screenSize = input.toInt
         gameStrategyMenu.handleCalibrationList(runtime.gameData, input)
       }
       case 3 => GameStrategy.get.playerSelect(runtime.gameData, input)
-      case 10 => GameStrategy.get.startGame(runtime.gameData, input)
+      case 10 => GameStrategy.get.nextTurn(runtime.gameData, input)
       case 11 => GameStrategy.get.attackTurn(runtime.gameData, input)
       case 12 => GameStrategy.get.parseAttackTurn(runtime.gameData, input)
     })
@@ -24,4 +25,4 @@ case class RoundCommand(input: String, runtime: GameRuntime) extends Command {
   override def undoStep: Unit = {
     runtime.roundStack = runtime.roundStack.init
   }
-}//todo hier das undo realisieren
+}
