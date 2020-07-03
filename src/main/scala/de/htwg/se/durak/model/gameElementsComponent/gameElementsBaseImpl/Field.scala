@@ -7,7 +7,6 @@ case class Field(var cardDeck: CardDeckInterface) extends FieldInterface {
     this(new CardDeck());
   }
   val size: Int = cardDeck.size
-  val deck: List[CardInterface] = cardDeck.deck
 
-  def addCard(card: CardInterface): Field =  Field(cardDeck.addCard(card))
+  def addCard(card: CardInterface): FieldInterface =  Field(cardDeck.addCard(card))
 }

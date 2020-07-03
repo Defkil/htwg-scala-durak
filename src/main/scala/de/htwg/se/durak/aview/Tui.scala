@@ -2,8 +2,7 @@ package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.GameDataChanged
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
-import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface}
-import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck, Field}
+import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, FieldInterface}
 
 import scala.collection.mutable.ListBuffer
 import scala.swing.Reactor
@@ -120,16 +119,17 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   }
 
   def nextTurnScreen(msg: String): List[String] = {
+    def createCard(rank: Int, symbol: Int) = controller.gameElements.createCard(rank, symbol)
     List("Nächster Spieler ist: " + msg,
       "Im nächsten Fenster kann man je nach Situation mit s den Angriff beenden",
       "oder die Karten aufnehmen (als Verteidiger)",
       "Karten Legende:",
-      "Karten Rang: 2 - 10 gleich, Bube: " + Card(11, 1).rankUnicode + ", "
-        + "Dame: " + Card(12, 1).rankUnicode + ", "
-        + "König: " + Card(13, 1).rankUnicode + ", "
-        + "Ass: " + Card(14, 1).rankUnicode,
-      "Karten Symbol: Pik: " + Card(2, 1).symbolUnicode + ", Karo: " + Card(2, 2).symbolUnicode
-        + ", Kreuz: " + Card(2, 3).symbolUnicode + ", Herz: " + Card(2, 4).symbolUnicode
+      "Karten Rang: 2 - 10 gleich, Bube: " + createCard(11, 1).rankUnicode + ", "
+        + "Dame: " + createCard(12, 1).rankUnicode + ", "
+        + "König: " + createCard(13, 1).rankUnicode + ", "
+        + "Ass: " + createCard(14, 1).rankUnicode,
+      "Karten Symbol: Pik: " + createCard(2, 1).symbolUnicode + ", Karo: " + createCard(2, 2).symbolUnicode
+        + ", Kreuz: " + createCard(2, 3).symbolUnicode + ", Herz: " + createCard(2, 4).symbolUnicode
     )
   }
 
@@ -169,7 +169,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     res
   }
 
-  def helperPrintField(deffer: String, actual: String, field: Field, playerDeck: CardDeckInterface, cardOptions: List[String]): List[String] = {
+  def helperPrintField(deffer: String, actual: String, field: FieldInterface, playerDeck: CardDeckInterface, cardOptions: List[String]): List[String] = {
     var fieldFirstLine = ""
     var fieldSecondLine = ""
     var playerCards = ""

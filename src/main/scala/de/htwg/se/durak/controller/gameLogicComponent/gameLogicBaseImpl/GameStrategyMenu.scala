@@ -1,21 +1,22 @@
 package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 
 import de.htwg.se.durak.controller.gameLogicComponent.GameStrategyMenuInterface
-import de.htwg.se.durak.model.GameData
+import de.htwg.se.durak.model.roundComponent.{GameDataInterface, RoundInterface, roundBaseImpl}
 
-case class GameStrategyMenu() extends  GameStrategyMenuInterface{
-  def handleMenu(gameData: GameData, input: String): GameData = {
-    GameData(input match {
-      case "0" => RoundFactory.getInstance(3)
-      case "1" => RoundFactory.getInstance(1)
-      case "3" => RoundFactory.getInstance(-1)
+case class GameStrategyMenu(round: RoundInterface) extends  GameStrategyMenuInterface{
+  var roundDataFactory: RoundDataFactory = new RoundDataFactory(round)
+  def handleMenu(gameDataI: GameDataInterface, input: String): GameDataInterface = {
+    roundBaseImpl.GameData(input match {
+      case "0" => roundDataFactory.getInstance(3)
+      case "1" => roundDataFactory.getInstance(1)
+      case "3" => roundDataFactory.getInstance(-1)
     }, None)
   }
 
-  def handleCalibrationInfo(gameData: GameData, input: String): GameData = {
-    GameData(RoundFactory.getInstance(2), None)
+  def handleCalibrationInfo(gameData: GameDataInterface, input: String): GameDataInterface = {
+    roundBaseImpl.GameData(roundDataFactory.getInstance(2), None)
   }
-  def handleCalibrationList(gameData: GameData, input: String): GameData = {
-    GameData(RoundFactory.getInstance(0), None)
+  def handleCalibrationList(gameData: GameDataInterface, input: String): GameDataInterface = {
+    roundBaseImpl.GameData(roundDataFactory.getInstance(0), None)
   }
 }

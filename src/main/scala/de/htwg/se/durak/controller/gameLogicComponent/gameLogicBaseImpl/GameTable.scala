@@ -1,7 +1,6 @@
 package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 
 import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, GameElementsInterface}
-import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck}
 import de.htwg.se.durak.model.playerComponent.Player
 
 import scala.collection.mutable.ListBuffer
@@ -15,7 +14,7 @@ case class GameTable(elms: GameElementsInterface) {
     val fromCounter = if (size == 36) 5 else 2
     for (x <- fromCounter until 14)
       for (y <- 1 to 4)
-        cards += Card(x, y)
+        cards += elms.createCard(x, y)
     util.Random.shuffle(cards).toList
   }
 
@@ -27,7 +26,7 @@ case class GameTable(elms: GameElementsInterface) {
 
   def createPlayerDecks(size:Int): List[CardDeckInterface] = {
     val stack = new ListBuffer[CardDeckInterface]()
-    for(player <- 0 until size) stack += new CardDeck()
+    for(player <- 0 until size) stack += elms.createCardDeck()
     stack.toList
   }
 
@@ -35,7 +34,7 @@ case class GameTable(elms: GameElementsInterface) {
     var newPlayerDecks = new ListBuffer[CardDeckInterface]
     var newMainDeck = mainDeck
     for (i <- Range(0, playerDecks.length, 1)) {
-      var newPlayerDeck: CardDeckInterface = new CardDeck
+      var newPlayerDeck: CardDeckInterface = elms.createCardDeck()
       for (j <- Range(0, CARD_PER_HAND, 1)) {
         var (tempMainDeck, cardToAdd) = newMainDeck.pop()
         newPlayerDeck = newPlayerDeck.addCard(cardToAdd)

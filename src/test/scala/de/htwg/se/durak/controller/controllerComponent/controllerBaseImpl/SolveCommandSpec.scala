@@ -1,6 +1,6 @@
 package de.htwg.se.durak.controller.controllerComponent.controllerBaseImpl
 
-import de.htwg.se.durak.model.{GameData, RoundData}
+import de.htwg.se.durak.model.roundComponent.roundBaseImpl.RoundData
 import org.scalatest._
 
 class SolveCommandSpec extends WordSpec with Matchers {

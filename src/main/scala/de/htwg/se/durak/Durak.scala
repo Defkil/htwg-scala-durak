@@ -1,11 +1,11 @@
 package de.htwg.se.durak
 
-import com.google.inject.{Guice, Injector}
-
-import scala.io.StdIn.readLine
 import de.htwg.se.durak.controller.GameDataChanged
 import de.htwg.se.durak.aview.Tui
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
+
+import com.google.inject.{Guice, Injector}
+import scala.io.StdIn.readLine
 
 object Durak {
   val injector: Injector = Guice.createInjector(new DurakModule)
