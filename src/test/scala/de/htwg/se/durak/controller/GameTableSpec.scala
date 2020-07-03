@@ -1,6 +1,6 @@
 package de.htwg.se.durak.controller
 
-import de.htwg.se.durak.model.{Card, CardDeck, Player}
+import de.htwg.se.durak.model.playerComponent.Player
 import org.scalatest._
 
 import scala.collection.mutable.ListBuffer

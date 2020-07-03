@@ -1,6 +1,6 @@
 package de.htwg.se.durak.model
 
-import de.htwg.se.durak.controller.{GameLogic, GameTableSpec}
+import de.htwg.se.durak.controller.GameTableSpec
 import org.scalatest._
 
 class InitSpec extends WordSpec with Matchers {

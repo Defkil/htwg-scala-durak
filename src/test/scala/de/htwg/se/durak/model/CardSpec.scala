@@ -1,5 +1,6 @@
 package de.htwg.se.durak.model
 
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.Card
 import org.scalatest._
 
 class CardSpec extends WordSpec with Matchers {

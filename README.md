@@ -10,3 +10,6 @@ Ein Projekt für das Modul Software Engineering
 
 [Wikipedia](https://de.wikipedia.org/wiki/Durak_(Kartenspiel)) |
 [Online Version](https://durak.hlop.de/)
+
+# Infos für später
+Spieler die fertig sind, müssen auf turnData.players entfernt werden

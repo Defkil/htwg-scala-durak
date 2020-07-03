@@ -1,4 +1,4 @@
-package de.htwg.se.durak.model
+package de.htwg.se.durak.model.playerComponent
 
 import org.scalatest._
 

@@ -1,13 +1,15 @@
-package de.htwg.se.durak.controller
+package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 
-import de.htwg.se.durak.model.{Card, CardDeck, Player}
+import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, GameElementsInterface}
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck}
+import de.htwg.se.durak.model.playerComponent.Player
 
 import scala.collection.mutable.ListBuffer
 
-case class GameTable() {
+case class GameTable(elms: GameElementsInterface) {
   val CARD_PER_HAND = 6
-  def generateDeck(size: Int): List[Card] = {
-    val cards = new ListBuffer[Card]
+  def generateDeck(size: Int): List[CardInterface] = {
+    val cards = new ListBuffer[CardInterface]
     val y = 0
     val x = 0
     val fromCounter = if (size == 36) 5 else 2
@@ -23,17 +25,17 @@ case class GameTable() {
     l.toList
   }
 
-  def createPlayerDecks(size:Int): List[CardDeck] = {
-    val stack = new ListBuffer[CardDeck]()
+  def createPlayerDecks(size:Int): List[CardDeckInterface] = {
+    val stack = new ListBuffer[CardDeckInterface]()
     for(player <- 0 until size) stack += new CardDeck()
     stack.toList
   }
 
-  def handOutCardsStart(mainDeck: CardDeck, playerDecks: List[CardDeck]): (CardDeck, List[CardDeck]) = {
-    var newPlayerDecks = new ListBuffer[CardDeck]
+  def handOutCardsStart(mainDeck: CardDeckInterface, playerDecks: List[CardDeckInterface]): (CardDeckInterface, List[CardDeckInterface]) = {
+    var newPlayerDecks = new ListBuffer[CardDeckInterface]
     var newMainDeck = mainDeck
     for (i <- Range(0, playerDecks.length, 1)) {
-      var newPlayerDeck = new CardDeck
+      var newPlayerDeck: CardDeckInterface = new CardDeck
       for (j <- Range(0, CARD_PER_HAND, 1)) {
         var (tempMainDeck, cardToAdd) = newMainDeck.pop()
         newPlayerDeck = newPlayerDeck.addCard(cardToAdd)
@@ -44,8 +46,8 @@ case class GameTable() {
     (newMainDeck, newPlayerDecks.toList)
   }
 
-  def getFirstPlayer(playerDecks: List[CardDeck], trump: Int): Int = {
-    var lowTrumpCard: Option[Card] = None
+  def getFirstPlayer(playerDecks: List[CardDeckInterface], trump: Int): Int = {
+    var lowTrumpCard: Option[CardInterface] = None
     var playerID: Option[Int] = None
     var actualID: Int = 0
     playerDecks.foreach(deck => {
@@ -60,10 +62,15 @@ case class GameTable() {
     playerID.getOrElse(0)
   }
 
-  def countTo(size: Int): String = {
-    var res = "0"
-    for(i <- Range(1, size, 1)) res += ", " + i
-    res
+  def countToWithS(size: Int): List[String] = {
+    val res: ListBuffer[String] = ListBuffer("s")
+    for(i <- Range(0, size, 1)) res += i.toString
+    res.toList
+  }
+  def countTo(size: Int): List[String] = {
+    val res: ListBuffer[String] = ListBuffer()
+    for(i <- Range(0, size, 1)) res += i.toString
+    res.toList
   }
 
   def getNextPlayer(currentPlayer: Int, maxPlayer: Int): Int = if(currentPlayer + 1 == maxPlayer) 0 else currentPlayer + 1

@@ -1,27 +1,31 @@
 package de.htwg.se.durak.aview
 
-import de.htwg.se.durak.controller.{GameDataChanged, GameRuntime}
-import de.htwg.se.durak.model.{Card, CardDeck, Field}
+import de.htwg.se.durak.controller.GameDataChanged
+import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
+import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface}
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck, Field}
 
 import scala.collection.mutable.ListBuffer
 import scala.swing.Reactor
 
-case class Tui(runtime: GameRuntime) extends Reactor {
+case class Tui(controller: ControllerInterface) extends Reactor {
   val MIN_SIZE = 6
 
-  listenTo(runtime)
+  listenTo(controller)
 
   def processInputLine(param: String): Unit = {
     if(param == "undo") {
-      runtime.undo
+      controller.undo
       return
     }
-    if(runtime.roundData.validateInput.isDefined) {
-      if(runtime.roundData.validateInput.get(param)) runtime.runRound(param)
-      else runtime.inputError()
+
+    val roundData = controller.roundData
+    if(roundData.validateInputList.head == "func") {
+      if(roundData.validateInput.get(param)) controller.solve(param)
+      else controller.inputError
     } else {
-      if(runtime.roundData.validateInputList.get.contains(param)) runtime.runRound(param)
-      else runtime.inputError()
+      if(roundData.validateInputList.contains(param)) controller.solve(param)
+      else controller.inputError
     }
   }
 
@@ -32,8 +36,8 @@ case class Tui(runtime: GameRuntime) extends Reactor {
   }
 
   def printTui(): Unit = {
-    val site = route(runtime.roundData.siteID, runtime.roundData.param)
-    val output = site ++ spacer(runtime.screenSize - site.length)
+    val site = route(controller.roundData.siteID, controller.roundData.param)
+    val output = site ++ spacer(controller.screenSize - site.length)
     output.foreach(print)
   }
 
@@ -130,12 +134,13 @@ case class Tui(runtime: GameRuntime) extends Reactor {
   }
 
   def attackerScreen(param: Option[List[String]]): List[String] = {
-    val turnData = runtime.turnData.get
+    val turnData = controller.turnData.get
     helperPrintField(
       turnData.players(turnData.defendPlayer).toString,
+      turnData.players(turnData.currentPlayer).toString,
       turnData.field,
       turnData.playerDecks(turnData.currentPlayer),
-      if(param.isDefined) param.get.head else ""
+      controller.roundData.validateInputList
     )
   }
 
@@ -151,7 +156,7 @@ case class Tui(runtime: GameRuntime) extends Reactor {
     )
   }
 
-  def helperFormatCard(card: Card): String = {
+  def helperFormatCard(card: CardInterface): String = {
     var res = card.symbolUnicode + " " + card.rankUnicode
     for(i <- Range(res.length, 11, 1)) res += " "
     res
@@ -164,11 +169,11 @@ case class Tui(runtime: GameRuntime) extends Reactor {
     res
   }
 
-  def helperPrintField(deffer: String, field: Field, playerDeck: CardDeck, cardOptions: String): List[String] = {
+  def helperPrintField(deffer: String, actual: String, field: Field, playerDeck: CardDeckInterface, cardOptions: List[String]): List[String] = {
     var fieldFirstLine = ""
     var fieldSecondLine = ""
     var playerCards = ""
-    var possibleInput = "s"
+    var possibleInput = ""
 
     // generate Field
     for (i <- Range(0, field.size, 2)) {
@@ -188,10 +193,18 @@ case class Tui(runtime: GameRuntime) extends Reactor {
     }
 
     // list possible input options
-    possibleInput += cardOptions
+    if(cardOptions.head != "func") {
+      for(i <- Range(0, cardOptions.length, 1)) {
+        possibleInput += cardOptions(i) + ", "
+      }
+    }
+    possibleInput = possibleInput.dropRight(2)
 
+    // add attacker if its not the turn of the deffer
+    val playerMsg = if(deffer != actual) "Verteildiger: " + deffer +"\t\taktueller Angreifer: " + actual else "aktueller Verteildiger: \t" + deffer
+    println(deffer + " - " + actual)
     List(
-      "Verteildiger: " + deffer,
+      playerMsg,
       "              " + helperSpacerString(fieldFirstLine.length + 1),
       "Angriff:      " + fieldFirstLine + "|",
       "Verteidigung: " + fieldSecondLine + "|",

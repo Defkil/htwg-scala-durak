@@ -1,5 +1,5 @@
-import de.htwg.se.durak.model.{CardDeck,Field, Card}
-
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.Field
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.Field
 import org.scalatest._
 
 class FieldSpec extends WordSpec with Matchers {

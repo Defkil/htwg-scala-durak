@@ -1,8 +1,4 @@
-package de.htwg.se.durak.controller
-
-import de.htwg.se.durak.model.{Card, CardDeck, Field, Player, TurnData}
-
-import scala.collection.mutable.ListBuffer
+package de.htwg.se.durak.utilities.old
 
 case class GameLogic() {
   /*für die abgabe auskommentiert

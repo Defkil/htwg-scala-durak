@@ -3,7 +3,7 @@ package de.htwg.se.durak.controller
 import org.scalatest._
 
 class CardDeckFactorySpec extends WordSpec with Matchers {
-  "CardStackFactory" should {
+  /*"CardStackFactory" should {
     val cardStackFactory = new CardStackFactory
     "generate player stack" in {
       cardStackFactory.getInstance(0).size should be(0)
@@ -14,5 +14,5 @@ class CardDeckFactorySpec extends WordSpec with Matchers {
     "generate outside stack" in {
       cardStackFactory.getInstance(2).size should be(0)
     }
-  }
+  }*/
 }

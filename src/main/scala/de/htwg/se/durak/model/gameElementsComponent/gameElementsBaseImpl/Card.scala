@@ -1,4 +1,6 @@
-package de.htwg.se.durak.model
+package de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl
+
+import de.htwg.se.durak.model.gameElementsComponent.{CardInterface, GameElementsInterface}
 
 /** Card with rank and a type
  *
@@ -12,7 +14,7 @@ package de.htwg.se.durak.model
  * @param rank card rank (2-14)
  * @param symbol card symbol (1-4)
  */
-case class Card(rank: Int, symbol: Int) {
+case class Card(rank: Int, symbol: Int) extends CardInterface {
   def rankString: String = rank match {
     case 2 => "2"
     case 3 => "3"
