@@ -6,6 +6,11 @@
 
 Ein Projekt für das Modul Software Engineering
 
+* controller/controllerComponent Componente zum ausführen der Runden
+* controller/gameLogicComponent Componente mit der eigentlichen Game Logic
+* model/gameElementsComponent Componente mit Spiel Elementen wie Karten, Karten Decks
+* model/roundComponent Componenten mit RoundData
+
 # Infos zum Spiel
 
 [Wikipedia](https://de.wikipedia.org/wiki/Durak_(Kartenspiel)) |
