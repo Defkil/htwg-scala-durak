@@ -79,7 +79,7 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     val card = turnData.playerDecks(turnData.currentPlayer).deck(input)
     val field = turnData.field.addCard(card)
     val playerDecks = turnData.playerDecks.updated(turnData.currentPlayer, turnData.playerDecks(turnData.currentPlayer).removeCard(card))
-    round.createTurnData(turnData.players, playerDecks, nextPlayer, turnData.defendPlayer, field, turnData.mainDeck, turnData.trump)
+    round.createTurnData(turnData.players, playerDecks, nextPlayer, turnData.defendPlayer, field, turnData.mainDeck, turnData.outDeck, turnData.trump)
   }
 
   def getPossibleAttackTurns(field: FieldInterface, playerDeck: CardDeckInterface): List[String] = {

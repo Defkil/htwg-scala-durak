@@ -1,7 +1,7 @@
 package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 
 import de.htwg.se.durak.controller.gameLogicComponent.GameStrategyInterface
-import de.htwg.se.durak.model.gameElementsComponent.{FieldInterface, GameElementsInterface}
+import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, FieldInterface, GameElementsInterface}
 import de.htwg.se.durak.model.roundComponent.{GameDataInterface, RoundInterface, roundBaseImpl}
 
 //noinspection ScalaStyle
@@ -23,11 +23,12 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
     )
     val trump: Int = mainDeck.deck.head.symbol
     val field: FieldInterface = elm.createField()
+    val outDeck: CardDeckInterface = elm.createCardDeck()
     val currentPlayer: Int = gameTable.getFirstPlayer(playerDecks, trump)
     val defendPlayer: Int = gameTable.getNextPlayer(currentPlayer, players.length)
     round.createGameData(
       roundDataFactory.getInstance(10),
-      Some(round.createTurnData(players, playerDecks, currentPlayer, defendPlayer, field, mainDeck, trump))
+      Some(round.createTurnData(players, playerDecks, currentPlayer, defendPlayer, field, mainDeck, outDeck, trump))
     )
   }
 

@@ -18,8 +18,8 @@ class Round extends RoundInterface {
 
   def createTurnData(players: List[Player], playerDecks: List[CardDeckInterface]
                      , currentPlayer: Int, defendPlayer: Int, field: FieldInterface
-                     , mainDeck: CardDeckInterface, trump: Int): TurnDataInterface = {
-    TurnData(players, playerDecks,currentPlayer, defendPlayer, field, mainDeck, trump)
+                     , mainDeck: CardDeckInterface, outDeck: CardDeckInterface, trump: Int): TurnDataInterface = {
+    TurnData(players, playerDecks,currentPlayer, defendPlayer, field, mainDeck, outDeck, trump)
   }
 
   def createRoundData(siteID: Int,
