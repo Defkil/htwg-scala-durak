@@ -92,56 +92,16 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
 
   def getPossibleDefendTurns(card: CardInterface, playerDeck: CardDeckInterface, trump: Int): List[String] = {
     val res: ListBuffer[String] = ListBuffer("s") // Verteidiger kann immer Karten aufnehmen
-    for(i <- Range(0,  playerDeck.deck.length, 1)) {
-      if(canCardDefend(card, playerDeck.deck(i), trump)) {
-        println("lkkk" + i.toString)
-        res += i.toString
-      }
-    }
-    res.toList.foreach(println)
+    for(i <- Range(0,  playerDeck.deck.length, 1)) if(canCardDefend(card, playerDeck.deck(i), trump)) res += i.toString
     res.toList
   }
 
   def canCardDefend(attackCard: CardInterface, defendCard: CardInterface, trump: Int): Boolean = {
-    println("==========")
-    println(trump)
-    println(attackCard.toString)
-    println(defendCard.toString)
-    println(attackCard.rank + " - " + defendCard.rank)
-    if(isTrump(attackCard, trump) && !isTrump(defendCard, trump)) {
-      println("1")
-      false
-    } else if(isTrump(attackCard, trump) && isTrump(defendCard, trump)) {
-      println("2")
-      (attackCard.rank <= defendCard.rank)
-    } else if(isTrump(defendCard, trump)) {
-      println("3")
-      true
-    } else if(attackCard.symbol == defendCard.symbol) {
-        println("4 " + (attackCard.rank < defendCard.rank))
-
-        (attackCard.rank < defendCard.rank)
-    } else {
-      println("5")
-      false
-    }
-
-
-
-
-
-
-
-    /*if(isTrump(attackCard, trump)) { // wenn attackCard Trumpf ist
-      if(isTrump(defendCard, trump)) { // wenn defendCard auch Trumpf ist denk rank vergleichen, sonst false
-        attackCard.rank < defendCard.rank
-      } else { false }
-    } else {
-      if(isTrump(defendCard, trump)) { true } else { // wenn nur defendCard Trumpf ist true
-        println("10: " + (attackCard.rank < defendCard.rank))
-        attackCard.rank < defendCard.rank
-      }
-    }*/
+    if(isTrump(attackCard, trump) && !isTrump(defendCard, trump)) { false }
+    else if(isTrump(attackCard, trump) && isTrump(defendCard, trump)) { attackCard.rank <= defendCard.rank }
+    else if(isTrump(defendCard, trump)) { true }
+    else if(attackCard.symbol == defendCard.symbol) { attackCard.rank < defendCard.rank }
+    else { false }
   }
 
   def isTrump(card: CardInterface, trump: Int): Boolean = card.symbol == trump
@@ -150,18 +110,4 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     if(currentPlayer == 0) { maxPlayer }
     else { currentPlayer - 1 }
   }
-/*val CARDS_PER_PLAYER = 6
-def createPlayerCardStack(players: List[Player]): List[CardStack] = {
-  val stack = new ListBuffer[CardStack]()
-  for(player <- players)
-    stack += new CardStack(0)
-  stack.toList
-}
-def handOutCards(cardStackList: List[CardStack], cardStack: CardStack): Unit = {
-  for(i <- cardStackList) {
-    for(j <- 0 until CARDS_PER_PLAYER) {
-      i.addCard(cardStack.popCard())
-    }
-  }
-}*/
 }

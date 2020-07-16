@@ -62,11 +62,7 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
       )
       // Alle möglichkeiten für weitere Angriffe berechnen
     }
-
-
-
     res
-    //GameData(roundFactory.getInstance(11, Some(List("looasd"))), None)
   }
 
   def attackTurn(gameData: GameDataInterface, input: String): GameDataInterface = {

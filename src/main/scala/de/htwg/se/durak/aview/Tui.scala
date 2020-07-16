@@ -140,7 +140,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
         + "König: " + createCard(13, 1).rankUnicode + ", "
         + "Ass: " + createCard(14, 1).rankUnicode,
       "Karten Symbol: Pik: " + createCard(2, 1).symbolUnicode + ", Karo: " + createCard(2, 2).symbolUnicode
-        + ", Kreuz: " + createCard(2, 3).symbolUnicode + ", Herz: " + createCard(2, 4).symbolUnicode
+        + ", Kreuz: " + createCard(2, 3).symbolUnicode + ", Herz: " + createCard(2, 4).symbolUnicode,
+      "Fortfahren mit 0"
     )
   }
 
@@ -153,12 +154,6 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       turnData.playerDecks(turnData.currentPlayer),
       turnData.trump,
       controller.roundData.validateInputList
-    )
-  }
-
-  def defenderScreen(param: Option[List[String]]): List[String] = {
-    List("todo defenderScreen",
-      param.getOrElse(List("")).head
     )
   }
 
@@ -176,8 +171,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
 
   def helperSpacerString(size: Int): String = {
     var res = ""
-    for(i <- Range(0, size, 1))
-      res += "-"
+    for(i <- Range(0, size, 1)) res += "-"
     res
   }
 
@@ -201,7 +195,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       else fieldSecondLine += "|            "
     }
     if(fieldFirstLine.length == 0) {
-      fieldFirstLine = "|            "
+      fieldFirstLine =  "|            "
       fieldSecondLine = "|            "
     }
 
@@ -232,7 +226,4 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       "Mögliche Eingaben: " + possibleInput
     )
   }
-//  def fieldScreen(param: Option[List[String]]): List[String] = {
-//
-//  }
 }
