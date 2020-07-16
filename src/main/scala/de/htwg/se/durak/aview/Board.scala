@@ -16,11 +16,15 @@ import scalafx.scene.text.Text
 class Board(f: GUI, controller: ControllerInterface) extends Scene {
   val CARD_HEIGHT = 160
   val CARD_WIDTH = 120
-  val gameData = controller.roundStack(controller.roundStack.size)
+  val gameData = controller.roundStack(controller.roundStack.size - 1)
+  val turnData = gameData.turnData.get
+  val roundData = gameData.roundData
+  val currentplayer = turnData.currentPlayer
   fill = Color.White
   content = new HBox {
     children = Seq(new VBox {
-      children = Seq(new Text("Spieler: ") {
+      def position() = if(roundData.siteID == 10) "Angriff: " else if(roundData.siteID == 12) "Verteidigung: " else ""
+      children = Seq(new Text(position() + turnData.players(turnData.currentPlayer)) {
         fill = Color.Blue
       },
         new Text("Field"),
@@ -34,7 +38,7 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
         alignment = Pos.Center
         children = Seq(
           new Text("Trumpf"),
-          getCard(new Card(gameData.turnData.get.trump, 3)),
+          getCard(new Card( 3, gameData.turnData.get.trump)),
           new Button("Hallo, Hi") {
             onAction = (t: ActionEvent) => println("Hallo, Hi")
           },
@@ -46,15 +50,14 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
     )
   }
 
-  private def getCard(c:CardInterface) = new ImageView("de/htwg/se/durak/aview/CardLogos/"
-      + c.rank +"-" + c.symbol+ ".png") {
+  private def getCard(c:CardInterface) = new ImageView(
+      "de/htwg/se/durak/aview/CardLogos/"
+        + c.symbol + "-" + c.rank + ".png") {
     fitHeight = CARD_HEIGHT
     fitWidth = CARD_WIDTH
   }
 
   def cardStack():HBox = new HBox {
-    val turnData = gameData.turnData.get
-    val currentplayer = turnData.currentPlayer
     val stack = turnData.playerDecks(currentplayer)
     var s = Seq[ImageView]()
     for(i <- 0 until stack.size){
@@ -71,7 +74,7 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
       children = Seq(getCard(c1), getCard(c2))
     }
 
-    val numberOfCards = 15
+    val numberOfCards = fieldStack.size
     val numberOfFullBoxes = numberOfCards/2
     val lastBox = Math.floorMod(numberOfCards, 2)
     var s = Seq[VBox]()
@@ -84,6 +87,7 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
     children = s
   }
   private def onCardChosen(i:Int):Unit = {
+    controller.solve("0")
     f.input = i.toString
   }
 }
