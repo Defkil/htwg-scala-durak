@@ -15,8 +15,10 @@ case class SolveCommand(input: String, controller: ControllerInterface) extends 
         controller.gameLogic.menu.handleCalibrationList(controller.gameData, input)
       }
       case 3 => controller.gameLogic.get.playerSelect(controller.gameData, input)
+      case 4 => controller.gameLogic.menu.handleSave(controller.gameData, input) // save step
       case 10 => controller.gameLogic.get.nextTurn(controller.gameData, input)
       case 11 => controller.gameLogic.get.attackTurn(controller.gameData, input)
+      case 12 => controller.gameLogic.get.defendTurn(controller.gameData, input)
     })
   }
 

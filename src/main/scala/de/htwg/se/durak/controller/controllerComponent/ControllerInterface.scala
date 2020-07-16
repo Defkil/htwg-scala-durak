@@ -21,6 +21,10 @@ trait ControllerInterface extends Publisher {
 
   def undo: Unit
   def redo: Unit
+
+  def save: Unit
+  def load: Unit
+
   def solve(param: String): Unit
   def inputError: Unit
 }

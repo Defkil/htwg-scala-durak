@@ -1,11 +1,12 @@
 package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 
-import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, GameElementsInterface}
+import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, FieldInterface, GameElementsInterface}
 import de.htwg.se.durak.model.playerComponent.Player
+import de.htwg.se.durak.model.roundComponent.{RoundInterface, TurnDataInterface}
 
 import scala.collection.mutable.ListBuffer
 
-case class GameTable(elms: GameElementsInterface) {
+case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
   val CARD_PER_HAND = 6
   def generateDeck(size: Int): List[CardInterface] = {
     val cards = new ListBuffer[CardInterface]
@@ -73,6 +74,82 @@ case class GameTable(elms: GameElementsInterface) {
   }
 
   def getNextPlayer(currentPlayer: Int, maxPlayer: Int): Int = if(currentPlayer + 1 == maxPlayer) 0 else currentPlayer + 1
+
+  def addCardToField(turnData: TurnDataInterface, input: Int, nextPlayer: Int): TurnDataInterface = {
+    val card = turnData.playerDecks(turnData.currentPlayer).deck(input)
+    val field = turnData.field.addCard(card)
+    val playerDecks = turnData.playerDecks.updated(turnData.currentPlayer, turnData.playerDecks(turnData.currentPlayer).removeCard(card))
+    round.createTurnData(turnData.players, playerDecks, nextPlayer, turnData.defendPlayer, field, turnData.mainDeck, turnData.trump)
+  }
+
+  def getPossibleAttackTurns(field: FieldInterface, playerDeck: CardDeckInterface): List[String] = {
+    val res: ListBuffer[String] = ListBuffer("s") // Erster Angriff (den man lediglich skippen kann) hat freie Auswahl, daher kann man hier skippen
+    var possibleRank: ListBuffer[Int] = ListBuffer()
+    field.deck.foreach(card => if(!possibleRank.contains(card.rank)) possibleRank += card.rank)
+    for(i <- Range(0,  playerDeck.deck.length, 1)) if(possibleRank.contains(playerDeck.deck(i).rank)) res += i.toString
+    res.toList
+  }
+
+  def getPossibleDefendTurns(card: CardInterface, playerDeck: CardDeckInterface, trump: Int): List[String] = {
+    val res: ListBuffer[String] = ListBuffer("s") // Verteidiger kann immer Karten aufnehmen
+    for(i <- Range(0,  playerDeck.deck.length, 1)) {
+      if(canCardDefend(card, playerDeck.deck(i), trump)) {
+        println("lkkk" + i.toString)
+        res += i.toString
+      }
+    }
+    res.toList.foreach(println)
+    res.toList
+  }
+
+  def canCardDefend(attackCard: CardInterface, defendCard: CardInterface, trump: Int): Boolean = {
+    println("==========")
+    println(trump)
+    println(attackCard.toString)
+    println(defendCard.toString)
+    println(attackCard.rank + " - " + defendCard.rank)
+    if(isTrump(attackCard, trump) && !isTrump(defendCard, trump)) {
+      println("1")
+      false
+    } else if(isTrump(attackCard, trump) && isTrump(defendCard, trump)) {
+      println("2")
+      (attackCard.rank <= defendCard.rank)
+    } else if(isTrump(defendCard, trump)) {
+      println("3")
+      true
+    } else if(attackCard.symbol == defendCard.symbol) {
+        println("4 " + (attackCard.rank < defendCard.rank))
+
+        (attackCard.rank < defendCard.rank)
+    } else {
+      println("5")
+      false
+    }
+
+
+
+
+
+
+
+    /*if(isTrump(attackCard, trump)) { // wenn attackCard Trumpf ist
+      if(isTrump(defendCard, trump)) { // wenn defendCard auch Trumpf ist denk rank vergleichen, sonst false
+        attackCard.rank < defendCard.rank
+      } else { false }
+    } else {
+      if(isTrump(defendCard, trump)) { true } else { // wenn nur defendCard Trumpf ist true
+        println("10: " + (attackCard.rank < defendCard.rank))
+        attackCard.rank < defendCard.rank
+      }
+    }*/
+  }
+
+  def isTrump(card: CardInterface, trump: Int): Boolean = card.symbol == trump
+
+  def getLeftPlayer(currentPlayer: Int, maxPlayer: Int): Int = {
+    if(currentPlayer == 0) { maxPlayer }
+    else { currentPlayer - 1 }
+  }
 /*val CARDS_PER_PLAYER = 6
 def createPlayerCardStack(players: List[Player]): List[CardStack] = {
   val stack = new ListBuffer[CardStack]()

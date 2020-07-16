@@ -6,4 +6,5 @@ trait GameStrategyMenuInterface {
   def handleMenu(gameData: GameDataInterface, input: String): GameDataInterface
   def handleCalibrationInfo(gameData: GameDataInterface, input: String): GameDataInterface
   def handleCalibrationList(gameData: GameDataInterface, input: String): GameDataInterface
+  def handleSave(gameData: GameDataInterface, input: String): GameDataInterface
 }

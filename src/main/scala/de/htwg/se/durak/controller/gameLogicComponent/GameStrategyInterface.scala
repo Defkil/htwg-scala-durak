@@ -6,4 +6,5 @@ trait GameStrategyInterface {
   def playerSelect(gameData: GameDataInterface, input: String): GameDataInterface
   def nextTurn(gameData: GameDataInterface, input: String): GameDataInterface
   def attackTurn(gameData: GameDataInterface, input: String): GameDataInterface
+  def defendTurn(gameData: GameDataInterface, input: String): GameDataInterface
 }

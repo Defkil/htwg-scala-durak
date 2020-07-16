@@ -7,10 +7,10 @@ import de.htwg.se.durak.model.roundComponent.TurnDataInterface
 
 case class TurnData(players: List[Player], playerDecks: List[CardDeckInterface]
                     , currentPlayer: Int, defendPlayer: Int, field: FieldInterface
-                    , mainDeck: CardDeckInterface, trump: Int) extends TurnDataInterface{
+                    , mainDeck: CardDeckInterface, outDeck: CardDeckInterface, trump: Int) extends TurnDataInterface{
 
   def addCard(card: Card): TurnData = TurnData(
     players, playerDecks, currentPlayer,
-    defendPlayer, field.addCard(card), mainDeck, trump
+    defendPlayer, field.addCard(card), mainDeck, outDeck, trump
   )
 }

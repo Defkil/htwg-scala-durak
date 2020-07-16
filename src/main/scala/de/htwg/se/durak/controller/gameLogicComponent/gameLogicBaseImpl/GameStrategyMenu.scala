@@ -19,4 +19,8 @@ case class GameStrategyMenu(round: RoundInterface) extends  GameStrategyMenuInte
   def handleCalibrationList(gameData: GameDataInterface, input: String): GameDataInterface = {
     roundBaseImpl.GameData(roundDataFactory.getInstance(0), None)
   }
+
+  def handleSave(gameData: GameDataInterface, input: String): GameDataInterface = {
+    roundBaseImpl.GameData(roundDataFactory.getInstance(4), None)
+  }
 }

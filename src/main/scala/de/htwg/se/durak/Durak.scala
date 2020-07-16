@@ -19,6 +19,6 @@ object Durak {
     do {
       input = readLine()
       tui.processInputLine(input)
-    } while (!controller.roundStack.last.roundData.siteID.equals(-1))
+    } while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID))//controller.roundStack.last.roundData.siteID.equals(-1))
   }
 }

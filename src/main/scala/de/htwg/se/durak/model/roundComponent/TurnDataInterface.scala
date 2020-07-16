@@ -10,5 +10,6 @@ trait TurnDataInterface {
   val defendPlayer: Int
   val field: FieldInterface
   val mainDeck: CardDeckInterface
+  val outDeck: CardDeckInterface
   val trump: Int
 }

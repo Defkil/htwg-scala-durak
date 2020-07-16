@@ -18,6 +18,12 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       return
     }
 
+    if(param == "save") {
+      //controller.save
+      controller.save
+      return
+    }
+
     val roundData = controller.roundData
     if(roundData.validateInputList.head == "func") {
       if(roundData.validateInput.get(param)) controller.solve(param)
@@ -53,12 +59,10 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       case 1 => calibrationInfoScreen()
       case 2 => calibrationListScreen()
       case 3 => playerScreen(param.getOrElse(List("")).head)
+      case 4 => saveScreen()
       case 10 => nextTurnScreen(param.getOrElse(List("")).head)
-      case 11 => attackerScreen(param)
-      case 12 => playerScreen(param.getOrElse(List("")).head)
-      case 13 => defenderScreen(param)
-      case 14 => playerScreen(param.getOrElse(List("")).head)
-      case 15 => finishedScreen(param)
+      case 11 => playScreen(param)
+      case 12 => playScreen(param)
     }
   }
 
@@ -75,6 +79,13 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       "2     Multiplayer",
       "3     Spiel schließen",
       param
+    )
+  }
+
+  def saveScreen(): List[String] = {
+    List(
+      "Das Spiel wurde gespeichert",
+      "Auf wiedersehen!"
     )
   }
 
@@ -120,7 +131,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
 
   def nextTurnScreen(msg: String): List[String] = {
     def createCard(rank: Int, symbol: Int) = controller.gameElements.createCard(rank, symbol)
-    List("Nächster Spieler ist: " + msg,
+    List("Nächster Spieler ist: " + controller.turnData.get.players(controller.turnData.get.currentPlayer).toString,
       "Im nächsten Fenster kann man je nach Situation mit s den Angriff beenden",
       "oder die Karten aufnehmen (als Verteidiger)",
       "Karten Legende:",
@@ -133,13 +144,14 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     )
   }
 
-  def attackerScreen(param: Option[List[String]]): List[String] = {
+  def playScreen(param: Option[List[String]]): List[String] = {
     val turnData = controller.turnData.get
     helperPrintField(
       turnData.players(turnData.defendPlayer).toString,
       turnData.players(turnData.currentPlayer).toString,
       turnData.field,
       turnData.playerDecks(turnData.currentPlayer),
+      turnData.trump,
       controller.roundData.validateInputList
     )
   }
@@ -169,7 +181,14 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     res
   }
 
-  def helperPrintField(deffer: String, actual: String, field: FieldInterface, playerDeck: CardDeckInterface, cardOptions: List[String]): List[String] = {
+  def symbolUnicode(id: Int): String = id match {
+    case 1 => "\u2660"
+    case 2 => "\u2666"
+    case 3 => "\u2663"
+    case 4 => "\u2665"
+  }
+
+  def helperPrintField(deffer: String, actual: String, field: FieldInterface, playerDeck: CardDeckInterface, trump: Int, cardOptions: List[String]): List[String] = {
     var fieldFirstLine = ""
     var fieldSecondLine = ""
     var playerCards = ""
@@ -204,7 +223,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     val playerMsg = if(deffer != actual) "Verteildiger: " + deffer +"\t\taktueller Angreifer: " + actual else "aktueller Verteildiger: \t" + deffer
     println(deffer + " - " + actual)
     List(
-      playerMsg,
+      playerMsg + "\tTrump: " + symbolUnicode(trump),
       "              " + helperSpacerString(fieldFirstLine.length + 1),
       "Angriff:      " + fieldFirstLine + "|",
       "Verteidigung: " + fieldSecondLine + "|",
