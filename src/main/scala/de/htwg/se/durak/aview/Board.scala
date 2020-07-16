@@ -1,4 +1,4 @@
-package DurakGUI
+package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
 import de.htwg.se.durak.model.gameElementsComponent.CardInterface
