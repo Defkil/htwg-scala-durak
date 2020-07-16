@@ -12,7 +12,7 @@ Ein Projekt für das Modul Software Engineering
 * model/gameElementsComponent Componente mit Spiel Elementen wie Karten, Karten Decks
 * model/roundComponent Componenten mit GameData
 
-# RoundData
+# GameData
 Besteht aus RoundData und TurnData.
 RoundData besitzt Informationen über die Runde. TurnData besitzt Informationen über das Spiel.
 # Infos zum Spiel
