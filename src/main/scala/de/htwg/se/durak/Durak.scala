@@ -4,7 +4,6 @@ import de.htwg.se.durak.controller.GameDataChanged
 import de.htwg.se.durak.aview.{GUI, Tui}
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
 import com.google.inject.{Guice, Injector}
-import scalafx.application
 
 import scala.io.StdIn.readLine
 
@@ -14,10 +13,10 @@ object Durak {
   val tui: Tui = Tui(controller)
   controller.publish(new GameDataChanged)
   val gui = new GUI(controller)
-  //gui.main(null)
 
   def main(args: Array[String]): Unit = {
     var input: String = ""
+    gui.main(Array(""))
     do {
       input = readLine()
       tui.processInputLine(input)

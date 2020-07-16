@@ -1,4 +1,4 @@
-package DurakGUI
+package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
 import de.htwg.se.durak.controller.controllerComponent.controllerBaseImpl.SolveCommand
@@ -12,10 +12,10 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.Text
 
 class MainMenu(f:GUI, controller: ControllerInterface) extends Scene{
-  private val playerNames = new Text("2 - 6 Spielernamen eingeben, durch Leerzeichen getrennt") {
-    fill = Color.OrangeRed
+  val playerNames = new TextField() {
+    prefWidth = 200
+    prefHeight = 40
   }
-
   fill = Color.rgb(38, 38, 38)
   content = new VBox {
     padding = Insets(40, 20, 40, 20)
@@ -34,14 +34,14 @@ class MainMenu(f:GUI, controller: ControllerInterface) extends Scene{
         prefHeight = (40)
         onMouseClicked = (t: MouseEvent) => println("Nicht implementiert")
       },
-      playerNames,
-      new TextField() {
-        prefWidth = 200
-        prefHeight = 40
-      }
+      new Text("2 - 6 Spielernamen eingeben, durch Leerzeichen getrennt") {
+        fill = Color.OrangeRed
+      },
+      playerNames
     )
   }
   private def startGame(): Unit = {
     f.input = playerNames.getText
+    controller.solve("0")
   }
 }
