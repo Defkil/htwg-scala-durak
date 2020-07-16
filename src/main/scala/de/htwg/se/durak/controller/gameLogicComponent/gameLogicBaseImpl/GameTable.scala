@@ -73,14 +73,20 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     res.toList
   }
 
-  def getNextPlayer(currentPlayer: Int, maxPlayer: Int): Int = if(currentPlayer + 1 == maxPlayer) 0 else currentPlayer + 1
 
-  def addCardToField(turnData: TurnDataInterface, input: Int, nextPlayer: Int): TurnDataInterface = {
+  def addSpacer(turnData: TurnDataInterface): TurnDataInterface = {
+    round.createTurnData(
+      turnData.players, turnData.playerDecks, turnData.currentPlayer, turnData.defendPlayer
+      , turnData.field.addCard(elms.createCard(-1, -1)), turnData.mainDeck, turnData.outDeck, turnData.trump, turnData.turnType)
+  }
+
+  def addCardToField(turnData: TurnDataInterface, input: Int, nextPlayer: Int, turnType: Int): TurnDataInterface = {
     val card = turnData.playerDecks(turnData.currentPlayer).deck(input)
     val field = turnData.field.addCard(card)
     val playerDecks = turnData.playerDecks.updated(turnData.currentPlayer, turnData.playerDecks(turnData.currentPlayer).removeCard(card))
-    round.createTurnData(turnData.players, playerDecks, nextPlayer, turnData.defendPlayer, field, turnData.mainDeck, turnData.outDeck, turnData.trump)
+    round.createTurnData(turnData.players, playerDecks, nextPlayer, turnData.defendPlayer, field, turnData.mainDeck, turnData.outDeck, turnData.trump, turnType)
   }
+  def addCardToField(turnData: TurnDataInterface, input: Int, nextPlayer: Int): TurnDataInterface = addCardToField(turnData, input, nextPlayer, 0)
 
   def getPossibleAttackTurns(field: FieldInterface, playerDeck: CardDeckInterface): List[String] = {
     val res: ListBuffer[String] = ListBuffer("s") // Erster Angriff (den man lediglich skippen kann) hat freie Auswahl, daher kann man hier skippen
@@ -106,8 +112,29 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
 
   def isTrump(card: CardInterface, trump: Int): Boolean = card.symbol == trump
 
-  def getLeftPlayer(currentPlayer: Int, maxPlayer: Int): Int = {
-    if(currentPlayer == 0) { maxPlayer }
+  def getLeftPlayer(currentPlayer: Int, maxPlayer: Int): Int = { // max player - 1 da Player von 0 hochgezählt wird
+    if(currentPlayer == 0) { maxPlayer - 1 }
     else { currentPlayer - 1 }
   }
+
+  def getRightPlayer(currentPlayer: Int, maxPlayer: Int): Int = {
+    if(currentPlayer == maxPlayer - 1) 0 else currentPlayer + 1
+  }
+
+  def defenderTakeCards(turnData: TurnDataInterface, turnType: Int) : TurnDataInterface = {
+    val playerDecks: List[CardDeckInterface] = turnData.playerDecks.updated(
+      turnData.defendPlayer
+      , turnData.playerDecks(turnData.defendPlayer).addCards(turnData.field.deck)
+    )
+    val nextAttacker = getRightPlayer(turnData.defendPlayer, turnData.players.length)
+    val nextDefender = getRightPlayer(nextAttacker, turnData.players.length)
+    round.createTurnData(
+      turnData.players, playerDecks, nextAttacker, nextDefender
+      , elms.createField() , turnData.mainDeck, turnData.outDeck
+      , turnData.trump, turnType
+    )
+  }
+
+  def defenderTakeCards(turnData: TurnDataInterface) : TurnDataInterface = defenderTakeCards(turnData, 0)
+
 }

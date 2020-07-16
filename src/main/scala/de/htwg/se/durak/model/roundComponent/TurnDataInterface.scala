@@ -12,4 +12,5 @@ trait TurnDataInterface {
   val mainDeck: CardDeckInterface
   val outDeck: CardDeckInterface
   val trump: Int
+  val turnType: Int
 }

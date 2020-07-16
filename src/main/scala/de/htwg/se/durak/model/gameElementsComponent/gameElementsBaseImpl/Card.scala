@@ -29,6 +29,7 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case 12 => "Dame"
     case 13 => "König"
     case 14 => "Ass"
+    case -1 => ""
   }
 
   def symbolString: String = symbol match {
@@ -36,6 +37,7 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case 2 => "Karo"
     case 3 => "Kreuz"
     case 4 => "Herz"
+    case -1 => ""
   }
 
   def symbolUnicode: String = symbol match {
@@ -43,6 +45,7 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case 2 => "\u2666"
     case 3 => "\u2663"
     case 4 => "\u2665"
+    case -1 => ""
   }
 
   def rankUnicode: String = rank match {
@@ -59,6 +62,7 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case 12 => "\u265B"
     case 13 => "\u265A"
     case 14 => "A"
+    case -1 => ""
   }
   /** custom toString
    * example "Rang: X, Typ: Y"

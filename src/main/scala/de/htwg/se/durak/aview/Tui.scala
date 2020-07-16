@@ -13,23 +13,22 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   listenTo(controller)
 
   def processInputLine(param: String): Unit = {
-    if(param == "undo") {
+    if (param == "undo") {
       controller.undo
       return
     }
 
-    if(param == "save") {
-      //controller.save
+    if (param == "save") {
       controller.save
       return
     }
 
     val roundData = controller.roundData
-    if(roundData.validateInputList.head == "func") {
-      if(roundData.validateInput.get(param)) controller.solve(param)
+    if (roundData.validateInputList.head == "func") {
+      if (roundData.validateInput.get(param)) controller.solve(param)
       else controller.inputError
     } else {
-      if(roundData.validateInputList.contains(param)) controller.solve(param)
+      if (roundData.validateInputList.contains(param)) controller.solve(param)
       else controller.inputError
     }
   }
@@ -153,6 +152,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       turnData.field,
       turnData.playerDecks(turnData.currentPlayer),
       turnData.trump,
+      turnData.turnType,
       controller.roundData.validateInputList
     )
   }
@@ -182,7 +182,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     case 4 => "\u2665"
   }
 
-  def helperPrintField(deffer: String, actual: String, field: FieldInterface, playerDeck: CardDeckInterface, trump: Int, cardOptions: List[String]): List[String] = {
+  def helperPrintField(deffer: String, actual: String, field: FieldInterface
+                       , playerDeck: CardDeckInterface, trump: Int, turnType: Int, cardOptions: List[String]): List[String] = {
     var fieldFirstLine = ""
     var fieldSecondLine = ""
     var playerCards = ""
@@ -215,9 +216,15 @@ case class Tui(controller: ControllerInterface) extends Reactor {
 
     // add attacker if its not the turn of the deffer
     val playerMsg = if(deffer != actual) "Verteildiger: " + deffer +"\t\taktueller Angreifer: " + actual else "aktueller Verteildiger: \t" + deffer
+
+    val turnTypeMsg = "\tRunden Typ: " + (turnType match {
+      case 0 => "Angriff/Verteidigung"
+      case 1 => "Angriff vom vorherigen Spieler ausgesetzt"
+      case 2 => "Verteidiger nimmt die Karten auf"
+    })
     println(deffer + " - " + actual)
     List(
-      playerMsg + "\tTrump: " + symbolUnicode(trump),
+      playerMsg + "\tTrump: " + symbolUnicode(trump) + turnTypeMsg,
       "              " + helperSpacerString(fieldFirstLine.length + 1),
       "Angriff:      " + fieldFirstLine + "|",
       "Verteidigung: " + fieldSecondLine + "|",
