@@ -6,6 +6,7 @@
 
 Ein Projekt für das Modul Software Engineering
 
+# Infos zu den Components
 * controller/controllerComponent Componente zum ausführen der Runden
 * controller/gameLogicComponent Componente mit der eigentlichen Game Logic
 * model/gameElementsComponent Componente mit Spiel Elementen wie Karten, Karten Decks
