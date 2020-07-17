@@ -126,15 +126,104 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
       turnData.defendPlayer
       , turnData.playerDecks(turnData.defendPlayer).addCards(turnData.field.deck)
     )
+    val (resPlayerDecks, resMainDeck) = refuelPlayerDecks(playerDecks, turnData.mainDeck, turnData.defendPlayer)
     val nextAttacker = getRightPlayer(turnData.defendPlayer, turnData.players.length)
-    val nextDefender = getRightPlayer(nextAttacker, turnData.players.length)
     round.createTurnData(
-      turnData.players, playerDecks, nextAttacker, nextDefender
-      , elms.createField() , turnData.mainDeck, turnData.outDeck
+      turnData.players, resPlayerDecks, nextAttacker, getRightPlayer(nextAttacker, turnData.players.length)
+      , elms.createField(), resMainDeck, turnData.outDeck
       , turnData.trump, turnType
     )
   }
 
   def defenderTakeCards(turnData: TurnDataInterface) : TurnDataInterface = defenderTakeCards(turnData, 0)
+
+  def attackFinish(turnData: TurnDataInterface) : TurnDataInterface = {
+    val (resPlayerDecks, resMainDeck) = refuelPlayerDecks(turnData.playerDecks, turnData.mainDeck, turnData.defendPlayer)
+    round.createTurnData (
+      turnData.players, resPlayerDecks, turnData.defendPlayer, getRightPlayer(turnData.defendPlayer, turnData.players.length)
+      , elms.createField(), resMainDeck, turnData.outDeck.addCards(turnData.field.deck)
+      , turnData.trump, 0
+    )
+  }
+
+  def refuelPlayerDeck(missing: Int, playerDeck: CardDeckInterface, mainDeck: CardDeckInterface): (CardDeckInterface, CardDeckInterface) = {
+    var resPlayerDeck = playerDeck
+    var resMainDeck = mainDeck
+    for(i <- Range(0, missing, 1)) { // first fill from first attack
+      val (newMainDeck, card) = resMainDeck.pop()
+      resMainDeck = newMainDeck
+      resPlayerDeck = resPlayerDeck.addCard(card)
+    }
+    (resPlayerDeck, resMainDeck)
+  }
+
+  def refuelPlayerDecks(
+     playerDecks: List[CardDeckInterface], mainDeck: CardDeckInterface, defendPlayer: Int
+   ): (List[CardDeckInterface], CardDeckInterface) = {
+    if (mainDeck.deck.isEmpty) { // if empty return same elements back
+      (playerDecks, mainDeck)
+    } else {
+      var resMainDeck = mainDeck
+      var resPlayerDecks = playerDecks
+      var defendPlayerDeck = playerDecks(defendPlayer)
+      val maxPlayer = playerDecks.length
+      val firstPlayer = getLeftPlayer(defendPlayer, maxPlayer)
+      var firstPlayerDeck = playerDecks(firstPlayer)
+      var (resFirstPlayerDeck, firstMainDeck) = refuelPlayerDeck (
+        getMissingCardsCount(firstPlayerDeck, resMainDeck.deck.length), firstPlayerDeck, resMainDeck
+      )
+      resMainDeck = firstMainDeck
+
+      if(maxPlayer > 2) {
+        val secondPlayer = getRightPlayer(defendPlayer, maxPlayer)
+        var secondPlayerDeck = playerDecks(secondPlayer)
+        var (resSecondPlayerDeck, secondMainDeck) = refuelPlayerDeck (
+          getMissingCardsCount(secondPlayerDeck, resMainDeck.deck.length), secondPlayerDeck , resMainDeck
+        )
+        resMainDeck = secondMainDeck
+        resPlayerDecks = resPlayerDecks.updated(secondPlayer, resSecondPlayerDeck)
+      }
+
+      var (resDefendPlayerDeck, defendMainDeck) = refuelPlayerDeck (
+        getMissingCardsCount(defendPlayerDeck, resMainDeck.deck.length), defendPlayerDeck, resMainDeck
+      )
+      resPlayerDecks = resPlayerDecks.updated(firstPlayer, resFirstPlayerDeck)
+      resPlayerDecks = resPlayerDecks.updated(defendPlayer, resDefendPlayerDeck)
+      (resPlayerDecks, defendMainDeck)
+    }
+  }
+
+  def getMissingCardsCount(cardDeck: CardDeckInterface, availableCards: Int): Int = {
+    if(cardDeck.deck.length >= 6) 0 else {
+      var missingCards = (6 - cardDeck.deck.length)
+      if(missingCards > availableCards) missingCards = availableCards
+      missingCards
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
