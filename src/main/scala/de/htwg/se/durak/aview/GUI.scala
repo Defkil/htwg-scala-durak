@@ -7,6 +7,10 @@ import scalafx.application.JFXApp.PrimaryStage
 
 import scala.swing.Reactor
 
+/**
+ * Making a windows and making a new scene on each game turn
+ * @param controller to get gamedata and add oneself to be updated
+ */
 class GUI(controller: ControllerInterface) extends JFXApp with Reactor {
   var input = ""
   listenTo(controller)
@@ -30,14 +34,6 @@ class GUI(controller: ControllerInterface) extends JFXApp with Reactor {
   //  }
   //}
 
-  def attackerScreen(param: Option[List[String]]) = {
-    stage.scene = new Board(GUI.this,controller)
-  }
-
-  def defenderScreen(param: Option[List[String]]) = {
-    stage.scene = new Board(this,controller)
-  }
-
   def route(siteID: Int, param: Option[List[String]]): Unit = { //: List[String] = {
     println("Site-ID = " + siteID)
     println("param = " + param)
@@ -51,10 +47,10 @@ class GUI(controller: ControllerInterface) extends JFXApp with Reactor {
         controller.solve(input)
         input = ""
       }
-      case 10 => println("Hallo")
-      case 11 => attackerScreen(param)
-      //case 12 => "" //playerScreen(param.getOrElse(List("")).head)
-      case 13 => defenderScreen(param)
+      case 10 => controller.solve("0")
+      case 11 => stage.scene = new Board(GUI.this,controller)
+      case 12 => "" //playerScreen(param.getOrElse(List("")).head)
+      case 13 => stage.scene = new Board(GUI.this,controller)
       case 14 => //controller.solve("0")
       //case 15 => "" //finishedScreen(param)
     }

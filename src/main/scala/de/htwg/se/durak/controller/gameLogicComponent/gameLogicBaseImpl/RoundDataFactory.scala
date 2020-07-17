@@ -3,10 +3,21 @@ package de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl
 import de.htwg.se.durak.model.roundComponent.{RoundDataInterface, RoundInterface}
 
 //noinspection ScalaStyle
+/**
+ * creating a ready instance of RoundDataInterface and checking whether param is valid
+ * @param round decribes the situation in game
+ */
 class RoundDataFactory(round: RoundInterface) {
   def getInstance(id: Int): RoundDataInterface = {
     getInstance(id, None)
   }
+
+  /**
+   *
+   * @param id is the current situation
+   * @param params are optional inputs from user
+   * @return
+   */
   def getInstance(id: Int, params: Option[List[String]]): RoundDataInterface = {
     val res = id match {
       case -1 => round.createRoundData(-1, List("func"), Some((param:String) => true), params)
