@@ -42,47 +42,53 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
    */
   def nextTurn(gameData: GameDataInterface, input: String): GameDataInterface = {
     println("nextTurn")
-    val turnData = gameData.turnData.get
-    val playerDecks = turnData.playerDecks(turnData.currentPlayer)
+    var turnData = gameData.turnData.get
+    val playerDeck = turnData.playerDecks(turnData.currentPlayer)
     var res = gameData
 
     turnData.turnType match {
       case 0 =>
         if(turnData.currentPlayer == turnData.defendPlayer) { // Verteidiger Runde setzen
-          println("1")
           res = round.createGameData(
-            round.createRoundData(12,  gameTable.getPossibleDefendTurns(turnData.field.cardDeck.deck.last, playerDecks, turnData.trump))
+            round.createRoundData(12,  gameTable.getPossibleDefendTurns(turnData.field.cardDeck.deck.last, playerDeck, turnData.trump))
             , gameData.turnData
           )
         } else if(turnData.field.size == 0) { // falls das Spielfeld leer ist, ist auch kein skip möglich
-          println("2")
           res = round.createGameData(
-            round.createRoundData(11, gameTable.countTo(playerDecks.deck.length))
+            round.createRoundData(11, gameTable.countTo(playerDeck.deck.length))
             , gameData.turnData
           )
         } else {
-          println("3")
           res = round.createGameData(
-            round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDecks))
+            round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDeck))
             , gameData.turnData
           )
           // Alle möglichkeiten für weitere Angriffe berechnen
         }
       case 1 => { // nur bei mehr als 2 Spielern, der erste Spieler hat geskipped
-        println("4")
         res = round.createGameData(
-          round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDecks))
+          round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDeck))
           , gameData.turnData
         )
       }
       case 2 => {// Wenn Verteidiger Karten aufnimmt, in den nächsten Angriff. attackTurn wird den Angriff beenden
-        println("5")
         res = round.createGameData(
-          round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDecks))
+          round.createRoundData(11, gameTable.getPossibleAttackTurns(turnData.field, playerDeck))
           , gameData.turnData
         )
       }
     }
+
+    if (turnData.mainDeck.deck.isEmpty) {
+      turnData = gameTable.removeEmptyPlayer(turnData)
+      if (turnData.players.length == 1) {
+        res = round.createGameData(
+          roundDataFactory.getInstance(-1, Some(List("Der Durak dieser Runde ist:"))),
+          None
+        )
+      }
+    }
+
     res
   }
 
@@ -95,46 +101,36 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
       case 0 =>
         if(input == "s") {
           if(turnData.players.length == 2) {
-            println("1")
             turnData = gameTable.attackFinish(turnData)
           } else {
-            println("2")
             turnData = gameTable.setRightAttacker(turnData)
           }
         } else {
-          println("3")
           turnData = gameTable.addCardToField(turnData, input.toInt, turnData.defendPlayer)
         }
       case 1 => {
         if(input == "s") {
           if(turnData.playerDecks.length > 2) {
-            println("4")
             turnData = gameTable.setRightAttacker(turnData)
           } else {
-            println("4.1")
             turnData = gameTable.attackFinish(turnData)
           }
         } else {
-          println("5")
           turnData = gameTable.addCardToField(turnData, input.toInt, turnData.defendPlayer)
         }
       }
       case 2 => { // der fall, wenn der Verteidiger aufnimmt
         if (input == "s") {
           if (turnData.players.length == 2) {
-            println("6")
             turnData = gameTable.defenderTakeCards(turnData)
           } else {
             if (turnData.currentPlayer == gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length)) {
-              println("7")
               turnData = gameTable.defenderTakeCards(turnData) // third and last attacker
             } else {
-              println("8")
               turnData = gameTable.setRightAttacker(turnData, 2)
             }
           }
         } else { // legt Karte zu den aufnehmenden Karten
-          println("9")
           turnData = gameTable.addCardToField(gameTable.addSpacer(turnData), input.toInt, turnData.currentPlayer)
         }
       }
@@ -146,7 +142,6 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
     println("defendTurn")
     var turnData = gameData.turnData.get
     if(input == "s") { // Karten werden aufgenommen
-      println("1")
       turnData = round.createTurnData(
         turnData.players, turnData.playerDecks, gameTable.getLeftPlayer(turnData.currentPlayer, turnData.players.length), turnData.defendPlayer
         , turnData.field, turnData.mainDeck, turnData.outDeck
@@ -155,10 +150,8 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
     } else {
       // add card to field and set defendPlayer as current
       if(turnData.outDeck.deck.isEmpty && turnData.field.deck.length == 9 || turnData.field.deck.length == 11) {
-        println("2")
         turnData = gameTable.attackFinish(turnData)
       } else {
-        println("3")
         turnData = gameTable.addCardToField(turnData, input.toInt, gameTable.getLeftPlayer(turnData.currentPlayer, turnData.playerDecks.length))
       }
     }

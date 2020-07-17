@@ -58,7 +58,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
 
   def route(siteID: Int, param: Option[List[String]]): List[String] = {
     siteID match {
-      case -1 => closeScreen()
+      case -1 => closeScreen(param.getOrElse(List("")).head)
       case 0 => menuScreen(param.getOrElse(List("")).head)
       case 1 => calibrationInfoScreen()
       case 2 => calibrationListScreen()
@@ -71,8 +71,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   }
 
 
-  def closeScreen(): List[String] = {
-    List("Auf wiedersehen!")
+  def closeScreen(param: String): List[String] = {
+    List(param,"","","","Auf wiedersehen!")
   }
 
   def menuScreen(param: String): List[String] = {

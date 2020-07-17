@@ -219,7 +219,24 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     )
   }
 
+  def removeEmptyPlayer(turnData: TurnDataInterface): TurnDataInterface = {
+    var resPlayers: ListBuffer[Player] = new ListBuffer[Player]
+    var resPlayerDecks: ListBuffer[CardDeckInterface] = new ListBuffer[CardDeckInterface]
 
+    for(i <- turnData.players.indices) {
+      val playerDeck = turnData.playerDecks(i)
+      if(playerDeck.deck.nonEmpty) {
+        resPlayerDecks += playerDeck
+        resPlayers += turnData.players(i)
+      }
+    }
+
+    round.createTurnData (
+      resPlayers.toList, resPlayerDecks.toList, turnData.currentPlayer, turnData.defendPlayer
+      , turnData.field, turnData.mainDeck, turnData.outDeck
+      , turnData.trump, turnData.turnType
+    )
+  }
 
 
 
