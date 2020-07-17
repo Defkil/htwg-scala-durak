@@ -23,7 +23,7 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
   fill = Color.White
   content = new HBox {
     children = Seq(new VBox {
-      def position():String = if(roundData.siteID == 10) "Angriff: " else if(roundData.siteID == 12) "Verteidigung: " else ""
+      def position():String = if(roundData.siteID == 11) "Angriff: " else if(roundData.siteID == 12) "Verteidigung: " else ""
       children = Seq(new Text(position() + turnData.players(turnData.currentPlayer)) {
         fill = Color.Blue
       },
@@ -42,8 +42,8 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
           },
           new Text("Trumpf"),
           getCard(new Card( 3, gameData.turnData.get.trump)),
-          new Button("Hallo, Hi") {
-            onAction = (t: ActionEvent) => println("Hallo, Hi")
+          new Button("Nehmen/fertig") {
+            onAction = (t: ActionEvent) => controller.solve("s")
           },
           new Button("Undo") {
             onAction = (t: ActionEvent) => controller.undo
@@ -68,8 +68,10 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
     var s = Seq[ImageView]()
     for(i <- 0 until stack.size){
       val c = getCard(stack.deck(i))
-      s = s :+ c
-      c.onMouseClicked = (t: MouseEvent) => onCardChosen(i)
+      if(roundData.validateInputList.contains(i.toString)) {
+        s = s :+ c
+        c.onMouseClicked = (t: MouseEvent) => onCardChosen(i)
+      }
     }
     children = s
   }
