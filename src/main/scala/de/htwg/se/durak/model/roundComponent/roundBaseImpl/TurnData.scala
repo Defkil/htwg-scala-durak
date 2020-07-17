@@ -12,7 +12,7 @@ case class TurnData (
   , trump: Int, turnType: Int
 ) extends TurnDataInterface{
   def addCard(card: Card): TurnData = TurnData(
-    players, playerDecks, currentPlayer,defendPlayer
+    players, playerDecks, currentPlayer, defendPlayer
     , field.addCard(card), mainDeck, outDeck, trump, turnType
   )
 }

@@ -153,6 +153,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       turnData.players(turnData.currentPlayer).toString,
       turnData.field,
       turnData.playerDecks(turnData.currentPlayer),
+      turnData.mainDeck.deck.length,
       turnData.trump,
       turnData.turnType,
       controller.roundData.validateInputList
@@ -185,7 +186,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   }
 
   def helperPrintField(deffer: String, actual: String, field: FieldInterface
-                       , playerDeck: CardDeckInterface, trump: Int, turnType: Int, cardOptions: List[String]): List[String] = {
+                       , playerDeck: CardDeckInterface, mainDeckLength: Int, trump: Int, turnType: Int
+                       , cardOptions: List[String]): List[String] = {
     var fieldFirstLine = ""
     var fieldSecondLine = ""
     var playerCards = ""
@@ -227,6 +229,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     println(deffer + " - " + actual)
     List(
       playerMsg + "\tTrump: " + symbolUnicode(trump) + turnTypeMsg,
+      "Karten im Stapel: " + mainDeckLength,
       "              " + helperSpacerString(fieldFirstLine.length + 1),
       "Angriff:      " + fieldFirstLine + "|",
       "Verteidigung: " + fieldSecondLine + "|",

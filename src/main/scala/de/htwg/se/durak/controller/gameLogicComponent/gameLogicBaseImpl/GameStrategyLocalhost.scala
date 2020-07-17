@@ -23,14 +23,14 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
     )
 
     val trump: Int = mainDeck.deck.head.symbol
-    val field: FieldInterface = elm.createField()
-    val outDeck: CardDeckInterface = elm.createCardDeck()
     val currentPlayer: Int = gameTable.getFirstPlayer(playerDecks, trump)
-    val defendPlayer: Int = gameTable.getRightPlayer(currentPlayer, players.length)
 
     round.createGameData(
       roundDataFactory.getInstance(10),
-      Some(round.createTurnData(players, playerDecks, currentPlayer, defendPlayer, field, mainDeck, outDeck, trump, 0))
+      Some(round.createTurnData(
+        players, playerDecks, currentPlayer, gameTable.getRightPlayer(currentPlayer, players.length)
+        , elm.createField() , mainDeck, elm.createCardDeck(), trump, 0)
+      )
     )
   }
 
@@ -90,21 +90,26 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
       case 0 =>
         if(input == "s") {
           if(turnData.players.length == 2) {
-            //todo finish round
+            println("1")
+            turnData = gameTable.attackFinish(turnData) //todo neue Karten verteilen
           } else {
+            println("2")
             turnData = round.createTurnData (
-              turnData.players, turnData.playerDecks, turnData.defendPlayer, gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length)
+              turnData.players, turnData.playerDecks, gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length), turnData.defendPlayer
               , turnData.field, turnData.mainDeck, turnData.outDeck
               , turnData.trump, 1
             )
           }
         } else {
+          println("3")
           turnData = gameTable.addCardToField(turnData, input.toInt, turnData.defendPlayer)
         }
       case 1 => {
         if(input == "s") {
-          //todo finish round
+          println("4")
+          turnData = gameTable.attackFinish(turnData) //todo neue Karten verteilen
         } else {
+          println("5")
           //todo add card to field
           //todo set currentPlayer to left Player
         }
@@ -112,17 +117,21 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
       case 2 => { // der fall, wenn der Verteidiger aufnimmt
         if (input == "s") {
           if (turnData.players.length == 2) {
-            turnData = gameTable.defenderTakeCards(turnData, 2)
+            println("6")
+            turnData = gameTable.defenderTakeCards(turnData)
             //todo neue Karten verteilen
           } else {
             if (turnData.currentPlayer == gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length)) {
+              println("7")
               turnData = gameTable.defenderTakeCards(turnData, 2) // third and last attacker
               //todo neue Karten verteilen
             } else {
+              println("8")
               //todo set third player as attacker
             }
           }
         } else { // legt Karte zu den aufnehmenden Karten
+          println("9")
           turnData = gameTable.addCardToField(gameTable.addSpacer(turnData), input.toInt, turnData.currentPlayer)
         }
       }
@@ -145,12 +154,7 @@ case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterf
       // add card to field and set defendPlayer as current
       if(turnData.outDeck.deck.isEmpty && turnData.field.deck.length == 9 || turnData.field.deck.length == 11) {
         println("2")
-        turnData = round.createTurnData (
-          turnData.players, turnData.playerDecks, turnData.defendPlayer, gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length)
-          , elm.createField(), turnData.mainDeck, turnData.outDeck.addCards(turnData.field.deck)
-          , turnData.trump, 0
-        )
-        //todo neue Karten verteilen
+        turnData = gameTable.attackFinish(turnData) //todo neue Karten verteilen
       } else {
         println("3")
         turnData = gameTable.addCardToField(turnData, input.toInt, gameTable.getLeftPlayer(turnData.currentPlayer, turnData.playerDecks.length))
