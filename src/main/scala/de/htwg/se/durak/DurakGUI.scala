@@ -10,9 +10,9 @@ import scala.io.StdIn.readLine
 object DurakGUI {
   val injector: Injector = Guice.createInjector(new DurakModule)
   val controller: ControllerInterface = injector.getInstance(classOf[ControllerInterface])
-  controller.publish(new GameDataChanged)
   val gui = new GUI(controller)
   val tui: Tui = Tui(controller)
+  controller.publish(new GameDataChanged)
   def main(args: Array[String]): Unit = {
     var input: String = ""
     gui.main(Array(""))

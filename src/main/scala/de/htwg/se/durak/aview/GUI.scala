@@ -43,14 +43,11 @@ class GUI(controller: ControllerInterface) extends JFXApp with Reactor {
       //case 0 => ""
       //case 1 => "" //calibrationInfoScreen()
       //case 2 => "" //calibrationListScreen()
-      case 3 => if(input.length != 0){
-        controller.solve(input)
-        input = ""
-      }
+      case 3 => controller.solve(input)
       case 10 => controller.solve("0")
       case 11 => stage.scene = new Board(GUI.this,controller)
-      case 12 => "" //playerScreen(param.getOrElse(List("")).head)
-      case 13 => stage.scene = new Board(GUI.this,controller)
+      case 12 => stage.scene = new Board(GUI.this,controller)
+      case 13 =>
       case 14 => //controller.solve("0")
       //case 15 => "" //finishedScreen(param)
     }

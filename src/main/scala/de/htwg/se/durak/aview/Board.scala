@@ -3,7 +3,7 @@ package de.htwg.se.durak.aview
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
 import de.htwg.se.durak.model.gameElementsComponent.CardInterface
 import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.Card
-import javafx.event.{ActionEvent, EventHandler}
+import javafx.event.ActionEvent
 import javafx.scene.input.MouseEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
@@ -23,7 +23,7 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
   fill = Color.White
   content = new HBox {
     children = Seq(new VBox {
-      def position() = if(roundData.siteID == 10) "Angriff: " else if(roundData.siteID == 12) "Verteidigung: " else ""
+      def position():String = if(roundData.siteID == 10) "Angriff: " else if(roundData.siteID == 12) "Verteidigung: " else ""
       children = Seq(new Text(position() + turnData.players(turnData.currentPlayer)) {
         fill = Color.Blue
       },
@@ -36,7 +36,10 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
       //Trumpffarbe + Button Fertig und nehmen
       new VBox {
         alignment = Pos.Center
-        children = Seq(
+          children = Seq(
+          new Button("Speichern") {
+            onAction = (t: ActionEvent) => controller.save
+          },
           new Text("Trumpf"),
           getCard(new Card( 3, gameData.turnData.get.trump)),
           new Button("Hallo, Hi") {
@@ -44,7 +47,10 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
           },
           new Button("Undo") {
             onAction = (t: ActionEvent) => controller.undo
-          }
+          },
+          new Button("Redo") {
+            onAction = (t: ActionEvent) => controller.redo
+          },
         )
       }
     )
@@ -87,7 +93,6 @@ class Board(f: GUI, controller: ControllerInterface) extends Scene {
     children = s
   }
   private def onCardChosen(i:Int):Unit = {
-    controller.solve("0")
-    f.input = i.toString
+    controller.solve(i.toString)
   }
 }

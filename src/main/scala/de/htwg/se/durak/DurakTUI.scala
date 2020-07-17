@@ -8,8 +8,8 @@ import scala.io.StdIn.readLine
 object DurakTUI {
   val injector: Injector = Guice.createInjector(new DurakModule)
   val controller: ControllerInterface = injector.getInstance(classOf[ControllerInterface])
-  controller.publish(new GameDataChanged)
   val tui: Tui = Tui(controller)
+  controller.publish(new GameDataChanged)
   def main(args: Array[String]): Unit = {
     var input: String = ""
     do {

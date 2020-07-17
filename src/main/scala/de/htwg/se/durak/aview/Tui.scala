@@ -52,6 +52,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   }
 
   def route(siteID: Int, param: Option[List[String]]): List[String] = {
+    println("siteID = " + siteID)
+    println("param = " + param)
     siteID match {
       case -1 => closeScreen()
       case 0 => menuScreen(param.getOrElse(List("")).head)
