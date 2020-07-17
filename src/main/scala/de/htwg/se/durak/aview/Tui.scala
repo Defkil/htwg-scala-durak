@@ -23,6 +23,11 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       return
     }
 
+    if (param == "load") {
+      controller.load
+      return
+    }
+
     val roundData = controller.roundData
     if (roundData.validateInputList.head == "func") {
       if (roundData.validateInput.get(param)) controller.solve(param)
@@ -52,8 +57,6 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   }
 
   def route(siteID: Int, param: Option[List[String]]): List[String] = {
-    println("siteID = " + siteID)
-    println("param = " + param)
     siteID match {
       case -1 => closeScreen()
       case 0 => menuScreen(param.getOrElse(List("")).head)

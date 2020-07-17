@@ -33,7 +33,10 @@ class Controller @Inject() (
     publish(new GameDataChanged)
   }
 
-  def load: Unit = {}
+  def load: Unit = {
+    roundStack = fileIo.load
+    publish(new GameDataChanged)
+  }
 
   def solve(param: String): Unit = {
     undoManager.doStep(SolveCommand(param, this))

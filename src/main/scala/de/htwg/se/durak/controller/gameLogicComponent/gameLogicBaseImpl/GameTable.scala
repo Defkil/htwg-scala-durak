@@ -201,6 +201,23 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     }
   }
 
+  def setRightAttacker(turnData: TurnDataInterface, turnType: Int): TurnDataInterface = {
+    round.createTurnData (
+      turnData.players, turnData.playerDecks, getRightPlayer(turnData.defendPlayer, turnData.players.length), turnData.defendPlayer
+      , turnData.field, turnData.mainDeck, turnData.outDeck
+      , turnData.trump, turnType
+    )
+  }
+  def setRightAttacker(turnData: TurnDataInterface): TurnDataInterface = {
+    setRightAttacker(turnData, 1)
+  }
+  def setLeftAttacker(turnData: TurnDataInterface): TurnDataInterface = {
+    round.createTurnData (
+      turnData.players, turnData.playerDecks, getLeftPlayer(turnData.defendPlayer, turnData.players.length), turnData.defendPlayer
+      , turnData.field, turnData.mainDeck, turnData.outDeck
+      , turnData.trump, 1
+    )
+  }
 
 
 
