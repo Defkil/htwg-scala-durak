@@ -44,12 +44,13 @@ class Controller @Inject() (
   }
 
   def undo: Unit = {
-    undoManager.undoStep
+    undoManager.undoStep()
     publish(new GameDataChanged)
   }
 
   def redo: Unit = {
-    //todo: implement
+    undoManager.redoStep()
+    publish(new GameDataChanged)
   }
 
   def inputError(): Unit = {

@@ -6,11 +6,21 @@ import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInte
  * containing all cards being used in this round to attack and defend
  * @param cardDeck for storing all cards added to the Field
  */
-case class Field(var cardDeck: CardDeckInterface) extends FieldInterface {
+case class Field(val cardDeck: CardDeckInterface) extends FieldInterface {
+  /**
+   * Empty Field
+   *
+   * @return return empty Field
+   */
   def this() {
-    this(new CardDeck());
+    this(new CardDeck(): CardDeckInterface);
   }
-  val size: Int = cardDeck.size
 
-  def addCard(card: CardInterface): FieldInterface =  Field(cardDeck.addCard(card))
+  /**
+   * Add a card to the field
+   *
+   * @param card Card that should be added
+   * @return new Field instance
+   */
+  def addCard(card: CardInterface): FieldInterface = Field(cardDeck.addCard(card))
 }

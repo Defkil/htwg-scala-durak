@@ -1,8 +1,9 @@
 package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.controllerComponent.controllerBaseImpl.Controller
-import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.Field
-import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck, Field}
+import de.htwg.se.durak.controller.gameLogicComponent.gameLogicBaseImpl.GameLogic
+import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, CardDeck, Field, GameElements}
+import de.htwg.se.durak.model.roundComponent.roundBaseImpl.{Round, RoundData}
 import org.scalatest._
 
 class MockTui(runtime: Controller) extends Tui(runtime: Controller) {
@@ -12,16 +13,14 @@ class MockTui(runtime: Controller) extends Tui(runtime: Controller) {
 }
 
 class TuiSpec extends WordSpec with Matchers {
-  /*"Tui" should  {
-    val gameRuntime = new Controller
+  "Tui" should  {
+    val gameElements = new GameElements()
+    val round = new Round()
+    val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
     val mockTui = new MockTui(gameRuntime)
     val tui = Tui(gameRuntime)
-      //todo test reactions
-    /*"update" in { from observer pattern
-      mockTui.update()
-      mockTui.messages should be(List("Willkommen im Spiel Durak", "Folgende Befehle stehen zur Auswahl", "0     Spiel starten", "1     Konsole kalibrieren", "2     Multiplayer", "3     Spiel schließen", "", "", "", "")
-      )
-    }*/
+    tui.processInputLine("0")
+    tui.processInputLine("a b")
     "print" in {
       val stream = new java.io.ByteArrayOutputStream()
       val testInt = "5"
@@ -37,9 +36,9 @@ class TuiSpec extends WordSpec with Matchers {
     }
 
     "closeScreen" in {
-      val screen = tui.closeScreen()
-      screen.size should be(1)
-      screen should be(List("Auf wiedersehen!"))
+      val screen = tui.closeScreen("")
+      screen.size should be(5)
+      screen should be(List("", "", "", "", "Auf wiedersehen!"))
     }
 
     "menuScreen" in {
@@ -82,26 +81,15 @@ class TuiSpec extends WordSpec with Matchers {
 
     "nextTurnScreen" in {
       val screen = tui.nextTurnScreen("a")
-      screen.size should be(6)
-      screen should be(List("Nächster Spieler ist: a",
+      screen.size should be(7)
+      screen should be(List("Nächster Spieler ist: b",
         "Im nächsten Fenster kann man je nach Situation mit s den Angriff beenden",
         "oder die Karten aufnehmen (als Verteidiger)",
         "Karten Legende:",
         "Karten Rang: 2 - 10 gleich, Bube: ♟, Dame: ♛, König: ♚, Ass: A",
-        "Karten Symbol: Pik: ♠, Karo: ♦, Kreuz: ♣, Herz: ♥"
+        "Karten Symbol: Pik: ♠, Karo: ♦, Kreuz: ♣, Herz: ♥",
+        "Fortfahren mit 0"
       ))
-    }
-
-    "attackerScreen" in {
-      val screen = tui.attackerScreen(None)
-      screen.size should be(2)
-      screen should be(List("todo attackerScreen", ""))
-    }
-
-    "defenderScreen" in {
-      val screen = tui.defenderScreen(None)
-      screen.size should be(2)
-      screen should be(List("todo defenderScreen", ""))
     }
 
     "finishedScreen" in {
@@ -111,19 +99,20 @@ class TuiSpec extends WordSpec with Matchers {
     }
 
     "route" in {
-      tui.route(-1, None).size should be(1)
+      tui.route(-1, None).size should be(5)
       tui.route(0, None).size should be(7)
       tui.route(1, None).size should be(3)
       tui.route(2, None).size should be(20)
       tui.route(3, None).size should be(3)
-      tui.route(10, None).size should be(2)
-      tui.route(11, None).size should be(2)
-      tui.route(12, None).size should be(2)
-      tui.route(13, None).size should be(2)
+      tui.route(10, Some(List(""))).size should be(7)
+      tui.route(11, Some(List(""))).size should be(8)
+      tui.route(12, Some(List(""))).size should be(8)
     }
 
     "processInputLine" in {
-      val gameRuntime = new Controller
+      val gameElements = new GameElements()
+      val round = new Round()
+      val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
       val tui = Tui(gameRuntime)
       gameRuntime.roundData.siteID should be(0)
       tui.processInputLine("1")
@@ -135,14 +124,18 @@ class TuiSpec extends WordSpec with Matchers {
     }
 
     "helperFormatCard" in {
-      val gameRuntime = new Controller
+      val gameElements = new GameElements()
+      val round = new Round()
+      val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
       val tui = Tui(gameRuntime)
       val stringToTest = tui.helperFormatCard(Card(2, 1))
       stringToTest.length should be(11)
     }
 
-    "helperPrintField with one card and one option" in {
-      val gameRuntime = new Controller
+    /*"helperPrintField with one card and one option" in {
+      val gameElements = new GameElements()
+      val round = new Round()
+      val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
       val tui = Tui(gameRuntime)
 
       val deffer = "Spieler 1"
@@ -160,6 +153,6 @@ class TuiSpec extends WordSpec with Matchers {
         "Karten in der Hand: 0: (♠ 3), 1: (♦ 4)",
         "Mögliche Eingaben: s, 0",
       ))
-    }
-  }*/
+    }*/
+  }
 }

@@ -1,8 +1,9 @@
 package de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl
 
-import de.htwg.se.durak.model.gameElementsComponent.{CardInterface, GameElementsInterface}
+import de.htwg.se.durak.model.gameElementsComponent.CardInterface
 
-/** Card with rank and a type
+/**
+ * Card with rank and a type
  *
  * possible values are: rank=(2-14), cardType(1-4)
  *
@@ -14,7 +15,14 @@ import de.htwg.se.durak.model.gameElementsComponent.{CardInterface, GameElements
  * @param rank card rank (2-14)
  * @param symbol card symbol (1-4)
  */
+//noinspection ScalaStyle
 case class Card(rank: Int, symbol: Int) extends CardInterface {
+
+  /**
+   * Rank as string
+   *
+   * @return Card rank as simple string
+   */
   def rankString: String = rank match {
     case 2 => "2"
     case 3 => "3"
@@ -32,6 +40,11 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case -1 => ""
   }
 
+  /**
+   * Symbol as string
+   *
+   * @return Card symbol as simple string
+   */
   def symbolString: String = symbol match {
     case 1 => "Pik"
     case 2 => "Karo"
@@ -40,6 +53,11 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case -1 => ""
   }
 
+  /**
+   * Symbol as unicode
+   *
+   * @return Card symbol as unicode string
+   */
   def symbolUnicode: String = symbol match {
     case 1 => "\u2660"
     case 2 => "\u2666"
@@ -48,6 +66,11 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case -1 => ""
   }
 
+  /**
+   * Rank as unicode
+   *
+   * @return Card rank as unicode string
+   */
   def rankUnicode: String = rank match {
     case 2 => "2"
     case 3 => "3"
@@ -64,13 +87,13 @@ case class Card(rank: Int, symbol: Int) extends CardInterface {
     case 14 => "A"
     case -1 => ""
   }
-  /** custom toString
-   * example "Rang: X, Typ: Y"
+
+  /**
+   * Card rank and symbol as string
    *
-   * @return String
+   * @return Card rank and symbol as string
    */
   override def toString: String = {
-
-    "Rang: " + symbolString +", Typ: " + rankString
+    "Rang: " + rankString +", Typ: " + symbolString
   }
 }

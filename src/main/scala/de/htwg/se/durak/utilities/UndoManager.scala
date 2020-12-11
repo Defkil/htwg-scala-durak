@@ -5,6 +5,7 @@ package de.htwg.se.durak.utilities
  */
 class UndoManager {
   private var undoStack : List[Command] = Nil
+  private var redoStack : List[Command] = Nil
 
   /**
    * called at every user action
@@ -18,11 +19,21 @@ class UndoManager {
   /**
    * reverse the last step
    */
-  def undoStep: Unit = undoStack match {
+  def undoStep(): Unit = undoStack match {
     case Nil =>
     case head::stack => {
       head.undoStep
       undoStack = stack
+      redoStack = head::redoStack
+    }
+  }
+
+  def redoStep(): Unit = redoStack match {
+    case Nil =>
+    case head::stack => {
+      head.redoStep
+      redoStack = stack
+      undoStack = head::undoStack
     }
   }
 }

@@ -12,6 +12,9 @@ class PlayerSpec extends WordSpec with Matchers {
       player.toString should be("Your Name")
     }
   }}
-
+  "test unapply" in {
+    val player = Player("Your Name")
+    Player.unapply(player).get should be("Your Name")
+  }
 
 }

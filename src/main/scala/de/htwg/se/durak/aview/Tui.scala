@@ -13,6 +13,12 @@ case class Tui(controller: ControllerInterface) extends Reactor {
   listenTo(controller)
 
   def processInputLine(param: String): Unit = {
+    // TODO case
+    if (param == "redo") {
+      controller.redo
+      return
+    }
+
     if (param == "undo") {
       controller.undo
       return

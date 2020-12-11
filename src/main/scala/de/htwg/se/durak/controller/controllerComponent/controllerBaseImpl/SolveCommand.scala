@@ -1,11 +1,14 @@
 package de.htwg.se.durak.controller.controllerComponent.controllerBaseImpl
 
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
+import de.htwg.se.durak.model.roundComponent.GameDataInterface
 import de.htwg.se.durak.utilities.Command
 
 //noinspection ScalaStyle
 case class SolveCommand(input: String, controller: ControllerInterface) extends Command {
+  var memento: List[GameDataInterface] = controller.roundStack
   override def doStep: Unit = {
+    var memento: List[GameDataInterface] = controller.roundStack
     controller.roundStack = controller.roundStack :+ (controller.roundData.siteID match {
       case 0 => controller.gameLogic.menu.handleMenu(controller.gameData, input)
       case 1 => controller.gameLogic.menu.handleCalibrationInfo(controller.gameData, input)
@@ -23,10 +26,14 @@ case class SolveCommand(input: String, controller: ControllerInterface) extends 
   }
 
   override def undoStep: Unit = {
-    controller.roundStack = controller.roundStack.init
+    val new_memento: List[GameDataInterface] = controller.roundStack
+    controller.roundStack = memento
+    memento = new_memento
   }
 
-  //override def redoStep: Unit = {
-    //todo: implement
-  //}
+  override def redoStep: Unit = {
+    val new_memento: List[GameDataInterface] = controller.roundStack
+    controller.roundStack = memento
+    memento = new_memento
+  }
 }

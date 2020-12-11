@@ -24,3 +24,4 @@ libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.6"
 
 libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 
+// scalacOptions in Compile ++= Seq("-doc-root-content", "rootdoc.txt")

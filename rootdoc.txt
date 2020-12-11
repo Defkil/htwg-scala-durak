@@ -1,0 +1,22 @@
+== Startpoints ==
+
+GameTui: [[de.htwg.se.durak.DurakTUI]]
+
+GameGui: [[de.htwg.se.durak.DurakGUI]]
+
+= Utilities =
+
+= Models =
+
+RoundData: [[de.htwg.se.durak.model.roundComponent.RoundInterface]]
+
+GameData: [[de.htwg.se.durak.model.gameElementsComponent.GameElementsInterface]]
+
+= Controllers =
+
+= Views =
+
+
+@author Oliver Grüttner
+@version 1.0
+@see https://github.com/Defkil/htwg-scala-durak
