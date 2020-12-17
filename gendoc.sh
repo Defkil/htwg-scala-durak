@@ -26,7 +26,6 @@ if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then
 fi
 
 cd "$DOCS_DIR"
-
 git config push.default simple
 git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
