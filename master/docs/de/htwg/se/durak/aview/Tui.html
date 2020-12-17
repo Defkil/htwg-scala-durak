@@ -151,6 +151,18 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="de.htwg.se.durak">durak</a></dd></dl></div>
     </li><li class="current-entities indented5">
                         <span class="separator"></span>
+                        <a class="class" href="Board.html" title=""></a>
+                        <a href="Board.html" title="">Board</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="class" href="GUI.html" title="Making a windows and making a new scene on each game turn"></a>
+                        <a href="GUI.html" title="Making a windows and making a new scene on each game turn">GUI</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="class" href="MainMenu.html" title=""></a>
+                        <a href="MainMenu.html" title="">MainMenu</a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
                         <a class="class" href="" title=""></a>
                         <a href="" title="">Tui</a>
                       </li>
@@ -176,7 +188,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Tui</span><span class="params">(<span name="runtime">runtime: <a href="../controller/GameRuntime.html" class="extype" name="de.htwg.se.durak.controller.GameRuntime">GameRuntime</a></span>)</span><span class="result"> extends <span class="extype" name="scala.swing.Reactor">Reactor</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Tui</span><span class="params">(<span name="controller">controller: <a href="../controller/controllerComponent/ControllerInterface.html" class="extype" name="de.htwg.se.durak.controller.controllerComponent.ControllerInterface">ControllerInterface</a></span>)</span><span class="result"> extends <span class="extype" name="scala.swing.Reactor">Reactor</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -232,9 +244,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="de.htwg.se.durak.aview.Tui#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(runtime:de.htwg.se.durak.controller.GameRuntime):de.htwg.se.durak.aview.Tui"></a><a id="&lt;init&gt;:Tui"></a>
+      <a id="&lt;init&gt;(controller:de.htwg.se.durak.controller.controllerComponent.ControllerInterface):de.htwg.se.durak.aview.Tui"></a><a id="&lt;init&gt;:Tui"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#&lt;init&gt;(runtime:de.htwg.se.durak.controller.GameRuntime):de.htwg.se.durak.aview.Tui" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#&lt;init&gt;(controller:de.htwg.se.durak.controller.controllerComponent.ControllerInterface):de.htwg.se.durak.aview.Tui" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -243,7 +255,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Tui</span><span class="params">(<span name="runtime">runtime: <a href="../controller/GameRuntime.html" class="extype" name="de.htwg.se.durak.controller.GameRuntime">GameRuntime</a></span>)</span>
+        <span class="name">Tui</span><span class="params">(<span name="controller">controller: <a href="../controller/controllerComponent/ControllerInterface.html" class="extype" name="de.htwg.se.durak.controller.controllerComponent.ControllerInterface">ControllerInterface</a></span>)</span>
       </span>
       
       
@@ -337,22 +349,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="de.htwg.se.durak.aview.Tui#attackerScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="attackerScreen(param:Option[List[String]]):List[String]"></a><a id="attackerScreen(Option[List[String]]):List[String]"></a>
-      <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#attackerScreen(param:Option[List[String]]):List[String]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">attackerScreen</span><span class="params">(<span name="param">param: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      
-      
     </li><li name="de.htwg.se.durak.aview.Tui#calibrationInfoScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="calibrationInfoScreen():List[String]"></a>
       <span class="permalink">
@@ -410,9 +406,9 @@
               
         </dd></dl></div>
     </li><li name="de.htwg.se.durak.aview.Tui#closeScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="closeScreen():List[String]"></a>
+      <a id="closeScreen(param:String):List[String]"></a><a id="closeScreen(String):List[String]"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#closeScreen():List[String]" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#closeScreen(param:String):List[String]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -421,7 +417,23 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">closeScreen</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">closeScreen</span><span class="params">(<span name="param">param: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="de.htwg.se.durak.aview.Tui#controller" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="controller:de.htwg.se.durak.controller.controllerComponent.ControllerInterface"></a><a id="controller:ControllerInterface"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#controller:de.htwg.se.durak.controller.controllerComponent.ControllerInterface" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">controller</span><span class="result">: <a href="../controller/controllerComponent/ControllerInterface.html" class="extype" name="de.htwg.se.durak.controller.controllerComponent.ControllerInterface">ControllerInterface</a></span>
       </span>
       
       
@@ -441,22 +453,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Reactor</dd></dl></div>
-    </li><li name="de.htwg.se.durak.aview.Tui#defenderScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="defenderScreen(param:Option[List[String]]):List[String]"></a><a id="defenderScreen(Option[List[String]]):List[String]"></a>
-      <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#defenderScreen(param:Option[List[String]]):List[String]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">defenderScreen</span><span class="params">(<span name="param">param: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -530,6 +526,54 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="de.htwg.se.durak.aview.Tui#helperFormatCard" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="helperFormatCard(card:de.htwg.se.durak.model.gameElementsComponent.CardInterface):String"></a><a id="helperFormatCard(CardInterface):String"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#helperFormatCard(card:de.htwg.se.durak.model.gameElementsComponent.CardInterface):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">helperFormatCard</span><span class="params">(<span name="card">card: <a href="../model/gameElementsComponent/CardInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardInterface">CardInterface</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="de.htwg.se.durak.aview.Tui#helperPrintField" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="helperPrintField(deffer:String,actual:String,field:de.htwg.se.durak.model.gameElementsComponent.FieldInterface,playerDeck:de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface,mainDeckLength:Int,trump:Int,turnType:Int,cardOptions:List[String]):List[String]"></a><a id="helperPrintField(String,String,FieldInterface,CardDeckInterface,Int,Int,Int,List[String]):List[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#helperPrintField(deffer:String,actual:String,field:de.htwg.se.durak.model.gameElementsComponent.FieldInterface,playerDeck:de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface,mainDeckLength:Int,trump:Int,turnType:Int,cardOptions:List[String]):List[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">helperPrintField</span><span class="params">(<span name="deffer">deffer: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actual">actual: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="field">field: <a href="../model/gameElementsComponent/FieldInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.FieldInterface">FieldInterface</a></span>, <span name="playerDeck">playerDeck: <a href="../model/gameElementsComponent/CardDeckInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface">CardDeckInterface</a></span>, <span name="mainDeckLength">mainDeckLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="trump">trump: <span class="extype" name="scala.Int">Int</span></span>, <span name="turnType">turnType: <span class="extype" name="scala.Int">Int</span></span>, <span name="cardOptions">cardOptions: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="de.htwg.se.durak.aview.Tui#helperSpacerString" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="helperSpacerString(size:Int):String"></a><a id="helperSpacerString(Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#helperSpacerString(size:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">helperSpacerString</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -648,6 +692,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="de.htwg.se.durak.aview.Tui#playScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="playScreen(param:Option[List[String]]):List[String]"></a><a id="playScreen(Option[List[String]]):List[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#playScreen(param:Option[List[String]]):List[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">playScreen</span><span class="params">(<span name="param">param: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
     </li><li name="de.htwg.se.durak.aview.Tui#playerScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="playerScreen(msg:String):List[String]"></a><a id="playerScreen(String):List[String]"></a>
       <span class="permalink">
@@ -744,19 +804,19 @@
       </span>
       
       
-    </li><li name="de.htwg.se.durak.aview.Tui#runtime" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="runtime:de.htwg.se.durak.controller.GameRuntime"></a><a id="runtime:GameRuntime"></a>
+    </li><li name="de.htwg.se.durak.aview.Tui#saveScreen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="saveScreen():List[String]"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#runtime:de.htwg.se.durak.controller.GameRuntime" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#saveScreen():List[String]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">runtime</span><span class="result">: <a href="../controller/GameRuntime.html" class="extype" name="de.htwg.se.durak.controller.GameRuntime">GameRuntime</a></span>
+        <span class="name">saveScreen</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -773,6 +833,22 @@
       </span>
       <span class="symbol">
         <span class="name">spacer</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      
+    </li><li name="de.htwg.se.durak.aview.Tui#symbolUnicode" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="symbolUnicode(id:Int):String"></a><a id="symbolUnicode(Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/aview/Tui.html#symbolUnicode(id:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">symbolUnicode</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       

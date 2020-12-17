@@ -155,10 +155,6 @@
                         <a href="Command.html" title="">Command</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="object" href="GameStrategy$.html" title=""></a>
-                        <a href="GameStrategy$.html" title="">GameStrategy</a>
-                      </li><li class="current-entities indented5">
-                        <span class="separator"></span>
                         <a class="class" href="Observable.html" title=""></a>
                         <a href="Observable.html" title="">Observable</a>
                       </li><li class="current-entities indented5">
@@ -167,12 +163,8 @@
                         <a href="Observer.html" title="">Observer</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="trait" href="TraitGameStrategy.html" title=""></a>
-                        <a href="TraitGameStrategy.html" title="">TraitGameStrategy</a>
-                      </li><li class="current-entities indented5">
-                        <span class="separator"></span>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">UndoManager</a>
+                        <a class="class" href="" title="holding all commands done in a stack to make undo possible"></a>
+                        <a href="" title="holding all commands done in a stack to make undo possible">UndoManager</a>
                       </li>
               </ul>
             </div>
@@ -201,7 +193,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>holding all commands done in a stack to make undo possible
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -365,7 +358,7 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="de.htwg.se.durak.utilities.UndoManager#doStep" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="de.htwg.se.durak.utilities.UndoManager#doStep" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="doStep(command:de.htwg.se.durak.utilities.Command):Unit"></a><a id="doStep(Command):Unit"></a>
       <span class="permalink">
       <a href="../../../../../de/htwg/se/durak/utilities/UndoManager.html#doStep(command:de.htwg.se.durak.utilities.Command):Unit" title="Permalink">
@@ -380,7 +373,7 @@
         <span class="name">doStep</span><span class="params">(<span name="command">command: <a href="Command.html" class="extype" name="de.htwg.se.durak.utilities.Command">Command</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">called at every user action</p><div class="fullcomment"><div class="comment cmt"><p>called at every user action</p></div><dl class="paramcmts block"><dt class="param">command</dt><dd class="cmt"><p>is what to do</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -543,6 +536,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="de.htwg.se.durak.utilities.UndoManager#redoStep" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="redoStep():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../de/htwg/se/durak/utilities/UndoManager.html#redoStep():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">redoStep</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -576,9 +585,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="de.htwg.se.durak.utilities.UndoManager#undoStep" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="undoStep:Unit"></a>
+      <a id="undoStep():Unit"></a>
       <span class="permalink">
-      <a href="../../../../../de/htwg/se/durak/utilities/UndoManager.html#undoStep:Unit" title="Permalink">
+      <a href="../../../../../de/htwg/se/durak/utilities/UndoManager.html#undoStep():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -587,10 +596,11 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">undoStep</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">undoStep</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">reverse the last step
+</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
