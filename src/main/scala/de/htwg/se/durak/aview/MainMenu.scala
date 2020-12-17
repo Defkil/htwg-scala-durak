@@ -23,7 +23,7 @@ class MainMenu(f:GUI, controller: ControllerInterface) extends Scene{
     alignment = Pos.Center
     alignmentInParent = Pos.CenterLeft
     children = Seq(
-      new ImageView("de/htwg/se/durak/aview/Durak-Logo.png"),
+      // new ImageView("de/htwg/se/durak/aview/Durak-Logo.png"),
       new Button("Spiel starten") {
         prefWidth = (200)
         prefHeight = (40)
