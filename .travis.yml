@@ -17,7 +17,7 @@ after_success:
 jdk:
   - openjdk8
 
-cache: # caches from https://kubuszok.com/2018/speed-up-things-in-scalac-and-sbt/
+cache:
   apt: true
   directories:
     - $HOME/.ivy2/cache
