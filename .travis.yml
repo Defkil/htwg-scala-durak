@@ -14,11 +14,11 @@ after_success:
   - sbt coverageReport coveralls
   - ./gendoc.sh # based on https://github.com/dryewo/travis-docs-gen
 
-jdk:
-  - openjdk8
+#jdk:
+#  - openjdk8
 
-before_install:
-  - sudo apt-get install --no-install-recommends -y openjfx
+#before_install:
+#  - sudo apt-get install --no-install-recommends -y openjfx
 
 #cache:
 #  apt: true
