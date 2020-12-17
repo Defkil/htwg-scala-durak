@@ -14,21 +14,21 @@ after_success:
   - sbt coverageReport coveralls
   - ./gendoc.sh # based on https://github.com/dryewo/travis-docs-gen
 
-#jdk:
-#  - openjdk8
+jdk:
+  - openjdk8
 
-#before_install:
-#  - sudo apt-get install --no-install-recommends -y openjfx
+before_install:
+  - sudo apt-get install openjfx
 
-#cache:
-#  apt: true
-#  directories:
-#    - $HOME/.ivy2/cache
-#    - $HOME/.sbt/boot
+cache:
+  apt: true
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
 
-#before_cache:
-#  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
-#  - find $HOME/.sbt -name "*.lock" -delete
+before_cache:
+  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
+  - find $HOME/.sbt -name "*.lock" -delete
 
 addons:
   apt:
