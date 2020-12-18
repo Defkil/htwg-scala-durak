@@ -155,19 +155,6 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     )
   }
 
-  def playScreen(param: Option[List[String]]): List[String] = {
-    val turnData = controller.turnData.get
-    helperPrintField(
-      turnData.players(turnData.defendPlayer).toString,
-      turnData.players(turnData.currentPlayer).toString,
-      turnData.field,
-      turnData.playerDecks(turnData.currentPlayer),
-      turnData.mainDeck.deck.length,
-      turnData.trump,
-      turnData.turnType,
-      controller.roundData.validateInputList
-    )
-  }
 
   def finishedScreen(param: Option[List[String]]): List[String] = {
     List("todo finishedScreen",
@@ -193,6 +180,22 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     case 3 => "\u2663"
     case 4 => "\u2665"
   }
+
+  def playScreen(param: Option[List[String]]): List[String] = {
+    val turnData = controller.turnData.get
+    helperPrintField(
+      turnData.players(turnData.defendPlayer).toString,
+      turnData.players(turnData.currentPlayer).toString,
+      turnData.field,
+      turnData.playerDecks(turnData.currentPlayer),
+      turnData.mainDeck.deck.length,
+      turnData.trump,
+      turnData.turnType,
+      controller.roundData.validateInputList
+    )
+  }
+
+
 
   def helperPrintField(deffer: String, actual: String, field: FieldInterface
                        , playerDeck: CardDeckInterface, mainDeckLength: Int, trump: Int, turnType: Int
@@ -228,7 +231,7 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     possibleInput = possibleInput.dropRight(2)
 
     // add attacker if its not the turn of the deffer
-    val playerMsg = if(deffer != actual) "Verteildiger: " + deffer +"\t\taktueller Angreifer: " + actual else "aktueller Verteildiger: \t" + deffer
+    val playerMsg = if(deffer != actual) "Verteidiger: " + deffer +"\t\taktueller Angreifer: " + actual else "aktueller Verteildiger: \t" + deffer
 
     val turnTypeMsg = "\tRunden Typ: " + (turnType match {
       case 0 => "Angriff/Verteidigung"

@@ -1,7 +1,8 @@
 package de.htwg.se.durak
 
 import de.htwg.se.durak.controller.GameDataChanged
-import de.htwg.se.durak.aview.{GUI, Tui}
+import de.htwg.se.durak.aview.Tui
+import de.htwg.se.durak.aview.gui.GUI
 import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
 import com.google.inject.{Guice, Injector}
 
