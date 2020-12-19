@@ -82,7 +82,7 @@ class TuiSpec extends WordSpec with Matchers {
     "nextTurnScreen" in {
       val screen = tui.nextTurnScreen("a")
       screen.size should be(7)
-      screen should be(List("Nächster Spieler ist: b",
+      screen should be(List("Nächster Spieler ist: " + gameRuntime.turnData.get.players(gameRuntime.turnData.get.currentPlayer).toString,
         "Im nächsten Fenster kann man je nach Situation mit s den Angriff beenden",
         "oder die Karten aufnehmen (als Verteidiger)",
         "Karten Legende:",
