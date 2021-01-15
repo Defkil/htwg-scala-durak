@@ -10,7 +10,7 @@ import play.api.libs.json.{JsValue, Json}
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
-class FileIO  @Inject() (val gameElements: GameElementsInterface, val round: RoundInterface) extends FileIOInterface {
+class FileIO @Inject() (val gameElements: GameElementsInterface, val round: RoundInterface) extends FileIOInterface {
 
   /**
    * saves the list of GameData to gameData.json

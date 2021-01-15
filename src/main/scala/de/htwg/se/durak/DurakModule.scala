@@ -14,6 +14,6 @@ class DurakModule extends AbstractModule with ScalaModule {
     bind[gameLogicComponent.GameLogicInterface].to[gameLogicComponent.gameLogicBaseImpl.GameLogic]
     bind[roundComponent.RoundInterface].to[roundComponent.roundBaseImpl.Round]
     bind[gameElementsComponent.GameElementsInterface].to[gameElementsComponent.gameElementsBaseImpl.GameElements]
-    bind[FileIOInterface].to[fileIoJsonImpl.FileIO]
+    bind[FileIOInterface].to[fileIoXmlImpl.FileIO]
   }
 }
