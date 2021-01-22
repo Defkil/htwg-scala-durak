@@ -6,6 +6,7 @@
 
 Ein Projekt für das Modul Software Engineering
 
+
 Review bitte erst ab Montag, der Code muss noch aufgeräumt werden
 
 # Infos zu den Components
