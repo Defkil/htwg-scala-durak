@@ -116,15 +116,15 @@ class TuiSpec extends WordSpec with Matchers {
       val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
       val tui = Tui(gameRuntime)
       gameRuntime.roundData.siteID should be(0)
+      tui.processInputLine("save")
+      gameRuntime.roundData.siteID should be(4)
+      tui.processInputLine("load")
+      gameRuntime.roundData.siteID should be(0)
       tui.processInputLine("1")
       gameRuntime.roundData.siteID should be(1)
       tui.processInputLine("undo")
       gameRuntime.roundData.siteID should be(0)
       tui.processInputLine("redo")
-      gameRuntime.roundData.siteID should be(1)
-      tui.processInputLine("save")
-      gameRuntime.roundData.siteID should be(4)
-      tui.processInputLine("load")
       gameRuntime.roundData.siteID should be(1)
       tui.processInputLine("invalid input")
       gameRuntime.roundData.siteID should be(1)
@@ -156,8 +156,8 @@ class TuiSpec extends WordSpec with Matchers {
       res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 1, List("0", "1"))
       res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff vom vorherigen Spieler ausgesetzt, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 1)")
 
-      res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 1, List("0", "2"))
-      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff vom vorherigen Spieler ausgesetzt, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 2)")
+      res = tui.helperPrintField(deffer, actual, new Field(), playerDeck, 6, 1, 2, List("0", "2"))
+      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Verteidiger nimmt die Karten auf, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 2)")
     }
 
     "symbolUnicode" in {

@@ -18,12 +18,14 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       case "undo" => controller.undo
       case "save" => controller.save
       case "load" => controller.load
-      case _ =>
-        val roundData = controller.roundData
-        if (roundData.validateInputList.head == "func")
-          if (roundData.validateInput.get(param)) controller.solve(param) else controller.inputError
-        else
-          if (roundData.validateInputList.contains(param)) controller.solve(param) else controller.inputError
+      case _ => if (controller.roundData.validateInputList.contains(param)) controller.solve(param) else controller.inputError
+      /**
+       * val roundData = controller.roundData
+       * if (roundData.validateInputList.head == "func")
+       * if (roundData.validateInput.get(param)) controller.solve(param) else controller.inputError
+       * else
+       * if (roundData.validateInputList.contains(param)) controller.solve(param) else controller.inputError
+       */
     }
   }
 
