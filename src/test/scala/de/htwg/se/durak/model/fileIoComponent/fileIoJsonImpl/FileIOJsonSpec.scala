@@ -54,7 +54,7 @@ class FileIOJsonSpec extends WordSpec with Matchers{
       val gameElements = new GameElements()
       val gameDataList: List[GameDataInterface] = List(
         GameData(
-          new RoundData(0, List("1"), None, Some(List(""))),
+          new RoundData(0, List("1"), None, Some(List("a"))),
           Option(TurnData(
             List(Player("PlayerA"), Player("PlayerB")),
             List(gameElements.createCardDeck(List(new Card(5,1), new Card(6,1)))),
