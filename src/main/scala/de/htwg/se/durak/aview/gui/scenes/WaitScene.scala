@@ -9,11 +9,9 @@ import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
-class WaitScene (f:GUI, controller: ControllerInterface) extends Scene {
+class WaitScene (controller: ControllerInterface) extends Scene {
   val info = new Label("Nächster Spieler ist: " + controller.turnData.get.players(controller.turnData.get.currentPlayer).toString)
   info.setTextFill(Color.web("#fff"))
-
-
   fill = Color.rgb(38, 38, 38)
   content = new VBox {
     padding = Insets(40, 20, 40, 20)

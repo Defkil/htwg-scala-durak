@@ -11,7 +11,7 @@ import scalafx.scene.control.{Button, Label}
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.{BorderPane, HBox, VBox}
 
-class PlayScene(f:GUI, controller: ControllerInterface) extends Scene {
+class PlayScene(controller: ControllerInterface) extends Scene {
   val turnData: TurnDataInterface = controller.turnData.get
   val CARD_HEIGHT = 160
   val CARD_WIDTH = 120

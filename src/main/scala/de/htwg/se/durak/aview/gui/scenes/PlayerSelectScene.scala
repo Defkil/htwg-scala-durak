@@ -9,7 +9,7 @@ import scalafx.scene.control.{Button, Label, TextField}
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
-class PlayerSelectScene(f:GUI, controller: ControllerInterface) extends Scene {
+class PlayerSelectScene(controller: ControllerInterface) extends Scene {
   fill = Color.rgb(38, 38, 38)
 
   val info = new Label("Für jeden Spieler einen Namen hinzufügen. Mindestens zwei.")

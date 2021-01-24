@@ -12,10 +12,9 @@ import scalafx.scene.paint.Color
 /**
  * Main scene of the game
  *
- * @param gui base gui instance
  * @param controller controller instance
  */
-class MainMenu(gui: GUI, controller: ControllerInterface) extends Scene {
+class MainMenu(controller: ControllerInterface) extends Scene {
   fill = Color.rgb(38, 38, 38)
   content = new VBox {
     padding = Insets(40, 20, 40, 20)
