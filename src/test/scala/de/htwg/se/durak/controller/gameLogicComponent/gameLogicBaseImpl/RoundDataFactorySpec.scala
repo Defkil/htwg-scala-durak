@@ -13,6 +13,8 @@ class RoundDataFactorySpec extends WordSpec with Matchers {
       elm12.siteID should be(12)
       val elm13 = roundDataFactory.getInstance(13)
       elm13.siteID should be(13)
+      val elm13full = roundDataFactory.getInstance(13, None)
+      elm13full.siteID should be(13)
     }
   }
 }
