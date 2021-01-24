@@ -24,9 +24,9 @@ object DurakGUI {
   def main(args: Array[String]): Unit = {
     var input: String = ""
     gui.main(Array(""))
-    do {
+    while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID)) {
       input = readLine()
       tui.processInputLine(input)
-    } while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID))
+    }
   }
 }
