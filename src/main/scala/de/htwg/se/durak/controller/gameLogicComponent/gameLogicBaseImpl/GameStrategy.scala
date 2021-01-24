@@ -5,7 +5,7 @@ import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, FieldInt
 import de.htwg.se.durak.model.roundComponent.{GameDataInterface, RoundInterface, roundBaseImpl}
 
 //noinspection ScalaStyle
-case class GameStrategyLocalhost (elm: GameElementsInterface, round: RoundInterface) extends GameStrategyInterface {
+case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) extends GameStrategyInterface {
   var gameTable: GameTable = GameTable(elm, round)
   var roundDataFactory: RoundDataFactory = new RoundDataFactory(round)
   /**

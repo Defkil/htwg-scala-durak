@@ -7,9 +7,7 @@ import de.htwg.se.durak.model.roundComponent.RoundInterface
 
 class GameLogic @Inject() (val gameElements: GameElementsInterface, val round: RoundInterface) extends GameLogicInterface {
   val menu: GameStrategyMenuInterface = new GameStrategyMenu(round)
-  val localhost = new GameStrategyLocalhost(gameElements, round)
-  //val multiplayer = new GameStrategyMultiplayer
+  val localhost = new GameStrategy(gameElements, round)
   var get: GameStrategyInterface = localhost
   def setLocalhost(): Unit = get = localhost
-  //def setMultiplayer(): Unit = get = multiplayer
 }
