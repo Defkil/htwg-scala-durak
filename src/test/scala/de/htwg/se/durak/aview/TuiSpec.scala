@@ -120,8 +120,14 @@ class TuiSpec extends WordSpec with Matchers {
       gameRuntime.roundData.siteID should be(1)
       tui.processInputLine("undo")
       gameRuntime.roundData.siteID should be(0)
+      tui.processInputLine("redo")
+      gameRuntime.roundData.siteID should be(1)
+      tui.processInputLine("save")
+      gameRuntime.roundData.siteID should be(4)
+      tui.processInputLine("load")
+      gameRuntime.roundData.siteID should be(1)
       tui.processInputLine("invalid input")
-      gameRuntime.roundData.siteID should be(0)
+      gameRuntime.roundData.siteID should be(1)
     }
 
     "helperFormatCard" in {
