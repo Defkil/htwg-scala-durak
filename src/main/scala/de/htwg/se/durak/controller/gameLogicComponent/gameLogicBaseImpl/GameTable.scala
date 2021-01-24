@@ -62,11 +62,8 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     playerID.getOrElse(0)
   }
 
-  def countToWithS(size: Int): List[String] = {
-    val res: ListBuffer[String] = ListBuffer("s")
-    for(i <- Range(0, size, 1)) res += i.toString
-    res.toList
-  }
+
+
   def countTo(size: Int): List[String] = {
     val res: ListBuffer[String] = ListBuffer()
     for(i <- Range(0, size, 1)) res += i.toString
@@ -208,15 +205,9 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
       , turnData.trump, turnType
     )
   }
+
   def setRightAttacker(turnData: TurnDataInterface): TurnDataInterface = {
     setRightAttacker(turnData, 1)
-  }
-  def setLeftAttacker(turnData: TurnDataInterface): TurnDataInterface = {
-    round.createTurnData (
-      turnData.players, turnData.playerDecks, getLeftPlayer(turnData.defendPlayer, turnData.players.length), turnData.defendPlayer
-      , turnData.field, turnData.mainDeck, turnData.outDeck
-      , turnData.trump, 1
-    )
   }
 
   def removeEmptyPlayer(turnData: TurnDataInterface): TurnDataInterface = {
@@ -238,26 +229,16 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     )
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+/*
+  def setLeftAttacker(turnData: TurnDataInterface): TurnDataInterface = {
+    round.createTurnData (
+      turnData.players, turnData.playerDecks, getLeftPlayer(turnData.defendPlayer, turnData.players.length), turnData.defendPlayer
+      , turnData.field, turnData.mainDeck, turnData.outDeck
+      , turnData.trump, 1
+    )
+  }
+
+
+ */

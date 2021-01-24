@@ -13,7 +13,7 @@ class TuiSpec extends WordSpec with Matchers {
     val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
     val tui = Tui(gameRuntime)
     tui.processInputLine("0")
-    tui.processInputLine("a b")
+    tui.processInputLine("a b c")
     "print" in {
       val stream = new java.io.ByteArrayOutputStream()
       val testInt = "5"
