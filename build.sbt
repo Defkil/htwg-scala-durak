@@ -26,4 +26,4 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 
 // scalacOptions in Compile ++= Seq("-doc-root-content", "rootdoc.txt")
 
-coverageExcludedPackages := "<empty>;de.htwg.se.durak.aview.gui.*;"
+coverageExcludedPackages := "<empty>;de.htwg.se.durak.aview.gui.*;de.htwg.se.durak.DurakGUI;"
