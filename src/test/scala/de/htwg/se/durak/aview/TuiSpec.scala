@@ -6,18 +6,11 @@ import de.htwg.se.durak.model.gameElementsComponent.gameElementsBaseImpl.{Card, 
 import de.htwg.se.durak.model.roundComponent.roundBaseImpl.{Round, RoundData}
 import org.scalatest._
 
-class MockTui(runtime: Controller) extends Tui(runtime: Controller) {
-  var messages: Seq[String] = Seq()
-
-  override def print(s: String): Unit = messages = messages :+ s
-}
-
 class TuiSpec extends WordSpec with Matchers {
   "Tui" should  {
     val gameElements = new GameElements()
     val round = new Round()
     val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
-    val mockTui = new MockTui(gameRuntime)
     val tui = Tui(gameRuntime)
     tui.processInputLine("0")
     tui.processInputLine("a b")
@@ -157,7 +150,8 @@ class TuiSpec extends WordSpec with Matchers {
       res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff vom vorherigen Spieler ausgesetzt, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 1)")
 
       res = tui.helperPrintField(deffer, actual, new Field(), playerDeck, 6, 1, 2, List("0", "2"))
-      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Verteidiger nimmt die Karten auf, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 2)")
+      println(res.toString)
+      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Verteidiger nimmt die Karten auf, Karten im Stapel: 6,               --------------, Angriff:      |            |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 2)")
     }
 
     "symbolUnicode" in {
