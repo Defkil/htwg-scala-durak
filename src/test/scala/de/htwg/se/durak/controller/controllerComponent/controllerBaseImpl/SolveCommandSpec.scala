@@ -8,7 +8,7 @@ import org.scalatest._
 
 class SolveCommandSpec  extends WordSpec with Matchers {
   "SolveCommand" should {
-    "solve some commands" in {
+    "play a game" in {
       val gameElements = new GameElements()
       val round = new Round()
       val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
@@ -22,6 +22,17 @@ class SolveCommandSpec  extends WordSpec with Matchers {
       tui.processInputLine("0")
       tui.processInputLine("s")
       gameRuntime.roundData.siteID should be(10)
+    }
+
+    "calibration of the screen" in {
+      val gameElements = new GameElements()
+      val round = new Round()
+      val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
+      val tui = Tui(gameRuntime)
+      tui.processInputLine("1")
+      tui.processInputLine("0")
+      tui.processInputLine("10")
+      gameRuntime.roundData.siteID should be(0)
     }
   }
 }

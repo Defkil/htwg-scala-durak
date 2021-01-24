@@ -1,8 +1,8 @@
 package de.htwg.se.durak.aview
 
 import de.htwg.se.durak.controller.GameDataChanged
-import de.htwg.se.durak.controller.controllerComponent.ControllerInterface
-import de.htwg.se.durak.model.gameElementsComponent.{CardDeckInterface, CardInterface, FieldInterface}
+import de.htwg.se.durak.controller.controllerComponent._
+import de.htwg.se.durak.model.gameElementsComponent._
 
 import scala.collection.mutable.ListBuffer
 import scala.swing.Reactor
