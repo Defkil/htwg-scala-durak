@@ -208,10 +208,8 @@ case class Tui(controller: ControllerInterface) extends Reactor {
     }
 
     // list possible input options
-    if(cardOptions.head != "func") {
-      for(i <- Range(0, cardOptions.length, 1)) {
-        possibleInput += cardOptions(i) + ", "
-      }
+    for(i <- Range(0, cardOptions.length, 1)) {
+      possibleInput += cardOptions(i) + ", "
     }
     possibleInput = possibleInput.dropRight(2)
 
