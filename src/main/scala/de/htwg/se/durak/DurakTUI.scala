@@ -19,10 +19,10 @@ object DurakTUI {
    */
   def main(args: Array[String]): Unit = {
     var input: String = ""
-    do {
+    while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID)) {
       input = readLine()
       tui.processInputLine(input)
-    } while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID))
+    }
   }
 }
 
