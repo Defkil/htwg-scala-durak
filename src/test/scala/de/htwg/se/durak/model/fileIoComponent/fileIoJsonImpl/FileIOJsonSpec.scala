@@ -49,31 +49,5 @@ class FileIOJsonSpec extends WordSpec with Matchers{
       val res:List[GameDataInterface] = fileIoJson.load
       res.toString should equal(res.toString)
     }
-
-    "save file and load with TurnData and parameter" in {
-      val gameElements = new GameElements()
-      val gameDataList: List[GameDataInterface] = List(
-        GameData(
-          new RoundData(0, List("1"), None, Some(List("a"))),
-          Option(TurnData(
-            List(Player("PlayerA"), Player("PlayerB")),
-            List(gameElements.createCardDeck(List(new Card(5,1), new Card(6,1)))),
-            0,
-            1,
-            gameElements.createField(),
-            gameElements.createCardDeck(List(new Card(4,1))),
-            gameElements.createCardDeck(),
-            1,
-            0
-          ))
-        )
-      )
-
-      val fileIoJson = new fileIoJsonImpl.FileIO(GameElements(), new Round())
-      fileIoJson.save(gameDataList)
-
-      val res:List[GameDataInterface] = fileIoJson.load
-      res.toString should equal(res.toString)
-    }
   }
 }

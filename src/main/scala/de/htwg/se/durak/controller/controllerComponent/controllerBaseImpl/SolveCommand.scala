@@ -13,7 +13,6 @@ case class SolveCommand(input: String, controller: ControllerInterface) extends 
       case 0 => controller.gameLogic.menu.handleMenu(controller.gameData, input)
       case 1 => controller.gameLogic.menu.handleCalibrationInfo(controller.gameData, input)
       case 2 => {
-        //todo min. size 7
         controller.screenSize = input.toInt
         controller.gameLogic.menu.handleCalibrationList(controller.gameData, input)
       }
