@@ -21,10 +21,11 @@ case class Tui(controller: ControllerInterface) extends Reactor {
       case "load" => controller.load
       case _ =>
         val roundData = controller.roundData
-        if (roundData.validateInputList.head == "func")
+        if (roundData.validateInputList.head == "func") {
+          println("=============" + param)
+          println(roundData.validateInput.get)
           if (roundData.validateInput.get(param)) controller.solve(param) else controller.inputError
-        else
-        if (roundData.validateInputList.contains(param)) controller.solve(param) else controller.inputError
+        } else if (roundData.validateInputList.contains(param)) controller.solve(param) else controller.inputError
     }
   }
 
