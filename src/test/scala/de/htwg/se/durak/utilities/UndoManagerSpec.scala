@@ -32,5 +32,15 @@ class UndoManagerSpec extends WordSpec with Matchers {
       undoManager.redoStep()
       command.state should be(1)
     }
+
+    "case undo Nil" in {
+      val undoManager = new UndoManager
+      undoManager.undoStep().toString should equal("()")
+    }
+
+    "case redo Nil" in {
+      val undoManager = new UndoManager
+      undoManager.redoStep().toString should equal("()")
+    }
   }
 }
