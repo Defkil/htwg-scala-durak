@@ -228,7 +228,6 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
       , turnData.trump, turnData.turnType
     )
   }
-
 }
 
 /*
@@ -239,6 +238,4 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
       , turnData.trump, 1
     )
   }
-
-
  */
