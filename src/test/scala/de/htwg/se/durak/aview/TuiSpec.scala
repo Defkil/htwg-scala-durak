@@ -106,18 +106,16 @@ class TuiSpec extends WordSpec with Matchers {
     "processInputLine" in {
       val gameElements = new GameElements()
       val round = new Round()
-      val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
-      val tui = Tui(gameRuntime)
-      gameRuntime.roundData.siteID should be(0)
-      tui.processInputLine("save")
-      tui.processInputLine("load")
-      tui.processInputLine("1")
-      tui.processInputLine("undo")
-      gameRuntime.roundData.siteID should be(0)
-      tui.processInputLine("redo")
-      gameRuntime.roundData.siteID should be(1)
-      tui.processInputLine("invalid input")
-      gameRuntime.roundData.siteID should be(1)
+      val gameRuntime2 = new Controller(gameElements, new GameLogic(gameElements, round), round)
+      val tui2 = Tui(gameRuntime)
+      gameRuntime2.roundData.siteID should be(0)
+      tui2.processInputLine("save")
+      tui2.processInputLine("load")
+      tui2.processInputLine("1")
+      tui2.processInputLine("undo")
+      tui2.processInputLine("redo")
+      tui2.processInputLine("invalid input")
+      gameRuntime2.roundData.siteID should be(0)
     }
 
     "helperFormatCard" in {
