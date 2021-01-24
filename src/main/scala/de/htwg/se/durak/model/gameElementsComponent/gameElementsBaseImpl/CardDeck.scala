@@ -47,10 +47,7 @@ case class CardDeck(var deck: List[CardInterface]) extends CardDeckInterface {
    * @param position Position of the card that should be removed
    * @return New CardDeck instance
    */
-  def removeCard(position: Int): CardDeck = {
-    if(position >= deck.size) throw new IndexOutOfBoundsException
-    CardDeck(deck.take(position) ++ deck.drop(position + 1))
-  }
+  def removeCard(position: Int): CardDeck = CardDeck(deck.take(position) ++ deck.drop(position + 1))
 
   /**
    * Remove the same card as in the parameter
