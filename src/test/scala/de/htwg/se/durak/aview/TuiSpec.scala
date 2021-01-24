@@ -104,6 +104,7 @@ class TuiSpec extends WordSpec with Matchers {
       tui.route(1, None).size should be(3)
       tui.route(2, None).size should be(20)
       tui.route(3, None).size should be(3)
+      tui.route(4, None).size should be(2)
       tui.route(10, Some(List(""))).size should be(7)
       tui.route(11, Some(List(""))).size should be(8)
       tui.route(12, Some(List(""))).size should be(8)
@@ -132,7 +133,7 @@ class TuiSpec extends WordSpec with Matchers {
       stringToTest.length should be(11)
     }
 
-    /*"helperPrintField with one card and one option" in {
+    "helperPrintField with one card and one option" in {
       val gameElements = new GameElements()
       val round = new Round()
       val gameRuntime = new Controller(gameElements, new GameLogic(gameElements, round), round)
@@ -142,18 +143,16 @@ class TuiSpec extends WordSpec with Matchers {
       val actual = "Spieler 2"
       val field = new Field(CardDeck(List(Card(2,1))))
       val playerDeck = new CardDeck(List(Card(3,1), Card(4,2)))
-      val res = tui.helperPrintField(deffer, actual, field, playerDeck, List("0", "1"))
-      res.length should be(7)
-      res should be(List(
-        "Verteildiger: Spieler 1",
-        "              --------------",
-        "Angriff:      | ♠ 2        |",
-        "Verteidigung: |            |",
-        "              --------------",
-        "Karten in der Hand: 0: (♠ 3), 1: (♦ 4)",
-        "Mögliche Eingaben: s, 0",
-      ))
-    }*/
+      val res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 0, List("0", "1"))
+      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff/Verteidigung, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 1)")
+    }
+
+    "symbolUnicode" in {
+      tui.symbolUnicode(1) should be("\u2660")
+      tui.symbolUnicode(2) should be("\u2666")
+      tui.symbolUnicode(3) should be("\u2663")
+      tui.symbolUnicode(4) should be("\u2665")
+    }
 
     "test unapply" in {
       Tui.unapply(tui)
