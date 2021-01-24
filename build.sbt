@@ -26,4 +26,4 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 
 // scalacOptions in Compile ++= Seq("-doc-root-content", "rootdoc.txt")
 
-coverageExcludedPackages := "<empty>;*aview.gui.*;"
+coverageExcludedPackages := "<empty>;*.aview.gui.*;"
