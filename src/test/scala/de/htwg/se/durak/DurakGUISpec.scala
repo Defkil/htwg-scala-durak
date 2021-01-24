@@ -1,7 +1,6 @@
 package de.htwg.se.durak
 
-import java.io.ByteArrayInputStream
-
+import de.htwg.se.durak.controller.GameDataChanged
 import org.scalatest.{Matchers, WordSpec}
 
 class DurakGUISpec extends WordSpec with Matchers {
