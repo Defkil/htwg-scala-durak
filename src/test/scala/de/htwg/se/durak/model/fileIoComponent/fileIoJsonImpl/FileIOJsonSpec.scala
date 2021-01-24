@@ -7,7 +7,7 @@ import de.htwg.se.durak.model.roundComponent.{GameDataInterface, RoundDataInterf
 import de.htwg.se.durak.model.roundComponent.roundBaseImpl.{GameData, Round, RoundData, TurnData}
 import org.scalatest._
 
-class FileIOJsonSpec extends WordSpec with Matchers{
+class FileIOJsonSpec extends WordSpec with Matchers {
   "FileIO JSON" should  {
     "save file and load without TurnData" in {
       val gameDataList: List[GameDataInterface] = List(
