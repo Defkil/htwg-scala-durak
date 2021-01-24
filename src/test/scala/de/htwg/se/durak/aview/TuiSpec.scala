@@ -149,8 +149,15 @@ class TuiSpec extends WordSpec with Matchers {
       val actual = "Spieler 2"
       val field = new Field(CardDeck(List(Card(2,1))))
       val playerDeck = new CardDeck(List(Card(3,1), Card(4,2)))
-      val res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 0, List("0", "1"))
+
+      var res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 0, List("0", "1"))
       res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff/Verteidigung, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 1)")
+
+      res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 1, List("0", "1"))
+      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff vom vorherigen Spieler ausgesetzt, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 1)")
+
+      res = tui.helperPrintField(deffer, actual, field, playerDeck, 6, 1, 1, List("0", "2"))
+      res.toString should be("List(Verteidiger: Spieler 1\t\taktueller Angreifer: Spieler 2\tTrump: ♠\tRunden Typ: Angriff vom vorherigen Spieler ausgesetzt, Karten im Stapel: 6,               --------------, Angriff:      | ♠ 2        |, Verteidigung: |            |,               --------------, Karten in der Hand: 0: (♠ 3), 1: (♦ 4), Mögliche Eingaben: 0, 2)")
     }
 
     "symbolUnicode" in {
