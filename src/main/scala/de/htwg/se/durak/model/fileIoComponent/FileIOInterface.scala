@@ -4,5 +4,5 @@ import de.htwg.se.durak.model.roundComponent.GameDataInterface
 
 trait FileIOInterface {
   def load: List[GameDataInterface]
-  def save(grid: List[GameDataInterface]): Unit
+  def save(gameDataList: List[GameDataInterface]): Unit
 }
