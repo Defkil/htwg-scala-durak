@@ -9,6 +9,8 @@ class DurakGUISpec extends WordSpec with Matchers {
       DurakGUI.controller.roundData.siteID should be(0)
       DurakGUI.tui.processInputLine("3")
       DurakGUI.controller.roundData.siteID should be(-1)
+      DurakGUI.main(Array(""))
+      DurakGUI.controller.roundData.siteID should be(-1)
     }
   }
 }
