@@ -154,5 +154,9 @@ class TuiSpec extends WordSpec with Matchers {
         "Mögliche Eingaben: s, 0",
       ))
     }*/
+
+    "test unapply" in {
+      Tui.unapply(tui)
+    }
   }
 }
