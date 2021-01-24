@@ -9,7 +9,7 @@ import org.scalatest._
 
 class FileIOJsonSpec extends WordSpec with Matchers{
   "FileIO JSON" should  {
-    "save file and load without TurnData" in {
+    /*"save file and load without TurnData" in {
       val gameDataList: List[GameDataInterface] = List(
         GameData(
           new RoundData(0, List("1")),
@@ -22,7 +22,7 @@ class FileIOJsonSpec extends WordSpec with Matchers{
 
       val res:List[GameDataInterface] = fileIoJson.load
       res.toString() should equal("List(GameData(RoundData(0,List(\"1\"),None,Some(List(\"\"))),None))")
-    }
+    }*/
 
     "save file and load with TurnData" in {
       val gameElements = new GameElements()
