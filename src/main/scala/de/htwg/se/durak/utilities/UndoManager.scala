@@ -28,6 +28,9 @@ class UndoManager {
     }
   }
 
+  /**
+   * redo last step
+   */
   def redoStep(): Unit = redoStack match {
     case Nil =>
     case head::stack => {
