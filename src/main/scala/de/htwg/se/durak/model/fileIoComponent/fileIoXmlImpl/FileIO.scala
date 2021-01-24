@@ -56,13 +56,6 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     <player>{for {playerDeck <- playerDecks } yield cardDeckToXml(playerDeck.deck)}</player>
   }
 
-  def saveString(data: String): Unit = {
-    import java.io._
-    val pw = new PrintWriter(new File("gameSata.xml"))
-    pw.write(data)
-    pw.close()
-  }
-
   override def load: List[GameDataInterface] = {
     val source = scala.xml.XML.loadFile("gameData.xml")
     var res: List[GameDataInterface] = List()
