@@ -9,13 +9,20 @@ object DurakTUI {
   val injector: Injector = Guice.createInjector(new DurakModule)
   val controller: ControllerInterface = injector.getInstance(classOf[ControllerInterface])
   val tui: Tui = Tui(controller)
+
   controller.publish(new GameDataChanged)
+
+  /**
+   * Starting game TUI
+   *
+   * @param args Start arguments
+   */
   def main(args: Array[String]): Unit = {
     var input: String = ""
     do {
       input = readLine()
       tui.processInputLine(input)
-    } while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID))//controller.roundStack.last.roundData.siteID.equals(-1))
+    } while (!List(-1, 4, 5).contains(controller.roundStack.last.roundData.siteID))
   }
 }
 

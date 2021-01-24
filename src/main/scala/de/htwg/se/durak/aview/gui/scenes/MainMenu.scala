@@ -9,7 +9,13 @@ import scalafx.scene.control.{Button, TextField}
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
-class MainMenu(f:GUI, controller: ControllerInterface) extends Scene {
+/**
+ * Main scene of the game
+ *
+ * @param gui base gui instance
+ * @param controller controller instance
+ */
+class MainMenu(gui: GUI, controller: ControllerInterface) extends Scene {
   fill = Color.rgb(38, 38, 38)
   content = new VBox {
     padding = Insets(40, 20, 40, 20)
@@ -30,10 +36,16 @@ class MainMenu(f:GUI, controller: ControllerInterface) extends Scene {
     )
   }
 
+  /**
+   * Starts the game
+   */
   private def startGame(): Unit = {
     controller.solve("0")
   }
 
+  /**
+   * Close the game
+   */
   private def closeGame(): Unit = {
     controller.solve("3")
   }
