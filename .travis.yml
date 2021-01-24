@@ -35,6 +35,12 @@ addons:
     packages:
       - pandoc
 
+services:
+  - xvfb
+
+before_script:
+  - "export DISPLAY=:99.0"
+
 env:
   global:
     secure: "unUudkgzuu/rJ/yjlbkGWmzY689IXurhYHh+2+kHVc/rlaG+6plpeHNhvGmQG3Kwjhnw6P8VZ95TtV0r2mOeuwH98Ujvr/qvhnWavgmnaCM1OhibkiEsQTavgtvcWGK55Axm5d7JZtN823VJXOieDlU852B70IBWeZJG8PNE+cJKQ2SsPOm8OmmqEwgD8V6yQBbPOe3YNZ03FxC3TzkN5+t07BDuZUpKhf1ydbCesmDr2H5mxXmi0OXq4A5OGXI7m0jSrvCTTEvDFYwFi9iL5A7sf1uCNrNtCLJ8OD1u/udBADScs1qpax+zxsHbmeSK+RlKiaqCJNjLSKpQvVG7v+5iVZXXj7imoGd4AXn/McdTr6FBeAFEBi9ab+bX6yUi31w3H4PXTsoeFt70d/H3ca67HIDAunnI2/hpVLqbqdUE5YB01twTCk+1Ns86M8BzDUcLkT5+V0c+XI9pKYp2PDzbFZ88bQn9j5NeE05dPnH3O7OI5hEKhEyaUhP+7rOUbtyt5mhCg5qY9xcHLQ5nbBfRsQ+Z71UI7DMLpL7LTZ5Qv5s8ZngpBkIXfr6zqC9IukZ3Vh9vdXuE+37uPXtHtjuUhzaM+nEcIQ24Ony/0teD68dh2h+jD5AwpGdyAP4YdT4Zrw/15xv4FWVxReyDAig28aIMxKm2oD7H2qxKrZU="
