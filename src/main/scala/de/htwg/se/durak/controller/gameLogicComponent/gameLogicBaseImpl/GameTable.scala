@@ -62,14 +62,11 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
     playerID.getOrElse(0)
   }
 
-
-
   def countTo(size: Int): List[String] = {
     val res: ListBuffer[String] = ListBuffer()
     for(i <- Range(0, size, 1)) res += i.toString
     res.toList
   }
-
 
   def addSpacer(turnData: TurnDataInterface): TurnDataInterface = {
     round.createTurnData(
