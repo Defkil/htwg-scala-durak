@@ -113,6 +113,7 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
           if(turnData.playerDecks.length > 2) {
             turnData = gameTable.setRightAttacker(turnData)
           } else {
+            println("==================")
             turnData = gameTable.attackFinish(turnData)
           }
         } else {
