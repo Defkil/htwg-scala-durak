@@ -30,14 +30,9 @@ sbt runMain de.htwg.se.durak.DurakGUI
 # Um das Spiel mit der TUI zu starten
 sbt runMain de.htwg.se.durak.DurakTUI</code></pre>
 <h2 id="information_source-componenten">:information_source: Componenten</h2>
-<ul>
-<li>controller/controllerComponent Controller mit Comannd Solver</li>
-<li>controller/gameLogicComponent Enthält die Spiel Logic und die des Menüs</li>
-<li>model/fileIoComponent Zum Speichern und Laden von Spielständen</li>
-<li>model/gameElementsComponent Spiel Elementen wie Karten und Karten Decks</li>
-<li>model/playerComponent Spieler Infos</li>
-<li>model/roundComponent Zum generieren von Runden Elementen</li>
-</ul>
+<blockquote>
+<p>Componenten sind mit der Online Dokumentation verlinkt * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/controller/controllerComponent/index.html">controller/controllerComponent</a> Controller mit Comannd Solver * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/controller/gameLogicComponent/index.html">controller/gameLogicComponent</a> Enthält die Spiel Logic und die des Menüs * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/fileIoComponent/index.html">model/fileIoComponent</a> Zum Speichern und Laden von Spielständen * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/gameElementsComponent/index.html">model/gameElementsComponent</a> Spiel Elementen wie Karten und Karten Decks * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/playerComponent/index.html">model/playerComponent</a> Spieler Infos * <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/roundComponent/index.html">model/roundComponent</a> Zum generieren von Runden Elementen</p>
+</blockquote>
 <h2 id="capital_abcd-gamedata">:capital_abcd: GameData</h2>
 <p>Besteht aus <em>RoundData</em> und <em>TurnData</em>.</p>
 <p><em>RoundData</em> besitzt Informationen über die Runde, wie die aktuelle Seite und mögliche Eingaben. Es können nur Eingaben gemacht werden, die in RoundData gelistet werden. So können nur mögliche Karten gelegt werden.</p>
