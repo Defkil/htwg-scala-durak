@@ -18,6 +18,7 @@ case class RoundData (
 ) extends RoundDataInterface {
   /**
    * RoundData with only InputList
+   *
    * @param siteID  Actual site
    * @param validateInputList List of strings with possible options
    */

@@ -59,7 +59,6 @@ class GameTableSpec extends WordSpec with Matchers {
       turnData.currentPlayer should be(1) // should not change, right player of the deffender
       turnData = gameTable.setRightAttacker(turnData)
       turnData.currentPlayer should be(1)
-
     }
 
     "test unapply" in {

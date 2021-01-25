@@ -10,6 +10,11 @@ import scala.collection.mutable.ListBuffer
 import scala.xml.{Elem, NodeSeq}
 
 class FileIO @Inject() (val gameElements: GameElementsInterface, val round: RoundInterface) extends FileIOInterface  {
+  /**
+   * Save GameData to a file
+   *
+   * @param gameDataList GameData that should be saved
+   */
   override def save(gameDataList: List[GameDataInterface]): Unit = {
     scala.xml.XML.save("gameData.xml",
       <gamedata>
@@ -19,6 +24,28 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
       </gamedata>)
   }
 
+  /**
+   * Load saved file
+   *
+   * @return List of GameData
+   */
+  override def load: List[GameDataInterface] = {
+    val source = scala.xml.XML.loadFile("gameData.xml")
+    var res: List[GameDataInterface] = List()
+    (source \\ "gamedata" \\ "rounddata").foreach { data => {
+      val roundData = loadRoundData((data \\ "rounddata"))
+      val turnData = loadTurnData((data \\ "turndata"))
+      res = res :+ round.createGameData(roundData, turnData)
+    }}
+    res
+  }
+
+  /**
+   * Convert RoundData to xml
+   *
+   * @param data GameData which should be converted to xml
+   * @return xml element from the parameter
+   */
   def dataToXml(data: GameDataInterface): Elem = {
     val roundData = data.roundData
     val turnData = data.turnData
@@ -30,6 +57,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     </rounddata>
   }
 
+  /**
+   * Convert TurnData to xml
+   *
+   * @param turnData TurnData which should be converted to xml
+   * @return xml element from the parameter
+   */
   def turnDataToXml(turnData: TurnDataInterface): Elem = {
     <turndata>
       {playerListToXml(turnData.players)}
@@ -44,29 +77,42 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     </turndata>
   }
 
+  /**
+   * Convert PlayerList to xml
+   *
+   * @param playerList List of all player which should be converted to xml
+   * @return xml element from the parameter
+   */
   def playerListToXml(playerList: List[Player]): Elem = {
     <players>{for { player <- playerList } yield <player>{player}</player>}</players>
   }
 
+  /**
+   * Convert CardDeck to xml
+   *
+   * @param cardDeck CardDeck which should be converted to xml
+   * @return xml element from the parameter
+   */
   def cardDeckToXml(cardDeck: List[CardInterface]): List[Elem] = {
     for {card <- cardDeck } yield <card><rank>{card.rank}</rank><symbol>{card.symbol}</symbol></card>
   }
 
+  /**
+   * Convert PlayerDecks to xml
+   *
+   * @param playerDecks PlayerDecks which should be converted to xml
+   * @return xml element from the parameter
+   */
   def playerDecksToXml(playerDecks: List[CardDeckInterface]): Elem = {
     <player>{for {playerDeck <- playerDecks } yield cardDeckToXml(playerDeck.deck)}</player>
   }
 
-  override def load: List[GameDataInterface] = {
-    val source = scala.xml.XML.loadFile("gameData.xml")
-    var res: List[GameDataInterface] = List()
-    (source \\ "gamedata" \\ "rounddata").foreach { data => {
-      val roundData = loadRoundData((data \\ "rounddata"))
-      val turnData = loadTurnData((data \\ "turndata"))
-      res = res :+ round.createGameData(roundData, turnData)
-    }}
-    res
-  }
-
+  /**
+   * Load RoundData from xml
+   *
+   * @param elm xml data wich should be parsed
+   * @return RoundData based on the parameter
+   */
   def loadRoundData(elm: NodeSeq): RoundDataInterface = {
     round.createRoundData(
       (elm \\ "siteid").text.toInt,
@@ -76,6 +122,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     )
   }
 
+  /**
+   * Load TurnData from xml
+   *
+   * @param elm xml data wich should be parsed
+   * @return TurnData based on the parameter
+   */
   def loadTurnData(elm: NodeSeq): Option[TurnDataInterface] = {
     if(elm.isEmpty) None else {
       val players: List[Player] = loadPlayerList((elm \\ "players"))
@@ -93,6 +145,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     }
   }
 
+  /**
+   * Load CardDeck from xml
+   *
+   * @param elm xml data wich should be parsed
+   * @return CardDeck based on the parameter
+   */
   def loadCardDeck(elm: NodeSeq): CardDeckInterface = {
     var res: CardDeckInterface = gameElements.createCardDeck()
     (elm \\ "card").foreach{ card => {
@@ -101,6 +159,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     res
   }
 
+  /**
+   * Load PlayerDecks from xml
+   *
+   * @param elm xml data wich should be parsed
+   * @return PlayerDecks based on the parameter
+   */
   def loadPlayerDecks(elm: NodeSeq): List[CardDeckInterface] = {
     var res: ListBuffer[CardDeckInterface] = new ListBuffer
     (elm \\ "player").foreach { player => {
@@ -109,6 +173,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     res.toList
   }
 
+  /**
+   * Load PlayerList from xml
+   *
+   * @param elm xml data wich should be parsed
+   * @return PlayerList based on the parameter
+   */
   def loadPlayerList(elm: NodeSeq): List[Player] = {
     var res: ListBuffer[Player] = ListBuffer()
     (elm \\ "player").foreach { player => {
