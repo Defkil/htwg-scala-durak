@@ -151,16 +151,16 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="de.htwg.se.durak">durak</a></dd></dl></div>
     </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="trait" href="Command.html" title=""></a>
-                        <a href="Command.html" title="">Command</a>
+                        <a class="trait" href="Command.html" title="Command trait"></a>
+                        <a href="Command.html" title="Command trait">Command</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">Observable</a>
+                        <a class="class" href="" title="Class for observing something"></a>
+                        <a href="" title="Class for observing something">Observable</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="trait" href="Observer.html" title=""></a>
-                        <a href="Observer.html" title="">Observer</a>
+                        <a class="trait" href="Observer.html" title="Observer trait"></a>
+                        <a href="Observer.html" title="Observer trait">Observer</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="class" href="UndoManager.html" title="holding all commands done in a stack to make undo possible"></a>
@@ -193,7 +193,8 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Class for observing something
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -317,7 +318,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="de.htwg.se.durak.utilities.Observable#add" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="de.htwg.se.durak.utilities.Observable#add" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="add(s:de.htwg.se.durak.utilities.Observer):Unit"></a><a id="add(Observer):Unit"></a>
       <span class="permalink">
       <a href="../../../../../de/htwg/se/durak/utilities/Observable.html#add(s:de.htwg.se.durak.utilities.Observer):Unit" title="Permalink">
@@ -332,7 +333,7 @@
         <span class="name">add</span><span class="params">(<span name="s">s: <a href="Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Add a subscriber</p><div class="fullcomment"><div class="comment cmt"><p>Add a subscriber</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>subscriber which should be added</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -550,8 +551,9 @@
         <span class="name">notifyObservers</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.utilities.Observable#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Notify all subscriber
+</p>
+    </li><li name="de.htwg.se.durak.utilities.Observable#remove" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="remove(s:de.htwg.se.durak.utilities.Observer):Unit"></a><a id="remove(Observer):Unit"></a>
       <span class="permalink">
       <a href="../../../../../de/htwg/se/durak/utilities/Observable.html#remove(s:de.htwg.se.durak.utilities.Observer):Unit" title="Permalink">
@@ -566,7 +568,9 @@
         <span class="name">remove</span><span class="params">(<span name="s">s: <a href="Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Remove a subscriber
+</p><div class="fullcomment"><div class="comment cmt"><p>Remove a subscriber
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>subscriber that should be removed</p></dd></dl></div>
     </li><li name="de.htwg.se.durak.utilities.Observable#subscribers" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="subscribers:Vector[de.htwg.se.durak.utilities.Observer]"></a><a id="subscribers:Vector[Observer]"></a>
       <span class="permalink">
@@ -582,7 +586,8 @@
         <span class="name">subscribers</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<a href="Observer.html" class="extype" name="de.htwg.se.durak.utilities.Observer">Observer</a>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">List of all subscriber
+</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
