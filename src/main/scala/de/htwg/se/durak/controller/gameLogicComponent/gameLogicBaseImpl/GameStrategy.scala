@@ -157,8 +157,4 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
     }
     roundBaseImpl.GameData(roundDataFactory.getInstance(10, None), Some(turnData))
   }
-
-  def parseAttackTurn(gameData: GameDataInterface, input: String): GameDataInterface = {
-    roundBaseImpl.GameData(roundDataFactory.getInstance(13, None), None)
-  }
 }
