@@ -12,21 +12,37 @@
 <div id="header">
 <h1 class="title">HTWG Durak Documentation</h1>
 </div>
-<p><a href="https://travis-ci.org/Defkil/htwg-scala-durak"><img src="https://travis-ci.org/Defkil/htwg-scala-durak.svg?branch=master" alt="Build Status" /></a> <a href="https://coveralls.io/github/Defkil/htwg-scala-durak?branch=master"><img src="https://coveralls.io/repos/github/Defkil/htwg-scala-durak/badge.svg?branch=master" alt="Coverage Status" /></a> <a href="https://defkil.github.io/htwg-scala-durak/master/docs/"><img src="https://readthedocs.org/projects/ansicolortags/badge/?version=latest" alt="Documentation Status" /></a></p>
 <h1 id="durak-scala-spiel">Durak Scala Spiel</h1>
-<p>Ein Projekt für das Modul Software Engineering</p>
-<h3 id="review-bitte-erst-ab-montag-16-uhr-der-code-muss-noch-aufgeräumt-werden">Review bitte erst ab Montag 16 Uhr, der Code muss noch aufgeräumt werden</h3>
-<h1 id="infos-zu-den-components">Infos zu den Components</h1>
+<p><a href="https://travis-ci.org/Defkil/htwg-scala-durak"><img src="https://travis-ci.org/Defkil/htwg-scala-durak.svg?branch=master" alt="Build Status" /></a> <a href="https://coveralls.io/github/Defkil/htwg-scala-durak?branch=master"><img src="https://coveralls.io/repos/github/Defkil/htwg-scala-durak/badge.svg?branch=master" alt="Coverage Status" /></a> <a href="https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/index.html"><img src="https://readthedocs.org/projects/ansicolortags/badge/?version=latest" alt="Documentation Status" /></a> &gt; Ein Projekt für das Modul Software Engineering</p>
+<h2 id="books-inhaltsverzeichnis">:books: Inhaltsverzeichnis</h2>
 <ul>
-<li>controller/controllerComponent Componente zum ausführen der Runden</li>
-<li>controller/gameLogicComponent Componente mit der eigentlichen Game Logic</li>
-<li>model/gameElementsComponent Componente mit Spiel Elementen wie Karten, Karten Decks</li>
-<li>model/roundComponent Componenten mit GameData</li>
+<li><a href="#package-installation">Installation</a></li>
+<li><a href="#information_source-Componenten">Componenten</a></li>
+<li><a href="#capital_abcd-GameData">GameData</a></li>
+<li><a href="#framed_picture-Spielinfo">Spielinfo</a></li>
 </ul>
-<h2 id="gamedata">GameData</h2>
-<p>Besteht aus RoundData und TurnData. RoundData besitzt Informationen über die Runde. TurnData besitzt Informationen über das Spiel. # Infos zum Spiel</p>
+<h2 id="package-installation">:package: Installation</h2>
+<p>Benötigt zum starten ist <a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java</a> und <a href="https://www.scala-lang.org/">Scala</a></p>
+<p>Github Projekt Clonen oder <a href="https://github.com/Defkil/htwg-scala-durak/archive/master.zip">Downloaden</a></p>
+<pre class="sh"><code># Um das Spiel mit der GUI zu starten
+sbt runMain de.htwg.se.durak.DurakGUI
+
+# Um das Spiel mit der TUI zu starten
+sbt runMain de.htwg.se.durak.DurakTUI</code></pre>
+<h2 id="information_source-componenten">:information_source: Componenten</h2>
+<ul>
+<li>controller/controllerComponent Controller mit Comannd Solver</li>
+<li>controller/gameLogicComponent Enthält die Spiel Logic und die des Menüs</li>
+<li>model/fileIoComponent Zum Speichern und Laden von Spielständen</li>
+<li>model/gameElementsComponent Spiel Elementen wie Karten und Karten Decks</li>
+<li>model/playerComponent Spieler Infos</li>
+<li>model/roundComponent Zum generieren von Runden Elementen</li>
+</ul>
+<h2 id="capital_abcd-gamedata">:capital_abcd: GameData</h2>
+<p>Besteht aus <em>RoundData</em> und <em>TurnData</em>.</p>
+<p><em>RoundData</em> besitzt Informationen über die Runde, wie die aktuelle Seite und mögliche Eingaben. Es können nur Eingaben gemacht werden, die in RoundData gelistet werden. So können nur mögliche Karten gelegt werden.</p>
+<p><em>TurnData</em> besitzt Informationen über das Spiel. Darin sind alle Karten Decks drinnen (der Spieler, des Feldes, der Stacks)</p>
+<h1 id="framed_picture-spielinfo">:framed_picture: Spielinfo</h1>
 <p><a href="https://de.wikipedia.org/wiki/Durak_(Kartenspiel)">Wikipedia</a> | <a href="https://durak.hlop.de/">Online Version</a></p>
-<h1 id="infos-für-später">Infos für später</h1>
-<p>Spieler die fertig sind, müssen auf turnData.players entfernt werden</p>
 </body>
 </html>
