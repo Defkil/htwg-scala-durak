@@ -371,7 +371,9 @@
         <span class="name">cardDeckToJson</span><span class="params">(<span name="cardDeck">cardDeck: <span class="extype" name="scala.List">List</span>[<a href="../../gameElementsComponent/CardInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardInterface">CardInterface</a>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>
       </span>
       
-      <p class="shortcomment cmt">transform CardDeck to Json Object</p><div class="fullcomment"><div class="comment cmt"><p>transform CardDeck to Json Object</p></div><dl class="paramcmts block"><dt class="param">cardDeck</dt><dd class="cmt"><p>obj that will be transformed to json</p></dd><dt>returns</dt><dd class="cmt"><p>JsValue CardDeck</p></dd></dl></div>
+      <p class="shortcomment cmt">Convert CardDeck to json
+</p><div class="fullcomment"><div class="comment cmt"><p>Convert CardDeck to json
+</p></div><dl class="paramcmts block"><dt class="param">cardDeck</dt><dd class="cmt"><p>CardDeck which should be converted to json</p></dd><dt>returns</dt><dd class="cmt"><p>json element from the parameter</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
@@ -465,7 +467,9 @@
         <span class="name">gameDataToJson</span><span class="params">(<span name="gameDataList">gameDataList: <span class="extype" name="scala.List">List</span>[<a href="../../roundComponent/GameDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.GameDataInterface">GameDataInterface</a>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>
       </span>
       
-      <p class="shortcomment cmt">transform GameData to Json Object</p><div class="fullcomment"><div class="comment cmt"><p>transform GameData to Json Object</p></div><dl class="paramcmts block"><dt class="param">gameDataList</dt><dd class="cmt"><p>List of all GameData that will be transformed to json</p></dd><dt>returns</dt><dd class="cmt"><p>JsValue GameData as Json</p></dd></dl></div>
+      <p class="shortcomment cmt">Convert RoundData to json
+</p><div class="fullcomment"><div class="comment cmt"><p>Convert RoundData to json
+</p></div><dl class="paramcmts block"><dt class="param">gameDataList</dt><dd class="cmt"><p>GameData which should be converted to json</p></dd><dt>returns</dt><dd class="cmt"><p>json element from the parameter</p></dd></dl></div>
     </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#gameElements" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="gameElements:de.htwg.se.durak.model.gameElementsComponent.GameElementsInterface"></a><a id="gameElements:GameElementsInterface"></a>
       <span class="permalink">
@@ -551,8 +555,10 @@
         <span class="name">load</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../../roundComponent/GameDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.GameDataInterface">GameDataInterface</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">load saved game from file gameData.json</p><div class="fullcomment"><div class="comment cmt"><p>load saved game from file gameData.json</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>GameData list from saved game</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO">FileIO</a> → <a href="../FileIOInterface.html" class="extype" name="de.htwg.se.durak.model.fileIoComponent.FileIOInterface">FileIOInterface</a></dd></dl></div>
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadCardDeck" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load saved file
+</p><div class="fullcomment"><div class="comment cmt"><p>Load saved file
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>List of GameData</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO">FileIO</a> → <a href="../FileIOInterface.html" class="extype" name="de.htwg.se.durak.model.fileIoComponent.FileIOInterface">FileIOInterface</a></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadCardDeck" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadCardDeck(elms:play.api.libs.json.JsValue):de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface"></a><a id="loadCardDeck(JsValue):CardDeckInterface"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadCardDeck(elms:play.api.libs.json.JsValue):de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface" title="Permalink">
@@ -567,8 +573,10 @@
         <span class="name">loadCardDeck</span><span class="params">(<span name="elms">elms: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>)</span><span class="result">: <a href="../../gameElementsComponent/CardDeckInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface">CardDeckInterface</a></span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadCardDecks" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load CardDeck from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load CardDeck from json
+</p></div><dl class="paramcmts block"><dt class="param">elms</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>CardDeck based on the parameter</p></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadCardDecks" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadCardDecks(elms:play.api.libs.json.JsValue):List[de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface]"></a><a id="loadCardDecks(JsValue):List[CardDeckInterface]"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadCardDecks(elms:play.api.libs.json.JsValue):List[de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface]" title="Permalink">
@@ -583,8 +591,10 @@
         <span class="name">loadCardDecks</span><span class="params">(<span name="elms">elms: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../../gameElementsComponent/CardDeckInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface">CardDeckInterface</a>]</span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadField" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load CardDecks from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load CardDecks from json
+</p></div><dl class="paramcmts block"><dt class="param">elms</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>CardDecks based on the parameter</p></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadField" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadField(elms:play.api.libs.json.JsValue):de.htwg.se.durak.model.gameElementsComponent.FieldInterface"></a><a id="loadField(JsValue):FieldInterface"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadField(elms:play.api.libs.json.JsValue):de.htwg.se.durak.model.gameElementsComponent.FieldInterface" title="Permalink">
@@ -599,8 +609,10 @@
         <span class="name">loadField</span><span class="params">(<span name="elms">elms: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>)</span><span class="result">: <a href="../../gameElementsComponent/FieldInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.FieldInterface">FieldInterface</a></span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadPlayers" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load Field from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load Field from json
+</p></div><dl class="paramcmts block"><dt class="param">elms</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>Field based on the parameter</p></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadPlayers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadPlayers(prePlayers:List[play.api.libs.json.JsValue]):List[de.htwg.se.durak.model.playerComponent.Player]"></a><a id="loadPlayers(List[JsValue]):List[Player]"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadPlayers(prePlayers:List[play.api.libs.json.JsValue]):List[de.htwg.se.durak.model.playerComponent.Player]" title="Permalink">
@@ -615,8 +627,10 @@
         <span class="name">loadPlayers</span><span class="params">(<span name="prePlayers">prePlayers: <span class="extype" name="scala.List">List</span>[<span class="extype" name="play.api.libs.json.JsValue">JsValue</span>]</span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<a href="../../playerComponent/Player.html" class="extype" name="de.htwg.se.durak.model.playerComponent.Player">Player</a>]</span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadRoundData" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load PlayerList from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load PlayerList from json
+</p></div><dl class="paramcmts block"><dt class="param">prePlayers</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>PlayerList based on the parameter</p></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadRoundData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadRoundData(elm:play.api.libs.json.JsValue):de.htwg.se.durak.model.roundComponent.RoundDataInterface"></a><a id="loadRoundData(JsValue):RoundDataInterface"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadRoundData(elm:play.api.libs.json.JsValue):de.htwg.se.durak.model.roundComponent.RoundDataInterface" title="Permalink">
@@ -631,8 +645,10 @@
         <span class="name">loadRoundData</span><span class="params">(<span name="elm">elm: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>)</span><span class="result">: <a href="../../roundComponent/RoundDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.RoundDataInterface">RoundDataInterface</a></span>
       </span>
       
-      
-    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadTurnData" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Load RoundData from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load RoundData from json
+</p></div><dl class="paramcmts block"><dt class="param">elm</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>RoundData based on the parameter</p></dd></dl></div>
+    </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#loadTurnData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadTurnData(elm:play.api.libs.json.JsValue):Option[de.htwg.se.durak.model.roundComponent.TurnDataInterface]"></a><a id="loadTurnData(JsValue):Option[TurnDataInterface]"></a>
       <span class="permalink">
       <a href="../../../../../../../de/htwg/se/durak/model/fileIoComponent/fileIoJsonImpl/FileIO.html#loadTurnData(elm:play.api.libs.json.JsValue):Option[de.htwg.se.durak.model.roundComponent.TurnDataInterface]" title="Permalink">
@@ -647,7 +663,9 @@
         <span class="name">loadTurnData</span><span class="params">(<span name="elm">elm: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../../roundComponent/TurnDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.TurnDataInterface">TurnDataInterface</a>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Load TurnData from json
+</p><div class="fullcomment"><div class="comment cmt"><p>Load TurnData from json
+</p></div><dl class="paramcmts block"><dt class="param">elm</dt><dd class="cmt"><p>json data wich should be parsed</p></dd><dt>returns</dt><dd class="cmt"><p>TurnData based on the parameter</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -717,7 +735,9 @@
         <span class="name">playerDecksToJson</span><span class="params">(<span name="playerDecks">playerDecks: <span class="extype" name="scala.List">List</span>[<a href="../../gameElementsComponent/CardDeckInterface.html" class="extype" name="de.htwg.se.durak.model.gameElementsComponent.CardDeckInterface">CardDeckInterface</a>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>
       </span>
       
-      <p class="shortcomment cmt">transform List[CardDeck] to Json Object</p><div class="fullcomment"><div class="comment cmt"><p>transform List[CardDeck] to Json Object</p></div><dl class="paramcmts block"><dt class="param">playerDecks</dt><dd class="cmt"><p>obj that will be transformed to json</p></dd><dt>returns</dt><dd class="cmt"><p>JsValue List[CardDeck]</p></dd></dl></div>
+      <p class="shortcomment cmt">Convert PlayerDecks to json
+</p><div class="fullcomment"><div class="comment cmt"><p>Convert PlayerDecks to json
+</p></div><dl class="paramcmts block"><dt class="param">playerDecks</dt><dd class="cmt"><p>PlayerDecks which should be converted to json</p></dd><dt>returns</dt><dd class="cmt"><p>json element from the parameter</p></dd></dl></div>
     </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#playerListToJson" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="playerListToJson(playerList:List[de.htwg.se.durak.model.playerComponent.Player]):play.api.libs.json.JsValue"></a><a id="playerListToJson(List[Player]):JsValue"></a>
       <span class="permalink">
@@ -733,7 +753,9 @@
         <span class="name">playerListToJson</span><span class="params">(<span name="playerList">playerList: <span class="extype" name="scala.List">List</span>[<a href="../../playerComponent/Player.html" class="extype" name="de.htwg.se.durak.model.playerComponent.Player">Player</a>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>
       </span>
       
-      <p class="shortcomment cmt">transform List[Player] to Json Object</p><div class="fullcomment"><div class="comment cmt"><p>transform List[Player] to Json Object</p></div><dl class="paramcmts block"><dt class="param">playerList</dt><dd class="cmt"><p>obj that will be transformed to json</p></dd><dt>returns</dt><dd class="cmt"><p>JsValue playerList</p></dd></dl></div>
+      <p class="shortcomment cmt">Convert PlayerList to json
+</p><div class="fullcomment"><div class="comment cmt"><p>Convert PlayerList to json
+</p></div><dl class="paramcmts block"><dt class="param">playerList</dt><dd class="cmt"><p>PlayerList which should be converted to json</p></dd><dt>returns</dt><dd class="cmt"><p>json element from the parameter</p></dd></dl></div>
     </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#round" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="round:de.htwg.se.durak.model.roundComponent.RoundInterface"></a><a id="round:RoundInterface"></a>
       <span class="permalink">
@@ -765,7 +787,9 @@
         <span class="name">roundDataToJson</span><span class="params">(<span name="roundData">roundData: <a href="../../roundComponent/RoundDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.RoundDataInterface">RoundDataInterface</a></span>)</span><span class="result">: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>
       </span>
       
-      <p class="shortcomment cmt">transform RoundData to Json Object</p><div class="fullcomment"><div class="comment cmt"><p>transform RoundData to Json Object</p></div><dl class="paramcmts block"><dt class="param">roundData</dt><dd class="cmt"><p>obj that will be transformed to json</p></dd><dt>returns</dt><dd class="cmt"><p>JsValue RoundData</p></dd></dl></div>
+      <p class="shortcomment cmt">Convert RoundData to json
+</p><div class="fullcomment"><div class="comment cmt"><p>Convert RoundData to json
+</p></div><dl class="paramcmts block"><dt class="param">roundData</dt><dd class="cmt"><p>RoundData which should be converted to json</p></dd><dt>returns</dt><dd class="cmt"><p>json element from the parameter</p></dd></dl></div>
     </li><li name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO#save" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(gameDataList:List[de.htwg.se.durak.model.roundComponent.GameDataInterface]):Unit"></a><a id="save(List[GameDataInterface]):Unit"></a>
       <span class="permalink">
@@ -781,7 +805,9 @@
         <span class="name">save</span><span class="params">(<span name="gameDataList">gameDataList: <span class="extype" name="scala.List">List</span>[<a href="../../roundComponent/GameDataInterface.html" class="extype" name="de.htwg.se.durak.model.roundComponent.GameDataInterface">GameDataInterface</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">saves the list of GameData to gameData.json</p><div class="fullcomment"><div class="comment cmt"><p>saves the list of GameData to gameData.json</p></div><dl class="paramcmts block"><dt class="param">gameDataList</dt><dd class="cmt"><p>List of all GameData</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO">FileIO</a> → <a href="../FileIOInterface.html" class="extype" name="de.htwg.se.durak.model.fileIoComponent.FileIOInterface">FileIOInterface</a></dd></dl></div>
+      <p class="shortcomment cmt">Save GameData to a file
+</p><div class="fullcomment"><div class="comment cmt"><p>Save GameData to a file
+</p></div><dl class="paramcmts block"><dt class="param">gameDataList</dt><dd class="cmt"><p>GameData that should be saved</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="de.htwg.se.durak.model.fileIoComponent.fileIoJsonImpl.FileIO">FileIO</a> → <a href="../FileIOInterface.html" class="extype" name="de.htwg.se.durak.model.fileIoComponent.FileIOInterface">FileIOInterface</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
