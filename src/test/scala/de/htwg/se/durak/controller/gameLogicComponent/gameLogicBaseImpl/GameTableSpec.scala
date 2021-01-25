@@ -28,6 +28,7 @@ class GameTableSpec extends WordSpec with Matchers {
 
     "canCardDefend" in {
       val gameTable = new GameTable(new GameElements, new Round)
+      gameTable.canCardDefend(Card(3, 1), Card(4, 1), 1) should be(true)
       gameTable.canCardDefend(Card(3, 2), Card(2, 1), 1) should be(true)
       gameTable.canCardDefend(Card(2, 2), Card(3, 2), 1) should be(true)
     }
