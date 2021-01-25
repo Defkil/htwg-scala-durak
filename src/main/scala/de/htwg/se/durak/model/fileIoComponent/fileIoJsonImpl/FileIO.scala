@@ -13,8 +13,9 @@ import scala.io.Source
 class FileIO @Inject() (val gameElements: GameElementsInterface, val round: RoundInterface) extends FileIOInterface {
 
   /**
-   * saves the list of GameData to gameData.json
-   * @param gameDataList List of all GameData
+   * Save GameData to a file
+   *
+   * @param gameDataList GameData that should be saved
    */
   override def save(gameDataList: List[GameDataInterface]): Unit = {
     import java.io._
@@ -24,8 +25,9 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * load saved game from file gameData.json
-   * @return GameData list from saved game
+   * Load saved file
+   *
+   * @return List of GameData
    */
   override def load: List[GameDataInterface] = {
     val source: String = Source.fromFile("gameData.json").getLines.mkString
@@ -42,9 +44,10 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * transform GameData to Json Object
-   * @param gameDataList List of all GameData that will be transformed to json
-   * @return JsValue GameData as Json
+   * Convert RoundData to json
+   *
+   * @param gameDataList GameData which should be converted to json
+   * @return json element from the parameter
    */
   def gameDataToJson(gameDataList: List[GameDataInterface]): JsValue = {
     Json.toJson(
@@ -70,9 +73,10 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * transform RoundData to Json Object
-   * @param roundData obj that will be transformed to json
-   * @return JsValue RoundData
+   * Convert RoundData to json
+   *
+   * @param roundData RoundData which should be converted to json
+   * @return json element from the parameter
    */
   def roundDataToJson(roundData: RoundDataInterface): JsValue = {
     Json.obj(
@@ -83,9 +87,10 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * transform List[CardDeck] to Json Object
-   * @param playerDecks obj that will be transformed to json
-   * @return JsValue List[CardDeck]
+   * Convert PlayerDecks to json
+   *
+   * @param playerDecks PlayerDecks which should be converted to json
+   * @return json element from the parameter
    */
   def playerDecksToJson(playerDecks: List[CardDeckInterface]): JsValue = {
     Json.toJson(
@@ -96,9 +101,10 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * transform CardDeck to Json Object
-   * @param cardDeck obj that will be transformed to json
-   * @return JsValue CardDeck
+   * Convert CardDeck to json
+   *
+   * @param cardDeck CardDeck which should be converted to json
+   * @return json element from the parameter
    */
   def cardDeckToJson(cardDeck: List[CardInterface]): JsValue = {
     Json.toJson(
@@ -109,9 +115,10 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
   }
 
   /**
-   * transform List[Player] to Json Object
-   * @param playerList obj that will be transformed to json
-   * @return JsValue playerList
+   * Convert PlayerList to json
+   *
+   * @param playerList PlayerList which should be converted to json
+   * @return json element from the parameter
    */
   def playerListToJson(playerList: List[Player]): JsValue = {
     Json.toJson(
@@ -121,6 +128,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     )
   }
 
+  /**
+   * Load RoundData from json
+   *
+   * @param elm json data wich should be parsed
+   * @return RoundData based on the parameter
+   */
   def loadRoundData(elm: JsValue): RoundDataInterface = {
     round.createRoundData(
       (elm \ "siteID").get.toString.toInt
@@ -130,6 +143,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     )
   }
 
+  /**
+   * Load TurnData from json
+   *
+   * @param elm json data wich should be parsed
+   * @return TurnData based on the parameter
+   */
   def loadTurnData(elm: JsValue): Option[TurnDataInterface] = {
     if(elm.toString() == "{}") None else {
       val players: List[Player] = loadPlayers((elm \ "players").as[List[JsValue]])
@@ -147,6 +166,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     }
   }
 
+  /**
+   * Load CardDecks from json
+   *
+   * @param elms json data wich should be parsed
+   * @return CardDecks based on the parameter
+   */
   def loadCardDecks(elms: JsValue): List[CardDeckInterface] = {
     var res: ListBuffer[CardDeckInterface] = new ListBuffer
     val jsCardDecks: List[JsValue] = elms.as[List[JsValue]]
@@ -156,6 +181,12 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     res.toList
   }
 
+  /**
+   * Load CardDeck from json
+   *
+   * @param elms json data wich should be parsed
+   * @return CardDeck based on the parameter
+   */
   def loadCardDeck(elms: JsValue): CardDeckInterface = {
     var res: CardDeckInterface = gameElements.createCardDeck()
     elms.as[List[JsValue]].foreach(elm => {
@@ -164,8 +195,20 @@ class FileIO @Inject() (val gameElements: GameElementsInterface, val round: Roun
     res
   }
 
+  /**
+   * Load Field from json
+   *
+   * @param elms json data wich should be parsed
+   * @return Field based on the parameter
+   */
   def loadField(elms: JsValue): FieldInterface = gameElements.createField(loadCardDeck(elms))
 
+  /**
+   * Load PlayerList from json
+   *
+   * @param prePlayers json data wich should be parsed
+   * @return PlayerList based on the parameter
+   */
   def loadPlayers(prePlayers: List[JsValue]): List[Player] = {
     var res: ListBuffer[Player] = ListBuffer()
     prePlayers.foreach(elm => {
