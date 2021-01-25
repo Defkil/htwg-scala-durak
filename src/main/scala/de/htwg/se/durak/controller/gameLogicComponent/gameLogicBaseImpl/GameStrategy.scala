@@ -8,14 +8,15 @@ import de.htwg.se.durak.model.roundComponent.{GameDataInterface, RoundInterface,
 case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) extends GameStrategyInterface {
   var gameTable: GameTable = GameTable(elm, round)
   var roundDataFactory: RoundDataFactory = new RoundDataFactory(round)
+
   /**
-   * unterste Karte ist (0) und oberste (.size)
-   * @param gameData
-   * @param input
-   * @return
+   * Handle player selection
+   *
+   * @param gameData GameData Element
+   * @param input User input
+   * @return New GameData
    */
   def playerSelect(gameData: GameDataInterface, input: String): GameDataInterface = {
-    println("playerSelect")
     val players = gameTable.createPlayers(input.split(" "))
     val (mainDeck, playerDecks) = gameTable.handOutCardsStart(
       elm.createCardDeck(gameTable generateDeck 36),
@@ -35,13 +36,13 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
   }
 
   /**
+   * Handle next turn
    *
-   * @param gameData
-   * @param input
-   * @return
+   * @param gameData GameData Element
+   * @param input User input
+   * @return New GameData
    */
   def nextTurn(gameData: GameDataInterface, input: String): GameDataInterface = {
-    println("nextTurn")
     var turnData = gameData.turnData.get
     val playerDeck = turnData.playerDecks(turnData.currentPlayer)
     var res = gameData
@@ -78,7 +79,6 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
         )
       }
     }
-
     if (turnData.mainDeck.deck.isEmpty) {
       turnData = gameTable.removeEmptyPlayer(turnData)
       if (turnData.players.length == 1) {
@@ -88,12 +88,17 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
         )
       }
     }
-
     res
   }
 
+  /**
+   * Handle attack turn
+   *
+   * @param gameData GameData Element
+   * @param input User input
+   * @return New GameData
+   */
   def attackTurn(gameData: GameDataInterface, input: String): GameDataInterface = {
-    println("attackTurn")
     var turnData = gameData.turnData.get
     var roundData = roundDataFactory.getInstance(10, None)
 
@@ -138,8 +143,14 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
     roundBaseImpl.GameData(roundData, Some(turnData))
   }
 
+  /**
+   * Handle defend turn
+   *
+   * @param gameData GameData Element
+   * @param input User input
+   * @return New GameData
+   */
   def defendTurn(gameData: GameDataInterface, input: String): GameDataInterface = {
-    println("defendTurn")
     var turnData = gameData.turnData.get
     if(input == "s") { // Karten werden aufgenommen
       turnData = round.createTurnData(

@@ -54,7 +54,6 @@ class Controller @Inject() (
   }
 
   def inputError(): Unit = {
-    //todo add error msg to roundData
     println("INPUT ERROR")
     publish(new GameDataChanged)
   }

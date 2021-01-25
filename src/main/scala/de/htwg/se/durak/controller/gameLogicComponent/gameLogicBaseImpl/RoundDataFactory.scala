@@ -4,6 +4,7 @@ import de.htwg.se.durak.model.roundComponent.{RoundDataInterface, RoundInterface
 
 /**
  * creating a ready instance of RoundDataInterface and checking whether param is valid
+ *
  * @param round decribes the situation in game
  */
 class RoundDataFactory(round: RoundInterface) {
@@ -12,6 +13,7 @@ class RoundDataFactory(round: RoundInterface) {
   }
 
   /**
+   * Create RoundData with predefined parameter
    *
    * @param id is the current situation
    * @param params are optional inputs from user
