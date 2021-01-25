@@ -24,10 +24,16 @@ class GameTableSpec extends WordSpec with Matchers {
       turnData.field.cardDeck.deck.last.rank should be(-1)
       turnData.field.cardDeck.deck.last.symbol should be(-1)
     }
+    "canCardDefend" in {
+      val gameTable = new GameTable(new GameElements, new Round)
+      gameTable.canCardDefend(Card(3, 2), Card(2, 1), 1) should be(true)
+      gameTable.canCardDefend(Card(2, 2), Card(3, 2), 1) should be(true)
+    }
+
+    "test unapply" in {
+      val gameTable = new GameTable(new GameElements, new Round)
+      GameTable.unapply(gameTable)
+    }
   }
 
-  "test unapply" in {
-    val gameTable = new GameTable(new GameElements, new Round)
-    GameTable.unapply(gameTable)
-  }
 }

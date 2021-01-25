@@ -100,10 +100,10 @@ case class GameTable(elms: GameElementsInterface, round: RoundInterface) {
   }
 
   def canCardDefend(attackCard: CardInterface, defendCard: CardInterface, trump: Int): Boolean = {
-    if(isTrump(attackCard, trump) && !isTrump(defendCard, trump)) { false }
-    else if(isTrump(attackCard, trump) && isTrump(defendCard, trump)) { attackCard.rank <= defendCard.rank }
-    else if(isTrump(defendCard, trump)) { true }
-    else if(attackCard.symbol == defendCard.symbol) { attackCard.rank < defendCard.rank }
+    if(isTrump(attackCard, trump) && !isTrump(defendCard, trump)) { false } // attack is trump, defend not
+    else if(isTrump(attackCard, trump) && isTrump(defendCard, trump)) { attackCard.rank <= defendCard.rank } // both is trump
+    else if(isTrump(defendCard, trump) && !isTrump(attackCard, trump)) { true } // defend card is trump, attack not
+    else if(attackCard.symbol == defendCard.symbol) { attackCard.rank < defendCard.rank } // symbol are both same
     else { false }
   }
 
