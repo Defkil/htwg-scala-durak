@@ -212,6 +212,25 @@ class GameStrategySpec extends WordSpec with Matchers {
       gameData.roundData.siteID should be(10)
     }
 
+    "attackTurn add card, case 1" in {
+      val gameElements = new GameElements
+      val gameStrategy = new GameStrategy(gameElements, new Round)
+      val turnData: TurnDataInterface = TurnData (
+        List(Player("PlayerA"), Player("PlayerB")),
+        List(gameElements.createCardDeck(List(new Card(5,1), new Card(6,1))),gameElements.createCardDeck()),
+        0,
+        1,
+        gameElements.createField(gameElements.createCardDeck()),
+        gameElements.createCardDeck(),
+        gameElements.createCardDeck(),
+        1,
+        1
+      )
+      var gameData: GameDataInterface = new GameData(new RoundData(0,List("")), Option(turnData))
+      gameData = gameStrategy.attackTurn(gameData, "0")
+      gameData.roundData.siteID should be(10)
+    }
+
     "attackTurn in skip 3 player, case 2" in {
       val gameElements = new GameElements
       val gameStrategy = new GameStrategy(gameElements, new Round)
