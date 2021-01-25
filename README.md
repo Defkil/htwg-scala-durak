@@ -24,12 +24,13 @@ sbt runMain de.htwg.se.durak.DurakTUI
 ```
 
 ## :information_source: Componenten
-* controller/controllerComponent Controller mit Comannd Solver
-* controller/gameLogicComponent Enthält die Spiel Logic und die des Menüs
-* model/fileIoComponent Zum Speichern und Laden von Spielständen
-* model/gameElementsComponent Spiel Elementen wie Karten und Karten Decks
-* model/playerComponent Spieler Infos
-* model/roundComponent Zum generieren von Runden Elementen
+> Componenten sind mit der Online Dokumentation verlinkt
+* [controller/controllerComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/controller/controllerComponent/index.html) Controller mit Comannd Solver
+* [controller/gameLogicComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/controller/gameLogicComponent/index.html) Enthält die Spiel Logic und die des Menüs
+* [model/fileIoComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/fileIoComponent/index.html) Zum Speichern und Laden von Spielständen
+* [model/gameElementsComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/gameElementsComponent/index.html) Spiel Elementen wie Karten und Karten Decks
+* [model/playerComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/playerComponent/index.html) Spieler Infos
+* [model/roundComponent](https://defkil.github.io/htwg-scala-durak/master/docs/de/htwg/se/durak/model/roundComponent/index.html) Zum generieren von Runden Elementen
 
 ## :capital_abcd: GameData
 Besteht aus _RoundData_ und _TurnData_.
