@@ -113,7 +113,6 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
           if(turnData.playerDecks.length > 2) {
             turnData = gameTable.setRightAttacker(turnData)
           } else {
-            println("==================")
             turnData = gameTable.attackFinish(turnData)
           }
         } else {
@@ -126,6 +125,7 @@ case class GameStrategy(elm: GameElementsInterface, round: RoundInterface) exten
             turnData = gameTable.defenderTakeCards(turnData)
           } else {
             if (turnData.currentPlayer == gameTable.getRightPlayer(turnData.defendPlayer, turnData.players.length)) {
+              println("==================")
               turnData = gameTable.defenderTakeCards(turnData) // third and last attacker
             } else {
               turnData = gameTable.setRightAttacker(turnData, 2)
